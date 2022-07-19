@@ -16,12 +16,12 @@ GameObject:
   - component: {fileID: 6384935860795408903}
   - component: {fileID: 4404088215056027210}
   - component: {fileID: 8409141984809250024}
-  - component: {fileID: -1471846671091760917}
   - component: {fileID: 8241054275589595375}
   - component: {fileID: 5094309977440917173}
   - component: {fileID: 8970348609939961728}
   - component: {fileID: -6783709483255855513}
   - component: {fileID: 2967201445977163866}
+  - component: {fileID: -8306563804841816699}
   m_Layer: 0
   m_Name: PlaneWW2
   m_TagString: Untagged
@@ -87,8 +87,8 @@ MonoBehaviour:
     m_ActionName: Player/Rotate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2967201445977163866}
-        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+      - m_Target: {fileID: -8306563804841816699}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
         m_MethodName: OnMissile
         m_Mode: 1
         m_Arguments:
@@ -104,8 +104,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2967201445977163866}
-        m_TargetAssemblyTypeName: PlaneMovement, Assembly-CSharp
-        m_MethodName: OnAccelerate
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: accelerate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -120,8 +120,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2967201445977163866}
-        m_TargetAssemblyTypeName: PlaneMovement, Assembly-CSharp
-        m_MethodName: OnDesaceletate
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: accelerate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -133,6 +133,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 791ef3bd-41e5-467d-b449-8d31d9451a85
     m_ActionName: Player/Decelerate[/DualShock4GamepadHID/leftTrigger,/XInputControllerWindows/leftTrigger,/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -8306563804841816699}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
+        m_MethodName: onShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
+    m_ActionName: Player/Shoot[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -206,7 +222,7 @@ MonoBehaviour:
   stats: {fileID: 4404088215056027210}
   healthBar: {fileID: 0}
   collissionManager: {fileID: 8409141984809250024}
-  planeShooter: {fileID: -1471846671091760917}
+  planeShooter: {fileID: -8306563804841816699}
   planeMovement: {fileID: 2967201445977163866}
   controller: {fileID: 0}
 --- !u!114 &6384935860795408903
@@ -238,16 +254,20 @@ MonoBehaviour:
   health: 1
   maxSpeed: 0
   speed: 0
+  acceleration: 0
   rotationSpeed: 0
   rotation: 0
   maxRotation: 0
-  acceleration: 0
+  bulletDamage: 1
+  damageOnButton: 0.1
   shootSpeed: 0
+  magazineSize: 10
+  missiles: 0
+  maxMissiles: 1
   scoreValue: 0
   timeToRotate: 1
   price: 0
-  missiles: 0
-  maxMissiles: 1
+  hasShield: 0
   plane: {fileID: 7433524470729236354}
 --- !u!114 &8409141984809250024
 MonoBehaviour:
@@ -264,22 +284,6 @@ MonoBehaviour:
   plane: {fileID: 7433524470729236354}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
   SFXManager: {fileID: 0}
---- !u!114 &-1471846671091760917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 378609029129598230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c85464919e493042996344813ea33b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
-  missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
-  shootTimer: 0
-  plane: {fileID: 7433524470729236354}
 --- !u!54 &8241054275589595375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5112,14 +5116,43 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
+--- !u!114 &-8306563804841816699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 378609029129598230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f6786c72c394343b650d2aaa71d874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 115912955424197162, guid: 4c088005143bb664db60f229a8882647, type: 3}
+  missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
+  shootTimer: 0
+  plane: {fileID: 7433524470729236354}
+  type: 1
+  input: {fileID: 2143911704360109206}
   missileAction:
-    m_Name: 
+    m_Name: Missile
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 
+    m_Id: 80149f86-6e9c-4ae3-9c16-998f68e0486e
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
+  shootAction:
+    m_Name: Shoot
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b1bccf00-b5e8-4574-89a0-7eb09ff0ed8a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  magazineFull: 1
+  magazine: 0
+  stoppedShooting: 1
 --- !u!1 &8166728928121849943
 GameObject:
   m_ObjectHideFlags: 0

@@ -2308,6 +2308,7 @@ GameObject:
   - component: {fileID: 1480551997}
   - component: {fileID: 1480551998}
   - component: {fileID: 1480551999}
+  - component: {fileID: 1480552000}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -2372,13 +2373,6 @@ MonoBehaviour:
   maz: 5.5
   playersAlive: 0
   players: []
-  onFinish: {fileID: 1141434013}
-  scoreText: {fileID: 120882726}
-  timeText: {fileID: 1694222330}
-  enemiesText: {fileID: 283368215}
-  totalText: {fileID: 1310788148}
-  previousBestText: {fileID: 1656340217}
-  gainedPoints: {fileID: 745126580}
   data:
     bestTime: 0
     bestEnemies: 0
@@ -2394,6 +2388,8 @@ MonoBehaviour:
     timeToIncreaseEnemies: 20
     timeToSpawnPowerUps: 5
     maxPowerUps: 5
+    playTime: 180
+  gameModeManager: {fileID: 0}
   enemySpawner: {fileID: 1480551996}
   playerSpawner: {fileID: 1480551997}
   powerUpSpawner: {fileID: 1480551999}
@@ -2502,6 +2498,30 @@ MonoBehaviour:
   missile: {fileID: 8286513558692950852, guid: 7a2915e4dcfb5a74b834ebbfbc8b69a6, type: 3}
   shield: {fileID: 3718260880129317361, guid: f63ced34e3d24064da4487634e7b6f1b, type: 3}
   repair: {fileID: 4992973833484211531, guid: 356d16500ccb02046beaa8086c7f5d61, type: 3}
+--- !u!114 &1480552000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480551992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1c842b32edc1b47a01a3ec610ae24f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 1480551995}
+  maxEnemies: 1
+  timeToIncreaseEnemies: 20
+  timer: 0
+  powerUpsSize: 0
+  onFinish: {fileID: 1141434013}
+  scoreText: {fileID: 120882726}
+  timeText: {fileID: 1694222330}
+  enemiesText: {fileID: 283368215}
+  totalText: {fileID: 1310788148}
+  previousBestText: {fileID: 1656340217}
+  gainedPoints: {fileID: 745126580}
 --- !u!1 &1497924367
 GameObject:
   m_ObjectHideFlags: 0

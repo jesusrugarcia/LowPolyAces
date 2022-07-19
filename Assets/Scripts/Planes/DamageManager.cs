@@ -5,5 +5,5 @@ using UnityEngine;
 public class DamageManager : MonoBehaviour
 {
     public float damage = 1f;
-    
+
 }

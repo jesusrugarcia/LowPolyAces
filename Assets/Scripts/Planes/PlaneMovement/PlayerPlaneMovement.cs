@@ -8,7 +8,7 @@ public class PlayerPlaneMovement : PlaneMovement
     public PlayerInput input;
     public InputAction acceleateAction;
     public InputAction decelerateAction;
-    public InputAction missileAction;
+    
 
 
     float minSpeed = 1;
@@ -32,7 +32,7 @@ public class PlayerPlaneMovement : PlaneMovement
         var map = input.currentActionMap;
         acceleateAction = map.FindAction("Accelerate",true);
         decelerateAction = map.FindAction("Decelerate",true);
-        missileAction = map.FindAction("Missile",true);
+        
     }
 
     public void OnRotate(InputAction.CallbackContext context){
@@ -64,14 +64,5 @@ public class PlayerPlaneMovement : PlaneMovement
         } else if (plane.stats.speed > plane.stats.maxSpeed/2 ){
              plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;
          }
-    }
-
-    public void OnMissile(){
-        if(isUp(missileAction)){
-            if(plane.stats.missiles > 0){
-            plane.planeShooter.launchMissile();
-            }
-        }
-        
     }
 }

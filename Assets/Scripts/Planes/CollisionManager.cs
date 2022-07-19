@@ -24,16 +24,26 @@ public class CollisionManager : MonoBehaviour
         
             plane.stats.health += - other.GetComponent<DamageManager>().damage;
             plane.healthBar.setHealth();
-            if (plane.stats.health < 1){
-                destroyPlane();
+            if (plane.stats.health <= 0){
+                destroyPlane(other);
             }
 
             Destroy(other.gameObject);
     }
 
-    public void destroyPlane(){
+    public void destroyPlane(Collider other){
         Instantiate(explosion,transform.position, Quaternion.Euler(0,0,0));
         
+        if(plane.controller.gameOptions.mode == gameMode.arcade){
+            destroyArcade();
+        } else if(plane.controller.gameOptions.mode == gameMode.versus){
+            destroyVersus();
+        }
+        //SFXManager.playExplosion();
+        
+    }
+
+    public void destroyArcade(){
         if (plane.teamManager.team > 0){ //ojo al gamemodde
             plane.controller.playersAlive += -1; 
             gameObject.SetActive(false);
@@ -44,8 +54,12 @@ public class CollisionManager : MonoBehaviour
             Destroy(plane.healthBar.gameObject);
             Destroy(gameObject);
         }
-        //SFXManager.playExplosion();
-        
+    }
+
+    public void destroyVersus(){
+        plane.controller.GetComponent<VersusModeManager>().lives[plane.teamManager.team]++;
+        Destroy(plane.healthBar.gameObject);
+        Destroy(gameObject);
     }
 
 }

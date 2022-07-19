@@ -51,6 +51,7 @@ public class PowerUpsManager : MonoBehaviour
             var stats = plane.GetComponent<PlaneStats>();
             if(stats.missiles < stats.maxMissiles){
                 stats.missiles ++;
+                stats.plane.healthBar.MissileIcon.SetActive(true);
                 stats.plane.controller.currentPowerUps --;
                 Destroy(gameObject);
             }

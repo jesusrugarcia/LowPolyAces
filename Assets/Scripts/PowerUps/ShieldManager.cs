@@ -25,6 +25,7 @@ public class ShieldManager : MonoBehaviour
             health += - other.GetComponent<DamageManager>().damage;
             if (health < 1){
                 target.GetComponent<PlaneStats>().hasShield = false;
+                Destroy(other.gameObject);
                 destroyShield();
             }
     }

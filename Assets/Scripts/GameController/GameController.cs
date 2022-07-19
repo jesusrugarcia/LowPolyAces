@@ -15,13 +15,6 @@ public class GameController : MonoBehaviour
     public int playersAlive = 0;
     public GameObject[] players;
 
-    public GameObject onFinish;
-    public Text scoreText;
-    public Text timeText;
-    public Text enemiesText;
-    public Text totalText;
-    public Text previousBestText;
-    public Text gainedPoints;
 
     public SaveData data;
     public GameOptions gameOptions;
@@ -56,9 +49,9 @@ public class GameController : MonoBehaviour
 
     public void loadModeManager(){
         if (gameOptions.mode == gameMode.arcade){
-            gameModeManager = new ArcadeModeManager();
-        } else {//placeholder
-            gameModeManager = new ArcadeModeManager();
+            gameModeManager = GetComponent<ArcadeModeManager>();
+        } else  if (gameOptions.mode == gameMode.versus){//placeholder
+            gameModeManager = GetComponent<VersusModeManager>();
         }
 
         gameModeManager.controller = this;

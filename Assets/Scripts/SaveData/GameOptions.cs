@@ -19,9 +19,13 @@ public class GameOptions
     public float max = 10;
     public float maz = 5.5f;
     
+    //Arcade
     public float timeToIncreaseEnemies = 60;
     public float timeToSpawnPowerUps = 10;
     public int maxPowerUps = 5;
+
+    //Versus
+    public float playTime = 180f;
 
     public GameOptions(){
 

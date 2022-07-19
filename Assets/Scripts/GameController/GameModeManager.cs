@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameModeManager 
+public class GameModeManager : MonoBehaviour
 {
     public GameController controller;
 
@@ -15,6 +15,10 @@ public class GameModeManager
     } 
 
     public virtual void StartGame(){
+
+    }
+
+    public virtual void endGame(){
 
     }
 }

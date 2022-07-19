@@ -40,6 +40,7 @@
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlMedium.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerImposible.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ShieldManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemyList.cs" />
      <Compile Include="Assets\Scripts\Planes\TeamManager.cs" />
@@ -52,6 +53,7 @@
      <Compile Include="Assets\Scripts\Planes\CollisionManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneStatsObject.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\PowerUpSpawner.cs" />
      <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
      <Compile Include="Assets\Scripts\GameController\GameController.cs" />
@@ -62,16 +64,16 @@
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlaneMovement.cs" />
      <Compile Include="Assets\Scripts\Planes\PropellerRotation.cs" />
      <Compile Include="Assets\Scripts\SaveData\FileManager.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlayerPlaneShooter.cs" />
      <Compile Include="Assets\Scripts\Planes\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Planes\BulletMovement.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\PowerUpsManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlayerPlaneMovement.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneShooter.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlaneShooter.cs" />
      <Compile Include="Assets\Scripts\SaveData\GameOptions.cs" />
      <Compile Include="Assets\Scripts\GameController\ObjectPools.cs" />
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\PowerUpsManager.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\PowerUpSpawner.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\ShieldManager.cs" />
+     <Compile Include="Assets\Scripts\GameController\VersusModeManager.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Unity/Editors/2020.3.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
