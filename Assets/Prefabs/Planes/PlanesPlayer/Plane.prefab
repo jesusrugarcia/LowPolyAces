@@ -15,13 +15,13 @@ GameObject:
   - component: {fileID: -4926042467447629432}
   - component: {fileID: -2487556561392270339}
   - component: {fileID: 3982361694198000990}
-  - component: {fileID: -4503487951118445709}
   - component: {fileID: 4045506341876661057}
   - component: {fileID: -7896918180752672712}
   - component: {fileID: -4352941966882098219}
   - component: {fileID: 6352800251229250513}
   - component: {fileID: 4567319211136799800}
   - component: {fileID: -3928711836946387268}
+  - component: {fileID: -4083799204123096650}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -109,7 +109,7 @@ MonoBehaviour:
   stats: {fileID: -2487556561392270339}
   healthBar: {fileID: 0}
   collissionManager: {fileID: 3982361694198000990}
-  planeShooter: {fileID: -4503487951118445709}
+  planeShooter: {fileID: -4083799204123096650}
   planeMovement: {fileID: -3928711836946387268}
   controller: {fileID: 0}
 --- !u!114 &-4926042467447629432
@@ -141,14 +141,20 @@ MonoBehaviour:
   health: 1
   maxSpeed: 0
   speed: 0
+  acceleration: 0
   rotationSpeed: 0
   rotation: 0
   maxRotation: 0
-  acceleration: 0
+  bulletDamage: 1
+  damageOnButton: 0.1
   shootSpeed: 0
+  magazineSize: 10
+  missiles: 0
+  maxMissiles: 1
   scoreValue: 0
   timeToRotate: 1
   price: 0
+  hasShield: 0
   plane: {fileID: -3948678839232508399}
 --- !u!114 &3982361694198000990
 MonoBehaviour:
@@ -165,21 +171,6 @@ MonoBehaviour:
   plane: {fileID: -3948678839232508399}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
   SFXManager: {fileID: 0}
---- !u!114 &-4503487951118445709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2818080905174121479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c85464919e493042996344813ea33b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
-  shootTimer: 0
-  plane: {fileID: -3948678839232508399}
 --- !u!54 &4045506341876661057
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5026,6 +5017,18 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: bf8c5005-41d6-4f2d-a025-a81a8a0f0a78
     m_ActionName: Player/Missile[/Keyboard/space,/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d2cd649-d27c-4ed3-9792-dd7b39280dbe
+    m_ActionName: Player/Accelerate[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 791ef3bd-41e5-467d-b449-8d31d9451a85
+    m_ActionName: Player/Decelerate[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
+    m_ActionName: Player/Shoot[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -5046,3 +5049,56 @@ MonoBehaviour:
   plane: {fileID: 0}
   movement: {x: 0, y: 0}
   input: {fileID: 0}
+  acceleateAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 43a827c5-87d2-4ffa-b4d3-a67623291672
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  decelerateAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e4a334c5-92dc-4892-8057-aeded89f8972
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+--- !u!114 &-4083799204123096650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2818080905174121479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f6786c72c394343b650d2aaa71d874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 115912955424197162, guid: 4c088005143bb664db60f229a8882647, type: 3}
+  missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
+  shootTimer: 0
+  plane: {fileID: -3948678839232508399}
+  type: 1
+  input: {fileID: 4567319211136799800}
+  missileAction:
+    m_Name: Missile
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 1f35f6fe-dc16-4b30-b292-3db6ba05d6e3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  shootAction:
+    m_Name: Shoot
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9a616b7b-f58e-4066-b28e-fdc4c8a55040
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  magazineFull: 1
+  magazine: 0
+  stoppedShooting: 1

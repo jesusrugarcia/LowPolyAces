@@ -37,7 +37,7 @@ public class CollisionManager : MonoBehaviour
         if(plane.controller.gameOptions.mode == gameMode.arcade){
             destroyArcade();
         } else if(plane.controller.gameOptions.mode == gameMode.versus){
-            destroyVersus();
+            destroyVersus(other);
         }
         //SFXManager.playExplosion();
         
@@ -56,10 +56,16 @@ public class CollisionManager : MonoBehaviour
         }
     }
 
-    public void destroyVersus(){
-        plane.controller.GetComponent<VersusModeManager>().lives[plane.teamManager.team]++;
-        Destroy(plane.healthBar.gameObject);
-        Destroy(gameObject);
+    public void destroyVersus(Collider other){
+        var manager =  plane.controller.GetComponent<VersusModeManager>();
+        manager.lives[plane.teamManager.team]++;
+        manager.score[other.gameObject.GetComponent<TeamManager>().team]++;
+        manager.checkWinner();
+
+        gameObject.SetActive(false);
+        plane.healthBar.gameObject.SetActive(false);
+
+        manager.spawnPlayer(plane);
     }
 
 }

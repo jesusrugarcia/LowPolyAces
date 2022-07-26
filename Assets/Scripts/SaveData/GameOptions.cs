@@ -26,6 +26,7 @@ public class GameOptions
 
     //Versus
     public float playTime = 180f;
+    public int maxLives = 3;
 
     public GameOptions(){
 
