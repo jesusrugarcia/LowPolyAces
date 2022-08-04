@@ -6,11 +6,14 @@ public class MapGenerator : MonoBehaviour
 {
     public enum DrawMode{
         NoiseMap,
-        ColorMap
+        ColorMap,
+        Mesh,
+        FallOff
     }
     public DrawMode drawMode;
-    public int mapWidth;
-    public int mapHeight;
+    const int chunkSize = 241;
+    [Range(0,6)]
+    public int levelOfDetail;
     public int seed;
     public float noiseScale;
     public int octaves;
@@ -18,18 +21,32 @@ public class MapGenerator : MonoBehaviour
     public float persistance;
     public float lacunarity;
     public Vector2 offset;
+    public float heightMultiplier;
+    public AnimationCurve meshHeightCurve;
     public bool autoUpdate;
-    public TerrainType[] regions;
-    public void GenerateMap(){
-        float[,] noiseMap = Noise.GenerateNoiseMap(mapWidth,mapHeight,seed,noiseScale,octaves,persistance,lacunarity, offset);
 
-        Color[] colorMap = new Color[mapWidth * mapHeight];
-        for(int y=0; y<mapHeight; y++){
-          for(int x=0; x<mapWidth; x++){
+    public bool fallOff;
+    public float fallA;
+    public float fallB;
+    public TerrainType[] regions;
+
+    float[,] fallOffMap;
+
+    public void GenerateMap(){
+        float[,] noiseMap = Noise.GenerateNoiseMap(chunkSize,chunkSize,seed,noiseScale,octaves,persistance,lacunarity, offset);
+        if(fallOff){
+            fallOffMap = FallOffGenerator.GenerateFallOffMap(chunkSize,fallA,fallB);
+        }
+        Color[] colorMap = new Color[chunkSize * chunkSize];
+        for(int y=0; y<chunkSize; y++){
+          for(int x=0; x<chunkSize; x++){
+                if(fallOff){
+                    noiseMap[x,y] = Mathf.Clamp01(noiseMap[x,y] - fallOffMap[x,y]);
+                }
                 float currentHeight = noiseMap[x,y];
                 for(int i=0; i<regions.Length;i++){
                     if(currentHeight <= regions[i].height){
-                        colorMap[y * mapWidth + x] = regions[i].color;
+                        colorMap[y * chunkSize + x] = regions[i].color;
                         break; 
                     }
                 }
@@ -37,21 +54,19 @@ public class MapGenerator : MonoBehaviour
         }
         MapDisplay display = FindObjectOfType<MapDisplay>();
         if(drawMode == DrawMode.NoiseMap){
-            display.DrawNoiseMap(noiseMap);
+            display.DrawTexture(TextureGenerator.TextureFromHeightMap(noiseMap));
         } else if(drawMode == DrawMode.ColorMap){
-            display.DrawNoiseMap(colorMap);
+            display.DrawTexture(TextureGenerator.TextureFromColorMap(colorMap, chunkSize, chunkSize));
+        } else if(drawMode == DrawMode.Mesh){
+            display.DrawMesh(MeshGenerator.GenerateMeshTerrain(noiseMap, heightMultiplier, meshHeightCurve, levelOfDetail), TextureGenerator.TextureFromColorMap(colorMap, chunkSize, chunkSize));
+        } else if(drawMode == DrawMode.FallOff){
+            display.DrawTexture(TextureGenerator.TextureFromHeightMap(fallOffMap));
         }
         
     }
 
     void OnValidate()
     {
-        if (mapHeight < 1){
-            mapHeight = 1;
-        }
-        if (mapWidth < 1){
-            mapWidth = 1;
-        }
         if(lacunarity < 1){
             lacunarity = 1;
         }

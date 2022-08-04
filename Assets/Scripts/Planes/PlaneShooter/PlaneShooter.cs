@@ -15,6 +15,10 @@ public class PlaneShooter : MonoBehaviour
     public float shootTimer = 0;
     public PlaneManager plane;
     public shootingType type;
+
+    public bool magazineFull = false;
+    public int magazine;
+    public float shootSpeedOnButton = 0.05f;
     
     private void Start() {
         
@@ -25,17 +29,46 @@ public class PlaneShooter : MonoBehaviour
     }
 
     public virtual void checkShoot(){
-        shootTimer += Time.deltaTime;
-        if (shootTimer >= plane.stats.shootSpeed){
-            shootTimer = 0;
-            if(type == shootingType.normal){
+        if(type == shootingType.normal){
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= plane.stats.shootSpeed){
+                shootTimer = 0;
                 shoot();
+            }
+        } else if(type == shootingType.onButton){
+            if(magazineFull){
+                onButtonShoot();
+            } else {
+                shootTimer += Time.deltaTime;
+                if (shootTimer >= plane.stats.shootSpeed){
+                    magazineFull = true;
+                    magazine = plane.stats.magazineSize;
+                    shootTimer = 0;
+                }
+            }
+        }
+    }
+
+    public virtual void onButtonShoot(){
+        shootTimer += Time.deltaTime;
+        if(shootTimer > shootSpeedOnButton){
+            shootTimer = 0;
+            shoot();
+            magazine--;
+            if(magazine <= 0){
+                magazineFull = false;
             }
         }
     }
 
     public virtual void shoot(){
         var bull = Instantiate(bullet, transform.position, transform.rotation);
+        bull.GetComponent<TeamManager>().team = plane.teamManager.team;
+        bull.GetComponent<BulletMovement>().controller = plane.controller;
+    }
+
+    public virtual void shoot(GameObject shooter){
+        var bull = Instantiate(bullet, shooter.transform.position, shooter.transform.rotation);
         bull.GetComponent<TeamManager>().team = plane.teamManager.team;
         bull.GetComponent<BulletMovement>().controller = plane.controller;
     }

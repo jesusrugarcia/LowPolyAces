@@ -139,14 +139,20 @@ MonoBehaviour:
   health: 1
   maxSpeed: 0
   speed: 0
+  acceleration: 0
   rotationSpeed: 0
   rotation: 0
   maxRotation: 0
-  acceleration: 0
+  bulletDamage: 1
+  damageOnButton: 0.1
   shootSpeed: 0
+  magazineSize: 10
+  missiles: 0
+  maxMissiles: 1
   scoreValue: 0
   timeToRotate: 1
   price: 0
+  hasShield: 0
   plane: {fileID: 5626951841788614379}
 --- !u!114 &3486274002164446628
 MonoBehaviour:
@@ -175,9 +181,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c85464919e493042996344813ea33b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 2091597665663145648, guid: 327923c4be3bef24aa83766cf0d7abc4, type: 3}
+  bullet: {fileID: 4158660810426207385, guid: 88a0a0374e31c284cb182a80cd96d9fd, type: 3}
+  missile: {fileID: 0}
   shootTimer: 0
   plane: {fileID: 5626951841788614379}
+  type: 1
+  magazineFull: 1
+  magazine: 0
 --- !u!54 &-5411137444513846100
 Rigidbody:
   m_ObjectHideFlags: 0

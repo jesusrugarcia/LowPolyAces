@@ -37,43 +37,52 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlMedium.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerImposible.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\ShieldManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemySpawner.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemyList.cs" />
      <Compile Include="Assets\Scripts\Planes\TeamManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneStats.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\SearchTarget.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneModel.cs" />
      <Compile Include="Assets\Scripts\Menus\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneStatsObject.cs" />
+     <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\TextureGenerator.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlEasy.cs" />
+     <Compile Include="Assets\Scripts\Planes\PropellerRotation.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlayerPlaneShooter.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlaneShooter.cs" />
+     <Compile Include="Assets\Scripts\SaveData\GameOptions.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlMedium.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlayerSpawner.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ShieldManager.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemyList.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneStats.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlHard.cs" />
      <Compile Include="Assets\Scripts\PowerUps\MissileManager.cs" />
      <Compile Include="Assets\Scripts\Menus\ShopMenu.cs" />
      <Compile Include="Assets\Scripts\Planes\CollisionManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneStatsObject.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpSpawner.cs" />
-     <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\MapGenerator.cs" />
      <Compile Include="Assets\Scripts\GameController\GameController.cs" />
+     <Compile Include="Assets\Scripts\GameController\VersusModeManager.cs" />
      <Compile Include="Assets\Scripts\SFXManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlEasy.cs" />
      <Compile Include="Assets\Scripts\Planes\DamageManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneSpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlaneMovement.cs" />
-     <Compile Include="Assets\Scripts\Planes\PropellerRotation.cs" />
      <Compile Include="Assets\Scripts\SaveData\FileManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlayerPlaneShooter.cs" />
      <Compile Include="Assets\Scripts\Planes\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Planes\BulletMovement.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\Noise.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpsManager.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\MapDisplay.cs" />
+     <Compile Include="Assets\Scripts\MapChangerRandom.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlayerPlaneMovement.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlaneShooter.cs" />
-     <Compile Include="Assets\Scripts\SaveData\GameOptions.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\MeshGenerator.cs" />
      <Compile Include="Assets\Scripts\GameController\ObjectPools.cs" />
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
-     <Compile Include="Assets\Scripts\GameController\VersusModeManager.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneShooter\Turret.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\FallOfGenerator.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Unity/Editors/2020.3.18f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -649,13 +658,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Unity.ShaderGraph.Editor.csproj">
+      <Project>{57934fde-102e-73d7-c354-5e8847418851}</Project>
+      <Name>Unity.ShaderGraph.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VSCode.Editor.csproj">
       <Project>{49d832ba-36a3-8590-33b2-7fb1191474cd}</Project>
       <Name>Unity.VSCode.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.csproj">
+      <Project>{e5ac2b34-6a96-218b-2511-6ef6ad942cb3}</Project>
+      <Name>Unity.RenderPipelines.Universal.Shaders</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Editor.csproj">
+      <Project>{3e6eb1a0-20a9-d3d9-93cd-1cd7bd79f336}</Project>
+      <Name>Unity.RenderPipelines.Universal.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Universal.Runtime.csproj">
+      <Project>{a66bc3f0-0714-cdba-21ba-3e93e8f6e499}</Project>
+      <Name>Unity.RenderPipelines.Universal.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.VisualStudio.Editor.csproj">
       <Project>{32895e4e-9406-33c3-df7c-6b97e488bea3}</Project>
       <Name>Unity.VisualStudio.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipeline.Universal.ShaderLibrary.csproj">
+      <Project>{f6c2437e-6126-9b15-86d8-ff9ef3295280}</Project>
+      <Name>Unity.RenderPipeline.Universal.ShaderLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Timeline.Editor.csproj">
       <Project>{30542352-3400-8d86-b168-0b56c2eb09f0}</Project>
@@ -664,6 +693,22 @@
     <ProjectReference Include="Unity.Timeline.csproj">
       <Project>{0702bb9e-ae55-79bb-7fdc-61be14855a58}</Project>
       <Name>Unity.Timeline</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
+      <Project>{b1351923-8596-d6a8-341d-e2840335598b}</Project>
+      <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{9bc6bbca-7bb0-4730-92f3-50e099ad1b61}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Searcher.Editor.csproj">
+      <Project>{ad067eaa-be81-8d76-ad38-f35c4d17a9ec}</Project>
+      <Name>Unity.Searcher.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.csproj">
+      <Project>{274506ad-b0d9-09a8-70f1-10b10eb0d45d}</Project>
+      <Name>Unity.RenderPipelines.Core.Runtime</Name>
     </ProjectReference>
     <ProjectReference Include="UnityEditor.UI.csproj">
       <Project>{1a1d8249-2c3b-6d21-2d5c-cbe071f3d1a3}</Project>
@@ -677,6 +722,10 @@
       <Project>{a84163a6-fa02-9f39-69cc-1775024df8ba}</Project>
       <Name>Unity.Rider.Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.ShaderLibrary.csproj">
+      <Project>{8d3ea2ab-3695-6ea8-dfc6-97dc11095e7f}</Project>
+      <Name>Unity.RenderPipelines.Core.ShaderLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="UnityEngine.UI.csproj">
       <Project>{df725d79-c6a9-d292-0d2e-adcafeaa1df8}</Project>
       <Name>UnityEngine.UI</Name>
@@ -684,6 +733,14 @@
     <ProjectReference Include="Unity.PlasticSCM.Editor.csproj">
       <Project>{bfdcf951-90d3-9d57-98dd-d4e65c2963fa}</Project>
       <Name>Unity.PlasticSCM.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.RenderPipelines.Core.Editor.csproj">
+      <Project>{74038ef5-b397-5ffe-7d84-19fd1fb5557f}</Project>
+      <Name>Unity.RenderPipelines.Core.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{f0a89951-0e3c-a580-6516-804f25d0788c}</Project>
+      <Name>Unity.Mathematics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

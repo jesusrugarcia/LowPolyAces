@@ -9,8 +9,7 @@ public class PlayerPlaneShooter : PlaneShooter
     public InputAction missileAction;
     public InputAction shootAction;
 
-    public bool magazineFull = true;
-    public int magazine;
+    
     public bool stoppedShooting = true;
 
     static bool isDown(InputAction action) => action.phase == InputActionPhase.Performed;
@@ -48,7 +47,7 @@ public class PlayerPlaneShooter : PlaneShooter
         
     }
 
-    public void onButtonShoot(){
+    public override void onButtonShoot(){
         onShoot();
         if(magazineFull == false){
             shootTimer += Time.deltaTime;

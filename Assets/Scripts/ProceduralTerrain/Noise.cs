@@ -11,7 +11,7 @@ public static class Noise
         Vector2[] octaveOffsets = new Vector2[octaves];
         for(int i = 0; i<octaves;i++){
             float offsetX = prng.Next(-100000,100000) + offset.x;  
-            float offsetY = prng.Next(-100000,100000) + offset.y;
+            float offsetY = prng.Next(-100000,100000) - offset.y; //+?
             octaveOffsets[i] = new Vector2(offsetX,offsetY);
         }
 
@@ -31,8 +31,8 @@ public static class Noise
                 float noiseHeight = 0;
 
                 for(int i= 0; i< octaves;i++){
-                    float sampleX = (x - halfWidth) / scale * frequency + octaveOffsets[i].x;
-                    float sampleY = (y - halfHeight) / scale * frequency + octaveOffsets[i].y;
+                    float sampleX = (x - halfWidth) / scale * frequency + octaveOffsets[i].x * frequency;
+                    float sampleY = (y - halfHeight) / scale * frequency - octaveOffsets[i].y * frequency;
 
                     float perlinValue = Mathf.PerlinNoise(sampleX,sampleY) * 2 - 1;
                     noiseHeight += perlinValue * amplitude;

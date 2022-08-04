@@ -37,7 +37,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2818080905174121479}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.576, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,8 +147,10 @@ MonoBehaviour:
   maxRotation: 0
   bulletDamage: 1
   damageOnButton: 0.1
+  damageTurret: 0.1
   shootSpeed: 0
   magazineSize: 10
+  turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
   scoreValue: 0
@@ -5014,19 +5016,67 @@ MonoBehaviour:
     m_ActionId: 547a7073-dbec-42c0-b074-b1f5c9618994
     m_ActionName: Player/Rotate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/leftStick/right]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4083799204123096650}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
+        m_MethodName: OnMissile
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: bf8c5005-41d6-4f2d-a025-a81a8a0f0a78
     m_ActionName: Player/Missile[/Keyboard/space,/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3928711836946387268}
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: accelerate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0d2cd649-d27c-4ed3-9792-dd7b39280dbe
     m_ActionName: Player/Accelerate[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -3928711836946387268}
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: accelerate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 791ef3bd-41e5-467d-b449-8d31d9451a85
     m_ActionName: Player/Decelerate[/Keyboard/s]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -4083799204123096650}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
+        m_MethodName: onShoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
     m_ActionName: Player/Shoot[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
@@ -5050,7 +5100,7 @@ MonoBehaviour:
   movement: {x: 0, y: 0}
   input: {fileID: 0}
   acceleateAction:
-    m_Name: 
+    m_Name: Acceleate
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 43a827c5-87d2-4ffa-b4d3-a67623291672
@@ -5058,7 +5108,7 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
   decelerateAction:
-    m_Name: 
+    m_Name: Decelerate
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: e4a334c5-92dc-4892-8057-aeded89f8972
@@ -5082,6 +5132,9 @@ MonoBehaviour:
   shootTimer: 0
   plane: {fileID: -3948678839232508399}
   type: 1
+  magazineFull: 1
+  magazine: 0
+  shootSpeedOnButton: 0.05
   input: {fileID: 4567319211136799800}
   missileAction:
     m_Name: Missile
@@ -5099,6 +5152,4 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
-  magazineFull: 1
-  magazine: 0
   stoppedShooting: 1

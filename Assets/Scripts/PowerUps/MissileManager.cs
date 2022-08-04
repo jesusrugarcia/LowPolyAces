@@ -24,18 +24,7 @@ public class MissileManager : MonoBehaviour
     }
 
     public void searchTarget(){
-        try{
-            RaycastHit hit;
-            Ray ray = new Ray(transform.position, transform.right);
-            if(Physics.Raycast(ray, out hit, targetDistance)){
-                var detected = hit.collider.gameObject;
-                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != teamManager.team){
-                    target = detected;
-                }
-            }
-        } catch(Exception e){
-            Debug.Log(e);
-        }
+        target = SearchTarget.searchTarget(gameObject,targetDistance,transform.right).target;
         
     }
 

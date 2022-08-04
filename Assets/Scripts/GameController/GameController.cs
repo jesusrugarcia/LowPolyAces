@@ -30,7 +30,11 @@ public class GameController : MonoBehaviour
     public int currentPowerUps = 0;
     //public ObjectPools pools;
 
+    public MapGenerator mapGenerator;
+
     private void Start() {
+        mapGenerator.seed = Random.Range(-9999,9999);
+        mapGenerator.GenerateMap();
         data = saveManager.loadData(4); //ojo que esto es el numero de aviones en el juego.
         gameOptions = saveManager.loadOptions();
 

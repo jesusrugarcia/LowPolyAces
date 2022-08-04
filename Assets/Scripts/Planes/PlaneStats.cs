@@ -17,9 +17,11 @@ public class PlaneStats : MonoBehaviour
 
     public float bulletDamage = 1;
     public float damageOnButton = 0.1f;
+    public float damageTurret = 0.1f;
 
     public float shootSpeed = 0;
     public int magazineSize = 10;
+    public float turretShootSpeed = 1;
 
     public int missiles = 0;
     public int maxMissiles = 1;
