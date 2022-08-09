@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: DaemonPlayer1
+  m_EditorClassIdentifier: 
+  plane: {fileID: 3602024816617064557, guid: 86e154a6903b83a4a9f60ec1824e81b8, type: 3}
+  stats: {fileID: 11400000, guid: a08cd41e6d95a9d45b95f1b3adf96738, type: 2}

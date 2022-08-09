@@ -16,7 +16,7 @@ public class PlaneSpawner : MonoBehaviour
     public GameObject healthBar;
     public GameObject healthBarEnemy;
 
-    public GameObject spawnPlane(PlaneModel planeModel, movement movement, int team){
+    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team){
         Time.timeScale = 0f;
         var plane = Instantiate(planeModel.plane, getRandomPosition(), Quaternion.Euler(-90,0,0)); //rotation might need to change when i have good models.
         calculateRotation(plane);
@@ -46,7 +46,7 @@ public class PlaneSpawner : MonoBehaviour
     }
 
 
-    public void copyStats(GameObject plane, PlaneModel planeModel, movement movement){
+    public void copyStats(GameObject plane, PlaneScriptableObject planeModel, movement movement){
         var stats = plane.GetComponent<PlaneStats>();
         
         stats.maxHealth = planeModel.stats.maxHealth;

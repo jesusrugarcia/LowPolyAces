@@ -63,8 +63,10 @@ public class PlaneMovement : MonoBehaviour
     
 
     public virtual void accelerate(){
-        if (plane.stats.speed < plane.stats.maxSpeed){
-            plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * 0.1f;
+        if (plane.stats.speed < plane.stats.maxSpeed-2.5f){
+            plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * 0.005f;
+        } else if(plane.stats.speed > plane.stats.maxSpeed){
+            plane.stats.speed = plane.stats.maxSpeed;
         }
     }
 }

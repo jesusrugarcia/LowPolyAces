@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ShopMenu : MonoBehaviour
 {
     [SerializeField]
-    public PlaneModel[] planes;
+    public PlanesListScriptableObject planes;
     public GameObject loadedPlane;
     public PlaneStatsObject stats;
 
@@ -28,7 +28,7 @@ public class ShopMenu : MonoBehaviour
     public Text points;
 
     private void Start() {
-        data = saveManager.loadData(planes.Length);
+        data = saveManager.loadData(planes.planes.Length);
         loadPlane();
         points.text = "Points: " + data.points.ToString("0");
     }
@@ -42,10 +42,10 @@ public class ShopMenu : MonoBehaviour
     }
 
     public void loadPlane(){
-        loadedPlane = Instantiate(planes[data.selectedPlayer[0]].plane, new Vector3(0,0,0), Quaternion.Euler(-90,0,75));
+        loadedPlane = Instantiate(planes.planes[data.selectedPlayer[0]].plane, new Vector3(0,0,0), Quaternion.Euler(-90,0,75));
         Destroy(loadedPlane.GetComponent<PlaneMovement>());
         Destroy(loadedPlane.GetComponent<PlaneShooter>());
-        stats = planes[data.selectedPlayer[0]].stats;
+        stats = planes.planes[data.selectedPlayer[0]].stats;
         equiped.SetActive(false);
         loadStats();
 
@@ -72,7 +72,7 @@ public class ShopMenu : MonoBehaviour
     public void nextPlane(){
         Destroy(loadedPlane.gameObject);
         data.selectedPlayer[0] ++;
-        if (data.selectedPlayer[0] >= planes.Length){
+        if (data.selectedPlayer[0] >= planes.planes.Length){
             data.selectedPlayer[0] = 0;
         }
         loadPlane();
@@ -83,7 +83,7 @@ public class ShopMenu : MonoBehaviour
         Destroy(loadedPlane.gameObject);
         data.selectedPlayer[0] --;
         if (data.selectedPlayer[0] < 0){
-            data.selectedPlayer[0] = planes.Length - 1;
+            data.selectedPlayer[0] = planes.planes.Length - 1;
         }
         loadPlane();
         notEnoughPoints.SetActive(false);

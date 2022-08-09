@@ -12,7 +12,7 @@ public class PlayerPlaneMovement : PlaneMovement
 
 
     float minSpeed = 1;
-    float accelerationValue = 0.25f;
+    float accelerationValue = 0.01f;
     
 
 
@@ -53,11 +53,11 @@ public class PlayerPlaneMovement : PlaneMovement
     public override void accelerate(){
         if (isDown(acceleateAction)){
             if (plane.stats.speed < plane.stats.maxSpeed){
-            plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;
+            plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue * 2;
             }
         } else if(isDown(decelerateAction)){
             if (plane.stats.speed > minSpeed){
-            plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;
+            plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue * 2;
             }
         } else if (plane.stats.speed < plane.stats.maxSpeed/2 ){
              plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;

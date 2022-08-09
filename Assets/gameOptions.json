@@ -1,1 +1,1 @@
-{"mode":0,"playerNum":1,"max":10.0,"maz":5.5,"timeToIncreaseEnemies":60,"timeToSpawnPowerUps":0.5,"maxPowerUps":10,"playTime":50,"maxLives":3}
+{"mode":0,"playerNum":1,"max":10.0,"maz":5.5,"timeToIncreaseEnemies":60,"timeToSpawnPowerUps":10,"maxPowerUps":3,"playTime":50,"maxLives":3}

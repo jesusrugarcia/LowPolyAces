@@ -2039,15 +2039,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de7ec2ddb4bce5468ab1d6d0de357c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planes:
-  - plane: {fileID: 2818080905174121479, guid: 147362c666028bb49920f4a4c1054f52, type: 3}
-    stats: {fileID: 11400000, guid: f8f987293e801d04dab0c9b7571cd49e, type: 2}
-  - plane: {fileID: 378609029129598230, guid: 1f3d13ba04e99be4bbe0032aa889c4e1, type: 3}
-    stats: {fileID: 11400000, guid: 51467b2a6a4ab2d4ab1ee3b41b94918d, type: 2}
-  - plane: {fileID: 8347011688130944954, guid: 431182aa19bcd354facebec7f8654b01, type: 3}
-    stats: {fileID: 11400000, guid: 4981f230b6559ba4cbc1e09bf72d9055, type: 2}
-  - plane: {fileID: 2149498647699432713, guid: b2829922a4dcafe4aa1d2dd239e1daea, type: 3}
-    stats: {fileID: 11400000, guid: c66ea6fbadc13ba4695d085a93956325, type: 2}
+  planes: {fileID: 11400000, guid: 298febbb9846eea40af253f395a67742, type: 2}
   loadedPlane: {fileID: 0}
   stats: {fileID: 0}
   data:

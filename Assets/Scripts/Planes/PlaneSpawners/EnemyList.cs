@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyList : MonoBehaviour
 {
     [SerializeField]
-    public PlaneModel[] prefabsEasy;
+    public PlanesListScriptableObject prefabsEasy;
     [SerializeField]
-    public PlaneModel[] prefabsMedium;
+    public PlanesListScriptableObject prefabsMedium;
     [SerializeField]
-    public PlaneModel[] prefabsHard;
+    public PlanesListScriptableObject prefabsHard;
     [SerializeField]
-    public PlaneModel[] prefabsImposible;
+    public PlanesListScriptableObject prefabsImposible;
 }
