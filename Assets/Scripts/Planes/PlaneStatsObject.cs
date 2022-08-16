@@ -27,9 +27,10 @@ public class PlaneStatsObject : ScriptableObject
     public int missiles = 0;
     public int maxMissiles = 1;
 
-    public float scoreValue = 0;
     public float timeToRotate = 1f;
+    public float timeRotating = 0.3f;
 
+    public float scoreValue = 0;
     public float price = 0;
 
     public bool hasShield = false;

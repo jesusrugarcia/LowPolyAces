@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff026ccf4a0224f4ca0458f39191b926, type: 3}
   m_Name: ListPlayer2
   m_EditorClassIdentifier: 
-  planes: []
+  planes:
+  - {fileID: 11400000, guid: e31ec2e2247f0014a88fd81981779a53, type: 2}
+  - {fileID: 11400000, guid: 54c97e80e18b19d478057239f76be157, type: 2}
+  - {fileID: 11400000, guid: 286e3c91cf944734ca34e1e19bf0cca2, type: 2}
+  - {fileID: 11400000, guid: eb8e9470f28225d41aee1839a81adf54, type: 2}
+  - {fileID: 11400000, guid: 9120daceba4601343867afad0870559e, type: 2}
+  - {fileID: 11400000, guid: fbbd7dbb9a44b8f4faad74a9070acf72, type: 2}
+  - {fileID: 11400000, guid: cbe43bb03e3696d498e318d9b2b840e6, type: 2}
+  - {fileID: 11400000, guid: 5f8d3b92bc698c441bceb5213827ed9e, type: 2}
+  - {fileID: 11400000, guid: 1a52ea484baba7049a80e7f0bba5ca6d, type: 2}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MuscleArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 1876153167975527907, guid: 95ae8a15e561a854bab9c85c381a645f, type: 3}
-  stats: {fileID: 11400000, guid: 0dfc8a2b22b75a7458f6bccba2f3e178, type: 2}
+  stats: {fileID: 11400000, guid: 413dbfbe04436f3439ee87c3987aaa12, type: 2}

@@ -4958,7 +4958,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.57, y: 14.77, z: 3.56}
+  m_Size: {x: 13.57, y: 14.77, z: 13.36}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8759005372770317151
 Rigidbody:
@@ -5230,6 +5230,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
     m_ActionName: Player/Shoot[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8759005372770316965}
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ecbb4107-b894-4eaa-b2f5-247ac57eab36
+    m_ActionName: Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

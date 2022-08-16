@@ -4821,7 +4821,6 @@ GameObject:
   - component: {fileID: 7445545220471903711}
   - component: {fileID: 7445545220471903710}
   - component: {fileID: 7445545220471903705}
-  - component: {fileID: 1617109860278034896}
   - component: {fileID: 8141763849441327945}
   m_Layer: 0
   m_Name: StrikerArcade
@@ -4910,7 +4909,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.13, y: 0.19081052, z: 0.03976936}
+  m_Size: {x: 0.2, y: 0.22, z: 0.23}
   m_Center: {x: -0.01191565, y: 0, z: 0.009884681}
 --- !u!54 &7445545220471903709
 Rigidbody:
@@ -4945,7 +4944,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 7445545220471903705}
   planeShooter: {fileID: 8141763849441327945}
-  planeMovement: {fileID: 1617109860278034896}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!114 &7445545220471903711
 MonoBehaviour:
@@ -4988,8 +4987,9 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 7445545220471903708}
@@ -5008,20 +5008,6 @@ MonoBehaviour:
   plane: {fileID: 7445545220471903708}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
   SFXManager: {fileID: 0}
---- !u!114 &1617109860278034896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3851520081596690734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 7445545220471903708}
-  movement: {x: 0, y: 0}
 --- !u!114 &8141763849441327945
 MonoBehaviour:
   m_ObjectHideFlags: 0

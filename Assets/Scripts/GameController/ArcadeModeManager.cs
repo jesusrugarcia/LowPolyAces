@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ public class ArcadeModeManager : GameModeManager
     public int powerUpsSize = 0;
 
     public GameObject onFinish;
+    public Button ButtonToActivate;
     public Text scoreText;
     public Text timeText;
     public Text enemiesText;
@@ -68,6 +68,11 @@ public class ArcadeModeManager : GameModeManager
         Time.timeScale = 0.0f;
         controller.playersAlive = 0;
         onFinish.SetActive(true);
+        
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(controller.ButtonToActivate);
+        EventSystem.current.SetSelectedGameObject(controller.ButtonToActivate, new BaseEventData(EventSystem.current));
+        
 
         previousBestText.text = "Previous best score: " + controller.data.bestTotal.ToString("0");
         if(controller.data.bestTime < (int)controller.gameTimer){
@@ -92,7 +97,7 @@ public class ArcadeModeManager : GameModeManager
         }
         controller.data.points += (controller.gameTimer + controller.score)/10;
         gainedPoints.text = "Gained Points: " + ((controller.gameTimer + controller.score)/10).ToString("0");
-        controller.saveManager.saveData(controller.data);
+        FileManager.saveData(controller.data);
         
 
         scoreText.gameObject.SetActive(false);

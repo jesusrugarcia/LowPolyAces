@@ -4919,7 +4919,6 @@ GameObject:
   - component: {fileID: 1176259422921687868}
   - component: {fileID: 5690369935652744824}
   - component: {fileID: 6765855280989227574}
-  - component: {fileID: 9096791147101489277}
   - component: {fileID: 7764706026236867410}
   m_Layer: 0
   m_Name: DogfighterArcade
@@ -5057,7 +5056,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 4732434678783106413}
   planeShooter: {fileID: 7764706026236867410}
-  planeMovement: {fileID: 9096791147101489277}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!65 &5690369935652744824
 BoxCollider:
@@ -5070,7 +5069,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.10702149, y: 0.10600889, z: 0.04044726}
+  m_Size: {x: 0.10702149, y: 0.10600889, z: 0.28}
   m_Center: {x: 0.0072416514, y: -5.0266333e-17, z: 0.0070743565}
 --- !u!114 &6765855280989227574
 MonoBehaviour:
@@ -5100,25 +5099,12 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 1176259422921687868}
---- !u!114 &9096791147101489277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4732434678783106401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 1176259422921687868}
-  movement: {x: 0, y: 0}
 --- !u!114 &7764706026236867410
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: DreadnaughtPlayer2
+  m_EditorClassIdentifier: 
+  model: Dreadnaught
+  plane: {fileID: 9078113376139901114, guid: 2dc3bf7a040b89c48a6bd25f375d0f0e, type: 3}
+  stats: {fileID: 11400000, guid: 762d38facc3b1b242a0a9d2a2c83c713, type: 2}

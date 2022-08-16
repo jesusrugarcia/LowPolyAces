@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DreadnaughtArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 8451502259558956101, guid: 64ed823aa34101b4da36f6fe7e2a798f, type: 3}
-  stats: {fileID: 11400000, guid: 762d38facc3b1b242a0a9d2a2c83c713, type: 2}
+  stats: {fileID: 11400000, guid: bfe71dae7bc3f154e84c5c3d781952f3, type: 2}

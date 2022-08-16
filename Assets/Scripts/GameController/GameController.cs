@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public GameMenu gameMenu;
+    public GameObject ButtonToActivate;
+
     public float gameTimer = 0;
     public float score = 0;
     public float totalScore = 0;
@@ -18,7 +21,7 @@ public class GameController : MonoBehaviour
 
     public SaveData data;
     public GameOptions gameOptions;
-    public FileManager saveManager = new FileManager();
+    
 
     [SerializeField]
     public GameModeManager gameModeManager;
@@ -33,10 +36,10 @@ public class GameController : MonoBehaviour
     public MapGenerator mapGenerator;
 
     private void Start() {
-        mapGenerator.seed = Random.Range(-9999,9999);
-        mapGenerator.GenerateMap();
-        data = saveManager.loadData(4); //ojo que esto es el numero de aviones en el juego.
-        gameOptions = saveManager.loadOptions();
+        //mapGenerator.seed = Random.Range(-9999,9999);
+        //mapGenerator.GenerateMap();
+        data = FileManager.loadData(4); //ojo que esto es el numero de aviones en el juego.
+        gameOptions = FileManager.loadOptions();
 
         max = gameOptions.max;
         maz = gameOptions.maz;

@@ -6,16 +6,16 @@ using System;
 
 public class Turret : MonoBehaviour
 {
-    public TargetResult[] results;
     public GameObject target;
     public PlaneManager plane;
     public float shootTimer = 0;
-    public float targetDistance = 15f;
+    public float targetDistance = 10f;
+    public float rotationSpeed = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
-        results = new TargetResult[4];
+
     }
 
     // Update is called once per frame
@@ -36,17 +36,22 @@ public class Turret : MonoBehaviour
 
     public void followTarget(){
         try{
-            Vector3 objective = target.transform.position - transform.position;
-            var rotation = Vector3.Angle(objective, transform.right);
-            var rotationR = Vector3.Angle(objective, transform.up);
-            var rotationL = Vector3.Angle(objective, -transform.up);
+            float rotation;
+            if (target != gameObject){
+                Vector3 objective = target.transform.position - transform.position;
+                rotation = Vector3.Angle(objective, transform.right);
+                var rotationR = Vector3.Angle(objective, transform.up);
+                var rotationL = Vector3.Angle(objective, -transform.up);
 
-            if(rotation > 5){
-             rotation = 5;
-            }
+                if(rotation > 5){
+                rotation = 5;
+                }
 
-            if (rotationL < rotationR){
-                rotation = -rotation;
+                if (rotationL < rotationR){
+                    rotation = -rotation;
+                }
+            } else {
+                rotation = rotationSpeed;
             }
 
             transform.Rotate(0,0,rotation);
@@ -59,21 +64,13 @@ public class Turret : MonoBehaviour
     }
 
     public void searchTarget(){
-        results[0] = SearchTarget.searchTarget(gameObject, targetDistance, transform.right);
-        results[1] = SearchTarget.searchTarget(gameObject, targetDistance, -transform.right);
-        results[2] = SearchTarget.searchTarget(gameObject, targetDistance, transform.forward);
-        results[3] = SearchTarget.searchTarget(gameObject, targetDistance, -transform.forward);
-        Debug.DrawRay(transform.position, transform.right * 10 , Color.red);
-        Debug.DrawRay(transform.position, -transform.right * 10 , Color.green);
-        Debug.DrawRay(transform.position, transform.up * 10 , Color.magenta);
-        Debug.DrawRay(transform.position, -transform.up * 10 , Color.blue);
-
-        var best = SearchTarget.CompareTargetResults(results);
-        if(results[best].distance < Vector3.Distance(transform.position, target.transform.position) || target != gameObject){
-            target = results[best].target;
+        Debug.DrawRay(transform.position,transform.right * targetDistance,Color.red);
+        var detected = SearchTarget.searchTarget(gameObject, targetDistance, transform.right).target;
+        if (detected != gameObject){
+            target = detected;
+        } else if (target == null || Vector3.Distance(transform.position, target.transform.position) > targetDistance){
+            target = gameObject;
         }
-        
-
     }
 
     

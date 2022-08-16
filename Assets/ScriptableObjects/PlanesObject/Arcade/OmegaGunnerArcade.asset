@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: OmegaGunnerArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 5737876632561105729, guid: 3475ee2b16fb7b1449e0358bf578edce, type: 3}
-  stats: {fileID: 11400000, guid: ed1f0857b14d86c43804c0c95191d4ad, type: 2}
+  stats: {fileID: 11400000, guid: 2370f6e72beeec941872a94da097a68f, type: 2}

@@ -138,7 +138,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.83, y: 11.55, z: 4.12}
+  m_Size: {x: 11.83, y: 11.55, z: 11.04}
   m_Center: {x: -2.2, y: 0, z: -1.15}
 --- !u!54 &4074495958810961886
 Rigidbody:
@@ -410,6 +410,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
     m_ActionName: Player/Shoot[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7274295739431124457}
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ecbb4107-b894-4eaa-b2f5-247ac57eab36
+    m_ActionName: Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5329,6 +5345,8 @@ GameObject:
   - component: {fileID: 1853950814488477153}
   - component: {fileID: 887496899798785996}
   - component: {fileID: 5379947784616527453}
+  - component: {fileID: 2841571958444331137}
+  - component: {fileID: 139990585337835183}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -5401,3 +5419,33 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2841571958444331137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469279435566523484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf52ae9607f602498f5ffd0bac595c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 6469279435566523484}
+  plane: {fileID: 1685365199014719272}
+  shootTimer: 0
+  targetDistance: 10
+  rotationSpeed: 10
+--- !u!114 &139990585337835183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6469279435566523484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1

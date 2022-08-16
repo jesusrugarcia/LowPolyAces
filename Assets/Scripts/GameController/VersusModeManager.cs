@@ -58,7 +58,7 @@ public class VersusModeManager : GameModeManager
         getWinner();
 
         controller.data.points += (score[0] + score[1] + score[2] + score[3]);
-        controller.saveManager.saveData(controller.data);
+        FileManager.saveData(controller.data);
     }
 
     public void getWinner(){

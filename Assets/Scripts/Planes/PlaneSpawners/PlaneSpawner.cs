@@ -51,16 +51,30 @@ public class PlaneSpawner : MonoBehaviour
         
         stats.maxHealth = planeModel.stats.maxHealth;
         stats.health = planeModel.stats.health;
+
         stats.maxSpeed = planeModel.stats.maxSpeed;
         stats.speed = planeModel.stats.speed;
+        stats.acceleration = planeModel.stats.acceleration;
+
         stats.rotationSpeed = planeModel.stats.rotationSpeed;
         stats.rotation = planeModel.stats.rotation;
         stats.maxRotation = planeModel.stats.maxRotation;
-        stats.acceleration = planeModel.stats.acceleration;
+
+        stats.bulletDamage = planeModel.stats.bulletDamage;
+        stats.damageTurret = planeModel.stats.damageTurret;
+
         stats.shootSpeed = planeModel.stats.shootSpeed;
-        stats.scoreValue = planeModel.stats.scoreValue;
+        stats.magazineSize = planeModel.stats.magazineSize;
+        stats.turretShootSpeed = planeModel.stats.turretShootSpeed;
+
+        stats.maxMissiles = planeModel.stats.maxMissiles;
+        stats.missiles = planeModel.stats.missiles;
+
         stats.timeToRotate = planeModel.stats.timeToRotate;
-        stats.price = planeModel.stats.price;
+        stats.timeRotating = planeModel.stats.timeRotating;
+
+        stats.scoreValue = planeModel.stats.scoreValue;
+        stats.price = planeModel.stats.price; 
 
         if(movement == movement.Player){ //to be ajusted for balance
             stats.maxHealth += 5;
@@ -79,15 +93,15 @@ public class PlaneSpawner : MonoBehaviour
 
     public void addMovement(GameObject plane, movement movement){
        if (movement == movement.Easy){
-            plane.AddComponent<EnemyControlEasy>();
+            plane.AddComponent<EnemyControllerRandom>();
         } else if (movement == movement.Medium){
-            plane.AddComponent<EnemyControlMedium>();
+            plane.AddComponent<EnemyControllerTracking>();
             //plane.GetComponent<EnemyControlMedium>().objective = controller.player.transform;
         } else if (movement == movement.Hard){
-            plane.AddComponent<EnemyControlHard>();
+            plane.AddComponent<EnemyControllerTracking>();
             //plane.GetComponent<EnemyControlHard>().objective = controller.player.transform;
         } else if (movement == movement.Impossible){
-            plane.AddComponent<EnemyControllerImposible>();
+            plane.AddComponent<EnemyControllerTracking>();
            // plane.GetComponent<EnemyControllerImposible>().objective = controller.player.transform;
         }
     }

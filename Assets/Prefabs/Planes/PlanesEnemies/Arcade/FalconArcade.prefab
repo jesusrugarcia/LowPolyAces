@@ -4820,7 +4820,6 @@ GameObject:
   - component: {fileID: 5147610789810002595}
   - component: {fileID: 5147610789810002594}
   - component: {fileID: 6884823951602224909}
-  - component: {fileID: 5540727816806930399}
   m_Layer: 0
   m_Name: FalconArcade
   m_TagString: Untagged
@@ -4836,7 +4835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3679151531253582115}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 5.837, y: 0, z: 0.869}
+  m_LocalPosition: {x: 5.859, y: 0, z: 0.869}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children:
   - {fileID: 879484978125670652}
@@ -4857,8 +4856,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 14.3, y: 16.94, z: 12.79}
+  m_Center: {x: 1.12, y: 0, z: 0}
 --- !u!54 &5147610789810002598
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4892,7 +4891,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 5147610789810002594}
   planeShooter: {fileID: 6884823951602224909}
-  planeMovement: {fileID: 5540727816806930399}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!114 &5147610789810002592
 MonoBehaviour:
@@ -4935,8 +4934,9 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 5147610789810002593}
@@ -4975,20 +4975,6 @@ MonoBehaviour:
   magazineFull: 0
   magazine: 0
   shootSpeedOnButton: 0.05
---- !u!114 &5540727816806930399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3679151531253582115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 5147610789810002593}
-  movement: {x: 0, y: 0}
 --- !u!1 &3766120409384830486
 GameObject:
   m_ObjectHideFlags: 0

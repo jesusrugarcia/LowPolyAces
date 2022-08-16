@@ -27,16 +27,16 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
         
         int prefab = 0;
         if (controller.totalScore < scoreForMedium){
-            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsEasy.planes.Length));
+            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsEasy.planes.Length-1));
             spawnEasy(prefab);
         } else if (controller.totalScore < scoreForHard){
-            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsMedium.planes.Length));
+            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsMedium.planes.Length-1));
             spawnMedium(prefab);
         } else if (controller.totalScore < scoreForImposible){
-            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsHard.planes.Length));
+            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsHard.planes.Length-1));
             spawnHard(prefab);
         } else {
-            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsImposible.planes.Length));
+            prefab = (int)Math.Round((float)UnityEngine.Random.Range(0,enemyList.prefabsImposible.planes.Length-1));
             spawnImposible(prefab); 
         }
         delayTimer = 0;

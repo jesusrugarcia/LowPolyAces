@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DogfighterArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 4732434678783106401, guid: 2d8d12dd505d1a344a5af834714b2393, type: 3}
-  stats: {fileID: 11400000, guid: 51467b2a6a4ab2d4ab1ee3b41b94918d, type: 2}
+  stats: {fileID: 11400000, guid: 69b1a16ee73ed4e47b67fdeca534bea7, type: 2}

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -64,5 +63,14 @@ public class PlayerPlaneMovement : PlaneMovement
         } else if (plane.stats.speed > plane.stats.maxSpeed/2 ){
              plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;
          }
+    }
+
+    public void OnPause(){
+        if(plane.controller.gameMenu.isPaused){
+            plane.controller.gameMenu.resume();
+        } else {
+            plane.controller.gameMenu.pause();
+        }
+        
     }
 }

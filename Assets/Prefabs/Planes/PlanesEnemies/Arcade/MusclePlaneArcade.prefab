@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 7381581139478665245}
   - component: {fileID: 613132577111569714}
   - component: {fileID: 7163542370970524101}
-  - component: {fileID: 963997889435929600}
   - component: {fileID: 8278517879547915339}
   m_Layer: 0
   m_Name: MusclePlaneArcade
@@ -53,7 +52,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.77, y: 8.5, z: 1.54}
+  m_Size: {x: 9.07, y: 9.58, z: 10.44}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4975442337804363876
 Rigidbody:
@@ -88,7 +87,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 7163542370970524101}
   planeShooter: {fileID: 8278517879547915339}
-  planeMovement: {fileID: 963997889435929600}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!114 &7381581139478665245
 MonoBehaviour:
@@ -131,8 +130,9 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 7643298250608477362}
@@ -151,20 +151,6 @@ MonoBehaviour:
   plane: {fileID: 7643298250608477362}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
   SFXManager: {fileID: 0}
---- !u!114 &963997889435929600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876153167975527907}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 7643298250608477362}
-  movement: {x: 0, y: 0}
 --- !u!114 &8278517879547915339
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: BumbleBeeArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 8895342424620378194, guid: 494b30fcb35a00745853d56aa90c0574, type: 3}
-  stats: {fileID: 11400000, guid: 4e8650989e8c8a044a61526b7abba127, type: 2}
+  stats: {fileID: 11400000, guid: 9105f8c4794f6cf4f858d958d4716540, type: 2}

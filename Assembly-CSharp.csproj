@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerImposible.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerTracking.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemySpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\TeamManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\SearchTarget.cs" />
@@ -47,18 +47,17 @@
      <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\TextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlEasy.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerRandom.cs" />
      <Compile Include="Assets\Scripts\Planes\PropellerRotation.cs" />
+     <Compile Include="Assets\Scripts\Planes\PlaneScriptableObject.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlayerPlaneShooter.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlaneShooter.cs" />
      <Compile Include="Assets\Scripts\SaveData\GameOptions.cs" />
      <Compile Include="Assets\Scripts\Planes\PlanesListScriptableObject.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlMedium.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ShieldManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemyList.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneStats.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControlHard.cs" />
      <Compile Include="Assets\Scripts\PowerUps\MissileManager.cs" />
      <Compile Include="Assets\Scripts\Menus\ShopMenu.cs" />
      <Compile Include="Assets\Scripts\Planes\CollisionManager.cs" />
@@ -72,19 +71,19 @@
      <Compile Include="Assets\Scripts\Planes\DamageManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneSpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlaneMovement.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\MapTextureManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\FileManager.cs" />
      <Compile Include="Assets\Scripts\Planes\HealthBar.cs" />
      <Compile Include="Assets\Scripts\Planes\BulletMovement.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\Noise.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpsManager.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MapDisplay.cs" />
-     <Compile Include="Assets\Scripts\MapChangerRandom.cs" />
+     <Compile Include="Assets\Scripts\ProceduralTerrain\MapChangerRandom.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlayerPlaneMovement.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MeshGenerator.cs" />
      <Compile Include="Assets\Scripts\GameController\ObjectPools.cs" />
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\Turret.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneScriptableObject.cs" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />
      <None Include="Assets\Fonts\aerologica-font\misc\license-64cc.txt" />
      <None Include="Assets\Fonts\gameria\1001fonts-gameria-eula.txt" />

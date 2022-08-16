@@ -2,18 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FileManager 
+public static class FileManager 
 {
-    public string saveName = "saveData";
-    public string optionName = "gameOptions";
+    public static string saveName = "saveData";
+    public static string optionName = "gameOptions";
 
-    public void saveData(SaveData data){
+    public static void saveData(SaveData data){
         var jsonData = JsonUtility.ToJson(data);
 
         System.IO.File.WriteAllText(Application.dataPath + "/" + saveName + ".json", jsonData);
     }
 
-    public SaveData loadData(int size){
+    public static SaveData loadData(int size){
         try
         {
             var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + saveName + ".json");
@@ -29,12 +29,12 @@ public class FileManager
         
     }
 
-    public void saveOptions(GameOptions data){
+    public static void saveOptions(GameOptions data){
         var jsonData = JsonUtility.ToJson(data);
         System.IO.File.WriteAllText(Application.dataPath + "/" + optionName + ".json", jsonData);
     }
 
-    public GameOptions loadOptions(){
+    public static GameOptions loadOptions(){
         try{
             var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + optionName + ".json");
             var data = JsonUtility.FromJson<GameOptions>(jsonData);

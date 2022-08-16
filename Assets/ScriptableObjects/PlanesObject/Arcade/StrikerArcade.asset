@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: StrikerArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 3851520081596690734, guid: 4ac7ace19c863c44ba1d134f9a898f04, type: 3}
-  stats: {fileID: 11400000, guid: aa09433b934083546a8efa190f911ec3, type: 2}
+  stats: {fileID: 11400000, guid: 781f9844ff5a66e4eb114b7160aca5d0, type: 2}

@@ -24031,6 +24031,8 @@ GameObject:
   - component: {fileID: 7783734905176908378}
   - component: {fileID: 7783734905176908380}
   - component: {fileID: 7783734905176908379}
+  - component: {fileID: 9119492697247640802}
+  - component: {fileID: 1502195336074399518}
   m_Layer: 0
   m_Name: Cube.003
   m_TagString: Untagged
@@ -24103,6 +24105,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9119492697247640802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783734905176908377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf52ae9607f602498f5ffd0bac595c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7783734905176908377}
+  plane: {fileID: 1507050709228329071}
+  shootTimer: 0
+  targetDistance: 10
+  rotationSpeed: -10
+--- !u!114 &1502195336074399518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783734905176908377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
 --- !u!1 &7783734906109532920
 GameObject:
   m_ObjectHideFlags: 0
@@ -24423,6 +24455,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
     m_ActionName: Player/Shoot[/DualShock4GamepadHID/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6403326870754532851}
+        m_TargetAssemblyTypeName: PlayerPlaneMovement, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ecbb4107-b894-4eaa-b2f5-247ac57eab36
+    m_ActionName: Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -24439,7 +24487,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 16.25, y: 19.54, z: 4.9}
+  m_Size: {x: 16.25, y: 19.54, z: 12.39}
   m_Center: {x: 3, y: 0.6, z: 0}
 --- !u!1 &7783734906351022220
 GameObject:
@@ -24735,6 +24783,8 @@ GameObject:
   - component: {fileID: 7783734907201763642}
   - component: {fileID: 7783734907201763644}
   - component: {fileID: 7783734907201763643}
+  - component: {fileID: 982601933827576450}
+  - component: {fileID: 2828987803893707977}
   m_Layer: 0
   m_Name: Cube.004
   m_TagString: Untagged
@@ -24807,6 +24857,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &982601933827576450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783734907201763641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf52ae9607f602498f5ffd0bac595c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7783734907201763641}
+  plane: {fileID: 1507050709228329071}
+  shootTimer: 0
+  targetDistance: 10
+  rotationSpeed: 10
+--- !u!114 &2828987803893707977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783734907201763641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 1
 --- !u!1 &8763490227666476928
 GameObject:
   m_ObjectHideFlags: 0

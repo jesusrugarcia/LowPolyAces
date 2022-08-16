@@ -5100,7 +5100,6 @@ GameObject:
   - component: {fileID: 981081451378545536}
   - component: {fileID: 981081451378545539}
   - component: {fileID: 2985272749305494584}
-  - component: {fileID: 1167754336003612075}
   m_Layer: 0
   m_Name: DaemonArcade
   m_TagString: Untagged
@@ -5139,7 +5138,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.57, y: 14.77, z: 3.56}
+  m_Size: {x: 13.85, y: 15.5, z: 17.71}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &981081451378545543
 Rigidbody:
@@ -5174,7 +5173,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 981081451378545539}
   planeShooter: {fileID: 2985272749305494584}
-  planeMovement: {fileID: 1167754336003612075}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!114 &981081451378545537
 MonoBehaviour:
@@ -5217,8 +5216,9 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 981081451378545542}
@@ -5257,20 +5257,6 @@ MonoBehaviour:
   magazineFull: 0
   magazine: 0
   shootSpeedOnButton: 0.05
---- !u!114 &1167754336003612075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5039328868243663029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 981081451378545542}
-  movement: {x: 0, y: 0}
 --- !u!1 &6195923476628142485
 GameObject:
   m_ObjectHideFlags: 0

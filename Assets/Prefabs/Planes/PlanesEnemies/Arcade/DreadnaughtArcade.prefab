@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4693648006664771769}
   - component: {fileID: 6109313443722738324}
   - component: {fileID: 1310771304683479813}
+  - component: {fileID: 4831004879846348214}
+  - component: {fileID: 162609685298377384}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -83,6 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4831004879846348214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98761235322257668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf52ae9607f602498f5ffd0bac595c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 98761235322257668}
+  plane: {fileID: 5762988179121179248}
+  shootTimer: 0
+  targetDistance: 5
+  rotationSpeed: 5
+--- !u!114 &162609685298377384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98761235322257668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
 --- !u!1 &955950163232538865
 GameObject:
   m_ObjectHideFlags: 0
@@ -5086,7 +5118,6 @@ GameObject:
   - component: {fileID: 971111788778790634}
   - component: {fileID: 1134945584506951829}
   - component: {fileID: 131780170910894122}
-  - component: {fileID: 5938331828671445760}
   m_Layer: 0
   m_Name: DreadnaughtArcade
   m_TagString: Untagged
@@ -5123,7 +5154,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.83, y: 11.55, z: 4.12}
+  m_Size: {x: 14, y: 13.9, z: 14.48}
   m_Center: {x: -2.2, y: 0, z: -1.15}
 --- !u!54 &6922637305763709574
 Rigidbody:
@@ -5158,7 +5189,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   collissionManager: {fileID: 1134945584506951829}
   planeShooter: {fileID: 131780170910894122}
-  planeMovement: {fileID: 5938331828671445760}
+  planeMovement: {fileID: 0}
   controller: {fileID: 0}
 --- !u!114 &2938176810005201640
 MonoBehaviour:
@@ -5201,8 +5232,9 @@ MonoBehaviour:
   turretShootSpeed: 1
   missiles: 0
   maxMissiles: 1
-  scoreValue: 0
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 5762988179121179248}
@@ -5237,21 +5269,7 @@ MonoBehaviour:
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
   shootTimer: 0
   plane: {fileID: 5762988179121179248}
-  type: 0
+  type: 1
   magazineFull: 0
   magazine: 0
   shootSpeedOnButton: 0.05
---- !u!114 &5938331828671445760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8451502259558956101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04dfa0f3eb3d1f64d83c4639c7536bd1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plane: {fileID: 5762988179121179248}
-  movement: {x: 0, y: 0}

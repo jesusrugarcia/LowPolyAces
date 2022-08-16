@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DaemonArcade
   m_EditorClassIdentifier: 
   plane: {fileID: 5039328868243663029, guid: c8f29d1ea8eee054aba85affb0e16661, type: 3}
-  stats: {fileID: 11400000, guid: a08cd41e6d95a9d45b95f1b3adf96738, type: 2}
+  stats: {fileID: 11400000, guid: db85ff21e8f68a646932b0fcc33e9d1b, type: 2}
