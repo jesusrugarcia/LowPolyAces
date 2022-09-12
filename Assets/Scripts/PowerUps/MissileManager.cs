@@ -8,12 +8,13 @@ public class MissileManager : MonoBehaviour
     public TeamManager teamManager;
     public GameObject target;
 
-    public float targetDistance = 15f;
+    public float targetDistance = 1f;
     public float speed = 10f;
 
     private void Start() {
         teamManager.team = plane.teamManager.team;
         target = this.gameObject;
+        targetDistance = targetDistance + plane.stats.searchDistance;
     }
 
     private void FixedUpdate() {
@@ -24,7 +25,10 @@ public class MissileManager : MonoBehaviour
     }
 
     public void searchTarget(){
-        target = SearchTarget.searchTarget(gameObject,targetDistance,transform.right).target;
+        var targetResult = SearchTarget.searchTarget(gameObject, plane.stats.searchDistance, targetDistance, transform.right);
+        if(targetResult.target != gameObject || target == null){
+            target = targetResult.target;
+        } 
         
     }
 

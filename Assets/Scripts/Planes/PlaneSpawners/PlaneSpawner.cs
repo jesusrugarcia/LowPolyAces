@@ -59,22 +59,37 @@ public class PlaneSpawner : MonoBehaviour
         stats.rotationSpeed = planeModel.stats.rotationSpeed;
         stats.rotation = planeModel.stats.rotation;
         stats.maxRotation = planeModel.stats.maxRotation;
+        stats.timeToRotate = planeModel.stats.timeToRotate;
+        stats.timeRotating = planeModel.stats.timeRotating;
 
         stats.bulletDamage = planeModel.stats.bulletDamage;
-        stats.damageTurret = planeModel.stats.damageTurret;
+        stats.turretDamage = planeModel.stats.turretDamage;
+        stats.missileDamage = planeModel.stats.missileDamage;
+        stats.mineDamage = planeModel.stats.mineDamage;
+        stats.drillDamage = planeModel.stats.drillDamage;
+        
 
         stats.shootSpeed = planeModel.stats.shootSpeed;
         stats.magazineSize = planeModel.stats.magazineSize;
         stats.turretShootSpeed = planeModel.stats.turretShootSpeed;
+        stats.normalDroneShootSpeed = planeModel.stats.normalDroneShootSpeed;
+        stats.specialDroneShootSpeed = planeModel.stats.specialDroneShootSpeed;
+        stats.auxDroneSpeed = planeModel.stats.auxDroneSpeed;
 
-        stats.maxMissiles = planeModel.stats.maxMissiles;
-        stats.missiles = planeModel.stats.missiles;
-
-        stats.timeToRotate = planeModel.stats.timeToRotate;
-        stats.timeRotating = planeModel.stats.timeRotating;
+        stats.specialAmmoType = planeModel.stats.specialAmmoType;
+        stats.maxSpecialAmmo = planeModel.stats.maxSpecialAmmo;
+        stats.specialAmmo = planeModel.stats.specialAmmo;
+        stats.extraBullets = planeModel.stats.extraBullets;
+        stats.maxMines = planeModel.stats.maxMines;
+        stats.mines = planeModel.stats.mines;
+        stats.meleeTime = planeModel.stats.meleeTime;
+        stats.trackerBullet = planeModel.stats.trackerBullet;
+        stats.searchDistance = planeModel.stats.searchDistance;
 
         stats.scoreValue = planeModel.stats.scoreValue;
         stats.price = planeModel.stats.price; 
+
+        stats.maxDrones = planeModel.stats.maxDrones;
 
         if(movement == movement.Player){ //to be ajusted for balance
             stats.maxHealth += 5;

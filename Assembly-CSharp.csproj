@@ -43,8 +43,10 @@
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\SearchTarget.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneModel.cs" />
      <Compile Include="Assets\Scripts\Menus\GameMenu.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Mine.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneStatsObject.cs" />
      <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\DroneMovement.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\TextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerRandom.cs" />
@@ -63,6 +65,7 @@
      <Compile Include="Assets\Scripts\Planes\CollisionManager.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\FallOfGenerator.cs" />
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\MineDrone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpSpawner.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MapGenerator.cs" />
      <Compile Include="Assets\Scripts\GameController\GameController.cs" />
@@ -78,12 +81,16 @@
      <Compile Include="Assets\Scripts\ProceduralTerrain\Noise.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpsManager.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MapDisplay.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\GunnerDrone.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MapChangerRandom.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlayerPlaneMovement.cs" />
      <Compile Include="Assets\Scripts\ProceduralTerrain\MeshGenerator.cs" />
      <Compile Include="Assets\Scripts\GameController\ObjectPools.cs" />
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
-     <Compile Include="Assets\Scripts\Planes\PlaneShooter\Turret.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\Turret.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\MissileDrone.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\RepairDrone.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\Drones\ShieldDrone.cs" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />
      <None Include="Assets\Fonts\aerologica-font\misc\license-64cc.txt" />
      <None Include="Assets\Fonts\gameria\1001fonts-gameria-eula.txt" />

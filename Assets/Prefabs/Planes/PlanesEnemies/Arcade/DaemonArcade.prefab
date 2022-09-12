@@ -5214,8 +5214,9 @@ MonoBehaviour:
   shootSpeed: 0
   magazineSize: 10
   turretShootSpeed: 1
-  missiles: 0
-  maxMissiles: 1
+  specialAmmoType: 0
+  specialAmmo: 0
+  maxSpecialAmmo: 1
   timeToRotate: 1
   timeRotating: 1
   scoreValue: 0
@@ -5251,6 +5252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2091597665663145648, guid: 327923c4be3bef24aa83766cf0d7abc4, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
+  mine: {fileID: 2275125643518446950, guid: cc67010f2e7d6594985dee77adcff74a, type: 3}
   shootTimer: 0
   plane: {fileID: 981081451378545542}
   type: 0

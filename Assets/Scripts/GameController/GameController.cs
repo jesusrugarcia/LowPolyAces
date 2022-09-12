@@ -64,5 +64,19 @@ public class GameController : MonoBehaviour
         gameModeManager.controller = this;
     }
 
+    public void reduceCurrentEnemies(){
+        currentEnemies --;
+        if (currentEnemies < 0){
+            currentEnemies = 0;
+        }
+    }
+
+    public void reduceCurrentPowerUps(){
+        currentPowerUps --;
+        if (currentPowerUps < 0){
+            currentPowerUps = 0;
+        }
+    }
+
     
 }

@@ -9,8 +9,6 @@ public class PlayerPlaneShooter : PlaneShooter
     public InputAction missileAction;
     public InputAction shootAction;
 
-    
-    public bool stoppedShooting = true;
 
     static bool isDown(InputAction action) => action.phase == InputActionPhase.Performed;
     static bool isUp(InputAction action) => action.phase == InputActionPhase.Canceled;
@@ -24,10 +22,10 @@ public class PlayerPlaneShooter : PlaneShooter
     }
     public void OnMissile(){
         if(isUp(missileAction)){
-            if(plane.stats.missiles > 0){
+            if(plane.stats.specialAmmo > 0){
             plane.planeShooter.launchMissile();
             }
-            if(plane.stats.missiles <= 0){
+            if(plane.stats.specialAmmo <= 0){
                 plane.healthBar.MissileIcon.SetActive(false);
             }
         }
@@ -59,19 +57,16 @@ public class PlayerPlaneShooter : PlaneShooter
     }
 
     public void onShoot(){
-        if(isDown(shootAction) && magazineFull == true && magazine > 0 && stoppedShooting){
+        shootTimer += Time.deltaTime;
+        if(isDown(shootAction) && magazineFull == true && magazine > 0  && shootTimer > shootSpeedOnButton){
+            shootTimer = 0;
             shoot();
             magazine += -1;
             if (magazine <= 0){
                 magazineFull = false;
-                stoppedShooting = false;
-                shootTimer = 0;
-            } else {
-                shootTimer = plane.stats.shootSpeed * (magazine/plane.stats.magazineSize);
             } 
         } else if(isUp(shootAction)){
             magazineFull = false;
-            stoppedShooting = true;
         }
     }
 }

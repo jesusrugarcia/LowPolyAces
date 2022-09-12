@@ -113,6 +113,11 @@ MonoBehaviour:
   teamManager: {fileID: 5741287674484435546}
   health: 1
   target: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 50dc6dbe0d14ebf4ba4928f5c35127da, type: 2}
+  - {fileID: 2100000, guid: e75ea2509fedada4daae08cee36801a5, type: 2}
+  - {fileID: 2100000, guid: cef14a49fd1d34d4390f0dc4628fe756, type: 2}
+  maxHealth: 0
 --- !u!114 &5741287674484435546
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class CollisionManager : MonoBehaviour
     //This class manages collisions and damage/destruction of planes.
     public PlaneManager plane;
     public GameObject explosion;
+    public GameObject shield;
     public SFXManager SFXManager;
 
     private void Start() {
@@ -49,14 +50,16 @@ public class CollisionManager : MonoBehaviour
             gameObject.SetActive(false);
             plane.healthBar.gameObject.SetActive(false);
         } else {
+            Destroy(GetComponent<Rigidbody>());
             plane.controller.score += plane.stats.scoreValue;
-            plane.controller.currentEnemies --;
+            plane.controller.reduceCurrentEnemies();
             Destroy(plane.healthBar.gameObject);
             Destroy(gameObject);
         }
     }
 
     public void destroyVersus(Collider other){
+        //Destroy(GetComponent<Rigidbody>());
         var manager =  plane.controller.GetComponent<VersusModeManager>();
         manager.lives[plane.teamManager.team]++;
         manager.score[other.gameObject.GetComponent<TeamManager>().team]++;

@@ -9920,10 +9920,12 @@ MonoBehaviour:
   shootSpeed: 0
   magazineSize: 10
   turretShootSpeed: 1
-  missiles: 0
-  maxMissiles: 1
-  scoreValue: 0
+  specialAmmoType: 0
+  specialAmmo: 0
+  maxSpecialAmmo: 1
   timeToRotate: 1
+  timeRotating: 1
+  scoreValue: 0
   price: 0
   hasShield: 0
   plane: {fileID: 3036640415069549544}
@@ -9956,6 +9958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
+  mine: {fileID: 2275125643518446950, guid: cc67010f2e7d6594985dee77adcff74a, type: 3}
   shootTimer: 0
   plane: {fileID: 3036640415069549544}
   type: 0

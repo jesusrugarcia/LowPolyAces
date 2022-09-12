@@ -81,7 +81,7 @@ public class VersusModeManager : GameModeManager
         controller.playerSpawner.spawner.calculateRotation(plane.gameObject);
 
         plane.stats.health = plane.stats.maxHealth;
-        plane.stats.missiles = 0;
+        plane.stats.specialAmmo = 0;
 
         plane.gameObject.SetActive(true);
         plane.healthBar.gameObject.SetActive(true);

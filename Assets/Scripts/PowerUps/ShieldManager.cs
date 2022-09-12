@@ -7,6 +7,12 @@ public class ShieldManager : MonoBehaviour
     public TeamManager teamManager;
     public float health = 1;
     public GameObject target;
+    public Material[] materials;
+    public float maxHealth;
+
+    private void Start() {
+        maxHealth = materials.Length;
+    }
 
     private void FixedUpdate() {
         transform.position = target.transform.position;
@@ -27,10 +33,23 @@ public class ShieldManager : MonoBehaviour
                 target.GetComponent<PlaneStats>().hasShield = false;
                 Destroy(other.gameObject);
                 destroyShield();
+            } else {
+                setMaterial();
             }
     }
 
     public void destroyShield(){
         Destroy(gameObject);
+    }
+
+    public void setMaterial(){
+        GetComponent<Renderer>().material = materials[(int)health - 1];
+    }
+
+    public void addHealth(){
+        if (health < maxHealth){
+            health ++;
+            setMaterial();
+        }
     }
 }

@@ -29,7 +29,7 @@ public class Turret : MonoBehaviour
     public void shoot(){
         shootTimer += Time.deltaTime;
         if(shootTimer >= plane.stats.turretShootSpeed){
-            plane.planeShooter.shoot(gameObject);
+            plane.planeShooter.shootTurret(gameObject);
             shootTimer = 0;
         }
     }

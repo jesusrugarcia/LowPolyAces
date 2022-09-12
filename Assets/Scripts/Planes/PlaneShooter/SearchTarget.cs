@@ -16,9 +16,40 @@ public static class SearchTarget
             TargetResult result = new TargetResult();
             RaycastHit hit;
             Ray ray = new Ray(origin.transform.position, direction);
+            Debug.DrawRay(origin.transform.position, direction * targetDistance, Color.blue, .5f);
             if(Physics.Raycast(ray, out hit, targetDistance)){
                 var detected = hit.collider.gameObject;
                 var dist = Vector3.Distance(detected.transform.position, origin.transform.position);
+                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team){
+                    result.target = detected;
+                    result.distance = dist;
+                }
+            }
+
+            if (result.distance > 0){
+                return result;
+            } else {
+                result.target = origin;
+                result.distance = float.MaxValue;
+                return result;
+            }
+        } catch(Exception e){
+            Debug.Log(e);
+            TargetResult result = new TargetResult();
+            result.target = origin;
+            result.distance = float.MaxValue;
+            return result;
+        }
+    }
+
+    public static TargetResult searchTarget(GameObject origin, float thickness, float targetDistance, Vector3 direction){
+        try{
+            TargetResult result = new TargetResult();
+            RaycastHit hit;
+            //Debug.DrawRay(origin.transform.position, direction * targetDistance, Color.green, .5f);
+            if(Physics.SphereCast(origin.transform.position, thickness, direction, out hit, targetDistance)){
+                var detected = hit.collider.gameObject;
+                var dist = hit.distance; //Vector3.Distance(detected.transform.position, origin.transform.position);
                 if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team){
                     result.target = detected;
                     result.distance = dist;
