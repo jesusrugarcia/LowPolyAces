@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MusclePlayer2
   m_EditorClassIdentifier: 
   model: Muscle
-  plane: {fileID: 847952813258224580, guid: e076fd717c4318f46a40fce5e7937c56, type: 3}
+  plane: {fileID: 7502200846816913765, guid: e076fd717c4318f46a40fce5e7937c56, type: 3}
   stats: {fileID: 11400000, guid: 0dfc8a2b22b75a7458f6bccba2f3e178, type: 2}

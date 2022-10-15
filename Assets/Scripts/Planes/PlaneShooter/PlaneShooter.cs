@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum shootingType{
@@ -12,7 +11,8 @@ public class PlaneShooter : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject missile;
-    public GameObject mine;
+    public GameObject gadget;
+    public GameObject defense;
     public float shootTimer = 0;
     public PlaneManager plane;
     public shootingType type;
@@ -20,6 +20,15 @@ public class PlaneShooter : MonoBehaviour
     public bool magazineFull = false;
     public int magazine;
     public float shootSpeedOnButton = 0.05f;
+    public float defenseRecharge = 0;
+    public float specialRecharge = 0;
+
+    public bool defenseActivated = false;
+
+    public GameObject[] mines;
+    public GameObject hook;
+    public GameObject firstCoin;
+    public GameObject lastCoin;
     
     private void Start() {
         
@@ -27,6 +36,34 @@ public class PlaneShooter : MonoBehaviour
    
     private void FixedUpdate() {
         checkShoot();
+        rechargeSpecial();
+        rechargeDefense();
+    }
+
+    public void rechargeSpecial(){
+        if (plane.stats.specialAmmo < plane.stats.maxSpecialAmmo){
+            specialRecharge += Time.deltaTime;
+            if(specialRecharge >= plane.stats.rechargeSpecialTime){
+                specialRecharge = 0;
+                plane.stats.specialAmmo ++;
+            }
+        } else {
+            specialRecharge = 0;
+        }
+        
+    }
+
+    public void rechargeDefense(){
+        if(plane.stats.defenseAmmo < plane.stats.maxDefenseAmmo){
+            defenseRecharge += Time.deltaTime;
+            if(defenseRecharge >= plane.stats.rechargeDefenseTime){
+                defenseRecharge = 0;
+                plane.stats.defenseAmmo ++;
+            }
+        } else {
+            defenseRecharge = 0;
+        }
+        
     }
 
     public virtual void checkShoot(){
@@ -63,6 +100,13 @@ public class PlaneShooter : MonoBehaviour
     }
 
     public virtual void shoot(){
+        if (plane.stats.statusEffects[(int)StatusEffects.Rusting] > 0){
+            if (UnityEngine.Random.Range(0,2) == 0){
+                //sound effect not shooting
+                magazine = 0;
+                return;
+            }
+        }
         instantiateBullet();
         if (plane.stats.extraBullets > 0){
             var offset = 45 / plane.stats.extraBullets;
@@ -78,7 +122,17 @@ public class PlaneShooter : MonoBehaviour
     //TRACKER BULLET
         if (plane.stats.trackerBullet){
             Destroy(bull.GetComponent<BulletMovement>());
-            var manager = bull.AddComponent<MissileManager>();
+            MissileManager manager;
+            try{
+                manager = bull.GetComponent<MissileManager>();
+                if(manager == null){
+                    manager = bull.AddComponent<MissileManager>();
+                }
+            } catch (Exception e){
+                Debug.Log(e);
+                manager = bull.AddComponent<MissileManager>();
+            }
+            
             manager.plane = plane;
             manager.teamManager = GetComponent<TeamManager>();
             bull.GetComponent<DamageManager>().damage = plane.stats.bulletDamage;
@@ -111,21 +165,143 @@ public class PlaneShooter : MonoBehaviour
     }
 
     public void launchMissile(){
-        if(plane.stats.specialAmmoType == specialAmmo.Missile){
+        if(plane.stats.missileType == MissileType.Missile){
             var mis = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
             mis.GetComponent<MissileManager>().plane = plane;
             mis.GetComponent<DamageManager>().damage = plane.stats.missileDamage;
             plane.stats.specialAmmo --;
-        } else if(plane.stats.specialAmmoType == specialAmmo.Mine && plane.stats.mines < plane.stats.maxMines){
-            var mis = Instantiate(mine, transform.position + transform.right * 1, transform.rotation);
-            mis.GetComponent<TeamManager>().team = plane.teamManager.team;
-            mis.GetComponent<DamageManager>().damage = plane.stats.mineDamage;
-            mis.GetComponent<Mine>().plane = gameObject;
-            plane.stats.mines ++;
+        } else if(plane.stats.missileType == MissileType.Mine && plane.stats.mines < plane.stats.maxMines){
+            if(mines.Length <= 0){
+                createMinesList();
+            }
+            spawnMine();
+        } else if (plane.stats.missileType == MissileType.Flare){
+            var mis = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
+            mis.GetComponent<MissileManager>().plane = plane;
+            mis.GetComponent<MissileManager>().isFlare = true;
+            plane.stats.specialAmmo --;
+        } else if (plane.stats.missileType == MissileType.SupportClaw){
+            var claw = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
+            claw.GetComponent<MissileManager>().plane = plane;
+            claw.GetComponent<SupportClawManager>().plane = plane;
+            plane.stats.specialAmmo --;
+        } else if(plane.stats.missileType == MissileType.ElectricClaw || plane.stats.missileType == MissileType.BurningClaw || plane.stats.missileType == MissileType.RustingClaw){
+            var claw = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
+            claw.GetComponent<MissileManager>().plane = plane;
+            claw.GetComponent<ClawManager>().plane = plane;
             plane.stats.specialAmmo --;
         }
         
         
+    }
+
+    public virtual void launchGadget(){
+        if (plane.stats.gadgetType == GadgetType.Turbo){
+            plane.stats.speed = plane.stats.maxSpeed * 4;
+            plane.stats.specialAmmo --;
+        } else if (plane.stats.gadgetType == GadgetType.TankShield){
+            var tankShield = Instantiate(gadget, transform.position, transform.rotation);
+            tankShield.GetComponent<TankShieldManager>().plane = plane;
+            plane.stats.specialAmmo --;
+        } else if (plane.stats.gadgetType == GadgetType.AreaOfHeal){
+            var area = Instantiate(gadget, transform.position, transform.rotation);
+            area.GetComponent<HealAreaManager>().plane = plane;
+            plane.stats.specialAmmo --;
+        } else if (plane.stats.gadgetType == GadgetType.Laser && !plane.stats.laserActivated){
+            try{
+                if (GetComponent<LaserManager>() == null){
+                    gameObject.AddComponent<LaserManager>().plane = plane;
+                }
+            } catch (Exception e){
+                Debug.Log(e);
+            }
+            plane.stats.laserActivated = true;
+            plane.stats.specialAmmo --;
+        } else if(plane.stats.gadgetType == GadgetType.Coin){
+            manageCoin();
+        }
+
+    }
+
+    public virtual void Defense(){
+        if (plane.stats.defenseType == DefenseType.Dash){
+            plane.stats.defenseAmmo --;
+            plane.statusManager.addStatus(StatusEffects.Invulnerability , plane.stats.invIncrease);
+            transform.Translate(Vector3.right);
+        } else if (plane.stats.defenseType == DefenseType.HealShield && !defenseActivated){
+            defenseActivated = true;
+            plane.stats.defenseAmmo --;
+            var healShield = Instantiate(defense, transform.position, transform.rotation);
+            healShield.GetComponent<HealShieldManager>().plane = plane;
+        } else if (plane.stats.defenseType == DefenseType.Ghost){
+            plane.stats.defenseAmmo --;
+            plane.statusManager.addStatus(StatusEffects.Ghost, plane.stats.ghostIncrease);
+        } else if (plane.stats.defenseType == DefenseType.Hook){
+            manageHook();
+        }
+
+    }
+
+    public void manageHook(){
+        if (hook == null){
+            hook = Instantiate(defense, transform.position + transform.right * 1, transform.rotation);
+            hook.GetComponent<HookManager>().plane = plane;
+            
+        } else if(hook.activeSelf == false) {
+            hook.transform.position = transform.position + transform.right * 1;
+            hook.transform.rotation = transform.rotation;
+            hook.GetComponent<HookManager>().hook.transform.position = transform.position + transform.right * 1;
+            hook.GetComponent<HookManager>().hook.transform.rotation = transform.rotation;
+            hook.SetActive(true);
+            
+        } else {
+            plane.statusManager.addStatus(StatusEffects.Invulnerability,10);
+            plane.stats.defenseAmmo --;
+            hook.GetComponent<HookManager>().move = true;
+        }
+    }
+
+    public void manageCoin(){
+        var coin = Instantiate(gadget, transform.position, Quaternion.identity);
+        var coinManager = coin.GetComponent<CoinManager>();
+        coinManager.teamManager.team = plane.teamManager.team;
+
+        if(lastCoin != null){
+            var oldCoin = lastCoin.GetComponent<CoinManager>();
+            oldCoin.next = coin;
+            oldCoin.rotateTowards();
+            coinManager.previous = lastCoin;
+        }
+        
+        lastCoin = coin;
+        if (firstCoin == null){
+            firstCoin = coin;
+        }
+
+        coinManager.plane = plane;
+        plane.stats.specialAmmo --;
+        coinManager.rotateTowards();
+    }
+
+    public void createMinesList(){
+        mines = new GameObject[plane.stats.maxMines];
+    }
+
+    public void spawnMine(){
+        for (int i = 0; i< plane.stats.maxMines; i++){
+            if (mines[i] == null || mines[i].activeSelf == false){
+            var mis = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
+            mis.GetComponent<TeamManager>().team = plane.teamManager.team;
+            mis.GetComponent<DamageManager>().damage = plane.stats.mineDamage;
+            var mina = mis.GetComponent<Mine>();
+            mina.plane = gameObject;
+            mina.pos = i;
+            plane.stats.mines ++;
+            plane.stats.specialAmmo --;
+            mines[i] = mis;
+            break;
+            } 
+        }
     }
 
 

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DaemonPlayer2
   m_EditorClassIdentifier: 
   model: Daemon
-  plane: {fileID: 3582567306095178576, guid: 73a199b6ae90ad243916aaf685221304, type: 3}
+  plane: {fileID: 2582721459279702539, guid: 73a199b6ae90ad243916aaf685221304, type: 3}
   stats: {fileID: 11400000, guid: a08cd41e6d95a9d45b95f1b3adf96738, type: 2}

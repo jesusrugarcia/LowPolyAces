@@ -24153,6 +24153,7 @@ GameObject:
   - component: {fileID: 5031435439602949801}
   - component: {fileID: 5561152930560540614}
   - component: {fileID: 3497199369362323733}
+  - component: {fileID: -6076589254253273303}
   m_Layer: 0
   m_Name: OmegaGunnerPlayer1
   m_TagString: Untagged
@@ -24220,6 +24221,7 @@ MonoBehaviour:
   planeShooter: {fileID: 2076888811556125131}
   planeMovement: {fileID: 6403326870754532851}
   controller: {fileID: 0}
+  statusManager: {fileID: -6076589254253273303}
 --- !u!114 &6403326870754532851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24265,13 +24267,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
-  mine: {fileID: 2275125643518446950, guid: cc67010f2e7d6594985dee77adcff74a, type: 3}
+  gadget: {fileID: 0}
+  defense: {fileID: 0}
   shootTimer: 0
   plane: {fileID: 1507050709228329071}
-  type: 0
+  type: 1
   magazineFull: 0
   magazine: 0
   shootSpeedOnButton: 0.05
+  defenseRecharge: 0
+  defenseActivated: 0
+  mines: []
+  hook: {fileID: 0}
   input: {fileID: 5561152930560540614}
   missileAction:
     m_Name: Missile
@@ -24289,7 +24296,22 @@ MonoBehaviour:
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
-  stoppedShooting: 1
+  gadgetAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+  defenseAction:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
 --- !u!114 &8924811207520133132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24304,7 +24326,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 1507050709228329071}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
+  shield: {fileID: 0}
   SFXManager: {fileID: 0}
+  healing: 0
+  healAmount: 0
 --- !u!114 &7442676400748615811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24325,20 +24350,50 @@ MonoBehaviour:
   rotationSpeed: 0
   rotation: 0
   maxRotation: 0
+  timeToRotate: 1
+  timeRotating: 1
   bulletDamage: 1
-  damageOnButton: 0.1
-  damageTurret: 0.1
+  turretDamage: 0.1
+  missileDamage: 10
+  mineDamage: 5
+  drillDamage: 5
   shootSpeed: 0
   magazineSize: 10
   turretShootSpeed: 1
-  specialAmmoType: 0
+  normalDroneShootSpeed: 1
+  specialDroneShootSpeed: 10
+  auxDroneSpeed: 10
+  missileType: 0
+  gadgetType: 0
+  defenseType: 0
   specialAmmo: 0
   maxSpecialAmmo: 1
-  timeToRotate: 1
-  timeRotating: 1
+  defenseAmmo: 0
+  maxDefenseAmmo: 1
+  extraBullets: 0
+  maxMines: 3
+  mines: 0
+  meleeTime: 1
+  trackerBullet: 0
+  searchDistance: 1
   scoreValue: 0
   price: 0
   hasShield: 0
+  damageReductionTankShield: 0.7
+  SpecialShieldDuration: 1
+  healAreaAmount: 0.01
+  rechargeDefenseTime: 5
+  maxDrones: 1
+  drones: 0
+  statusEffects:
+  - 0
+  - 0
+  invIncrease: 0.1
+  ghostIncrease: 1
+  timeTargetting: 2
+  laserActivated: 0
+  laserTime: 1
+  laserDamage: 0.1
   plane: {fileID: 1507050709228329071}
 --- !u!114 &5031435439602949801
 MonoBehaviour:
@@ -24474,6 +24529,38 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ecbb4107-b894-4eaa-b2f5-247ac57eab36
     m_ActionName: Player/Pause[/Keyboard/escape,/DualShock4GamepadHID/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2076888811556125131}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
+        m_MethodName: onGadget
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f8ce6ca3-6e78-45b2-85ce-aa87202bdf73
+    m_ActionName: Player/Gadget[/DualShock4GamepadHID/buttonNorth,/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2076888811556125131}
+        m_TargetAssemblyTypeName: PlayerPlaneShooter, Assembly-CSharp
+        m_MethodName: onDefense
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ed83648d-cc24-4743-9d20-2782ef0d05c2
+    m_ActionName: Player/Defense[/Keyboard/shift,/DualShock4GamepadHID/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -24492,6 +24579,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 16.25, y: 19.54, z: 12.39}
   m_Center: {x: 3, y: 0.6, z: 0}
+--- !u!114 &-6076589254253273303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7783734906109532920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7242fd2b7ae664842aa16f37d023c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeManager: {fileID: 1507050709228329071}
 --- !u!1 &7783734906351022220
 GameObject:
   m_ObjectHideFlags: 0

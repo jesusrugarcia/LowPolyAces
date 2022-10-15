@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: DemonDroneSurvival
+  m_EditorClassIdentifier: 
+  model: DemonDrone
+  plane: {fileID: 61744083233603250, guid: 34f11ee69e103444c9266b2b716dc6df, type: 3}
+  stats: {fileID: 11400000, guid: 15d2cc9761585544e80a0ea1dea3700f, type: 2}

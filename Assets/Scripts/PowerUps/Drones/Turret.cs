@@ -15,7 +15,7 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<TeamManager>().team = plane.teamManager.team;
     }
 
     // Update is called once per frame

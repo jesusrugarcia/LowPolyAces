@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Proyecto Aviones/ PlaneStatsObject")]
@@ -32,9 +31,14 @@ public class PlaneStatsObject : ScriptableObject
     public float specialDroneShootSpeed = 10f;
     public float auxDroneSpeed = 10f;
 
-    public specialAmmo specialAmmoType;
+    public MissileType missileType;
+    public GadgetType gadgetType;
+    public DefenseType defenseType;
+    
     public int specialAmmo = 0;
     public int maxSpecialAmmo = 1;
+    public int defenseAmmo = 0;
+    public int maxDefenseAmmo = 1;
     public int extraBullets = 0;
     public int maxMines = 3;
     public int mines = 0;
@@ -46,6 +50,23 @@ public class PlaneStatsObject : ScriptableObject
     public float price = 0;
 
     public bool hasShield = false;
+    public float damageReductionTankShield = 0.7f;
+    public float SpecialShieldDuration = 1;
+    public float healAreaAmount = 0.01f;
+    public float rechargeDefenseTime = 5f;
+    public float rechargeSpecialTime = 10f;
+    
     public int maxDrones = 1;
     public int drones = 0;
+
+     public float[] statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
+    public float invIncrease = 0.1f;
+    public float ghostIncrease = 1f;
+    public float timeTargetting = 2f;
+    public float statusEffectTime = 1;
+    
+
+    public bool laserActivated = false;
+    public float laserTime = 1;
+    public float laserDamage = 0.1f;
 }

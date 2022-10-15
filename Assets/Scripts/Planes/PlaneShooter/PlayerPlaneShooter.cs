@@ -8,6 +8,8 @@ public class PlayerPlaneShooter : PlaneShooter
     public PlayerInput input;
     public InputAction missileAction;
     public InputAction shootAction;
+    public InputAction gadgetAction;
+    public InputAction defenseAction;
 
 
     static bool isDown(InputAction action) => action.phase == InputActionPhase.Performed;
@@ -17,6 +19,8 @@ public class PlayerPlaneShooter : PlaneShooter
         var map = input.currentActionMap;
         missileAction = map.FindAction("Missile",true);
         shootAction = map.FindAction("Shoot",true);
+        gadgetAction = map.FindAction("Gadget",true);
+        defenseAction = map.FindAction("Defense",true);
         magazine = plane.stats.magazineSize;
         shootTimer = plane.stats.shootSpeed;
     }
@@ -67,6 +71,27 @@ public class PlayerPlaneShooter : PlaneShooter
             } 
         } else if(isUp(shootAction)){
             magazineFull = false;
+        }
+    }
+
+    public void onDefense(){
+        Debug.Log("OnDefense");
+        if(isUp(defenseAction)){
+            if(plane.stats.defenseAmmo > 0){
+            plane.planeShooter.Defense();
+            }
+        }
+    }
+
+    public void onGadget(){
+        Debug.Log("OnGadget");
+        if(isUp(gadgetAction)){
+            if(plane.stats.specialAmmo > 0){
+            plane.planeShooter.launchGadget();
+            }
+            if(plane.stats.specialAmmo <= 0){
+                plane.healthBar.MissileIcon.SetActive(false);
+            }
         }
     }
 }

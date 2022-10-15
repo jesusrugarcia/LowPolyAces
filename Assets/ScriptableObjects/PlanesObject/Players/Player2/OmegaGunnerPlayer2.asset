@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: OmegaGunnerPlayer2
   m_EditorClassIdentifier: 
   model: OmegaGunner
-  plane: {fileID: 3789659273340186573, guid: df87f7bb84d2ea9488529c81e0448a90, type: 3}
+  plane: {fileID: 3728642377845591543, guid: df87f7bb84d2ea9488529c81e0448a90, type: 3}
   stats: {fileID: 11400000, guid: ed1f0857b14d86c43804c0c95191d4ad, type: 2}

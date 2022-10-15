@@ -4,10 +4,8 @@ using UnityEngine;
 
 public enum movement {
     Player = 0,
-    Easy = 1,
-    Medium = 2,
-    Hard = 3,
-    Impossible = 4
+    NoTracking = 1,
+    Tracking = 2,
 }
 
 public class PlaneSpawner : MonoBehaviour
@@ -16,9 +14,17 @@ public class PlaneSpawner : MonoBehaviour
     public GameObject healthBar;
     public GameObject healthBarEnemy;
 
-    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team){
+    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team, GameObject origin = null){
         Time.timeScale = 0f;
-        var plane = Instantiate(planeModel.plane, getRandomPosition(), Quaternion.Euler(-90,0,0)); //rotation might need to change when i have good models.
+        GameObject plane;
+        if (origin != null){
+            var x = origin.transform.position.x + UnityEngine.Random.Range(-1f,1f);
+            var z = origin.transform.position.z + UnityEngine.Random.Range(-1f,1f);
+            plane = Instantiate(planeModel.plane, new Vector3(x,0,z) , origin.transform.rotation); //rotation might need to change when i have good models.
+        } else {
+            plane = Instantiate(planeModel.plane, getRandomPosition(), Quaternion.Euler(-90,0,0)); //rotation might need to change when i have good models.
+        }
+        
         calculateRotation(plane);
         //plane.AddComponent<PlaneManager>();
         var planeManager = plane.GetComponent<PlaneManager>();
@@ -41,6 +47,7 @@ public class PlaneSpawner : MonoBehaviour
 
         copyStats(plane, planeModel, movement);
         addMovement(plane, movement);
+        controller.centralManager.initialSetUp(plane.GetComponent<PlaneManager>());
         Time.timeScale = 1f;
         return plane;
     }
@@ -76,9 +83,14 @@ public class PlaneSpawner : MonoBehaviour
         stats.specialDroneShootSpeed = planeModel.stats.specialDroneShootSpeed;
         stats.auxDroneSpeed = planeModel.stats.auxDroneSpeed;
 
-        stats.specialAmmoType = planeModel.stats.specialAmmoType;
+        stats.missileType = planeModel.stats.missileType;
+        stats.gadgetType = planeModel.stats.gadgetType;
+        stats.defenseType = planeModel.stats.defenseType;
+        
         stats.maxSpecialAmmo = planeModel.stats.maxSpecialAmmo;
         stats.specialAmmo = planeModel.stats.specialAmmo;
+        stats.maxDefenseAmmo = planeModel.stats.maxDefenseAmmo;
+        stats.defenseAmmo = planeModel.stats.defenseAmmo;
         stats.extraBullets = planeModel.stats.extraBullets;
         stats.maxMines = planeModel.stats.maxMines;
         stats.mines = planeModel.stats.mines;
@@ -89,45 +101,63 @@ public class PlaneSpawner : MonoBehaviour
         stats.scoreValue = planeModel.stats.scoreValue;
         stats.price = planeModel.stats.price; 
 
+        stats.hasShield = planeModel.stats.hasShield;
+        stats.damageReductionTankShield = planeModel.stats.damageReductionTankShield;
+        stats.SpecialShieldDuration = planeModel.stats.SpecialShieldDuration;
+        stats.healAreaAmount = planeModel.stats.healAreaAmount;
+        stats.rechargeDefenseTime = planeModel.stats.rechargeDefenseTime;
+        stats.rechargeSpecialTime = planeModel.stats.rechargeSpecialTime;
+        
         stats.maxDrones = planeModel.stats.maxDrones;
+        stats.drones = planeModel.stats.drones;
+
+        stats.statusEffects = planeModel.stats.statusEffects;
+        stats.invIncrease = planeModel.stats.invIncrease;
+        stats.ghostIncrease = planeModel.stats.ghostIncrease;
+        stats.timeTargetting = planeModel.stats.timeTargetting;
+        stats.statusEffectTime = planeModel.stats.statusEffectTime;
+
+        stats.laserActivated = planeModel.stats.laserActivated;
+        stats.laserTime = planeModel.stats.laserTime;
+        stats.laserDamage = planeModel.stats.laserDamage;
 
         if(movement == movement.Player){ //to be ajusted for balance
-            stats.maxHealth += 5;
-            stats.health += 5;
-        } else if(movement == movement.Medium){
-            stats.maxHealth += 1;
-            stats.health += 1;
-        } else if(movement == movement.Hard){
-            stats.maxHealth += 1;
-            stats.health += 1;
-        } else if(movement == movement.Impossible){
-            stats.maxHealth += 1;
-            stats.health += 1;
+           stats.statusEffects[(int)StatusEffects.Invulnerability] = 1;
         }
     }
 
     public void addMovement(GameObject plane, movement movement){
-       if (movement == movement.Easy){
+       if (movement == movement.NoTracking){
             plane.AddComponent<EnemyControllerRandom>();
-        } else if (movement == movement.Medium){
+        } else if (movement == movement.Tracking){
             plane.AddComponent<EnemyControllerTracking>();
             //plane.GetComponent<EnemyControlMedium>().objective = controller.player.transform;
-        } else if (movement == movement.Hard){
-            plane.AddComponent<EnemyControllerTracking>();
-            //plane.GetComponent<EnemyControlHard>().objective = controller.player.transform;
-        } else if (movement == movement.Impossible){
-            plane.AddComponent<EnemyControllerTracking>();
-           // plane.GetComponent<EnemyControllerImposible>().objective = controller.player.transform;
         }
     }
 
     public Vector3 getRandomPosition(){
-        float x = UnityEngine.Random.Range(-1,1);
-        float z = UnityEngine.Random.Range(-1,1);
+        var election = UnityEngine.Random.Range(0,2);
+        float x;
+        float z;
+        if(election == 0){ // x = max or -max
+            election = UnityEngine.Random.Range(0,2);
+            if(election == 0){
+                x = controller.max;
+            } else {
+                x = -controller.max;
+            }
+            z = UnityEngine.Random.Range(-controller.maz + 0.5f,controller.maz - 0.5f);
 
-        if (x < 0) {x = -controller.max + 0.5f;} else {x = controller.max - 0.5f;}
-        if (z < 0) {z = -controller.maz + 0.5f;} else {z = controller.maz - 0.5f;}
-
+        } else {
+            election = UnityEngine.Random.Range(0,2);
+            if(election == 0){
+                z = controller.maz;
+            } else {
+                z = -controller.maz;
+            }
+            x = UnityEngine.Random.Range(-controller.max + 0.5f,controller.max - 0.5f);
+        }
+        
         return new Vector3(x,0,z);
     }
 

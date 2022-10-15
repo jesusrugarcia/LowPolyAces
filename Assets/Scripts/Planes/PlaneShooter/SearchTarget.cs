@@ -20,7 +20,7 @@ public static class SearchTarget
             if(Physics.Raycast(ray, out hit, targetDistance)){
                 var detected = hit.collider.gameObject;
                 var dist = Vector3.Distance(detected.transform.position, origin.transform.position);
-                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team){
+                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team && detected.GetComponent<PlaneStats>().statusEffects[(int)StatusEffects.Ghost] <= 0){
                     result.target = detected;
                     result.distance = dist;
                 }

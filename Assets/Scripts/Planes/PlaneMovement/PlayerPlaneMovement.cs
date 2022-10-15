@@ -58,7 +58,8 @@ public class PlayerPlaneMovement : PlaneMovement
             if (plane.stats.speed > minSpeed){
             plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue * 2;
             }
-        } else if (plane.stats.speed < plane.stats.maxSpeed/2 ){
+        } 
+        if (plane.stats.speed < plane.stats.maxSpeed/2 ){
              plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;
         } else if (plane.stats.speed > plane.stats.maxSpeed/2 ){
              plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration * accelerationValue;

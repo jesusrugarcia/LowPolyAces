@@ -12,23 +12,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e611aeeb56c49d04b83f2260b6cdaee2, type: 3}
   m_Name: OmegaGunner
   m_EditorClassIdentifier: 
-  maxHealth: 7
-  health: 7
+  maxHealth: 14
+  health: 14
   maxSpeed: 5
   speed: 0
   acceleration: 0.2
   rotationSpeed: 2
   rotation: 0
   maxRotation: 2
+  timeToRotate: 1
+  timeRotating: 1
   bulletDamage: 0.5
-  damageOnButton: 0.1
-  damageTurret: 0.5
+  turretDamage: 0.1
+  missileDamage: 10
+  mineDamage: 5
+  drillDamage: 5
   shootSpeed: 4.5
   magazineSize: 1
   turretShootSpeed: 0.8
-  missiles: 0
-  maxMissiles: 1
+  normalDroneShootSpeed: 1
+  specialDroneShootSpeed: 10
+  auxDroneSpeed: 10
+  missileType: 0
+  gadgetType: 0
+  defenseType: 0
+  specialAmmo: 0
+  maxSpecialAmmo: 1
+  defenseAmmo: 0
+  maxDefenseAmmo: 1
+  extraBullets: 0
+  maxMines: 3
+  mines: 0
+  meleeTime: 1
+  trackerBullet: 0
+  searchDistance: 1
   scoreValue: 100
-  timeToRotate: 1
   price: 500
   hasShield: 0
+  damageReductionTankShield: 0.7
+  SpecialShieldDuration: 1
+  healAreaAmount: 0.01
+  rechargeDefenseTime: 5
+  rechargeSpecialTime: 10
+  maxDrones: 1
+  drones: 0
+  statusEffects:
+  - 0
+  - 0
+  - 0
+  invIncrease: 0.1
+  ghostIncrease: 1
+  timeTargetting: 2
+  stunnedTime: 1
+  laserActivated: 0
+  laserTime: 1
+  laserDamage: 0.1

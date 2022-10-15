@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: DogfighterPlayer3
+  m_EditorClassIdentifier: 
+  model: Dogfighter
+  plane: {fileID: 8219627881732571409, guid: 897f1c6d91415c94e8fc421ada97e12a, type: 3}
+  stats: {fileID: 11400000, guid: 51467b2a6a4ab2d4ab1ee3b41b94918d, type: 2}

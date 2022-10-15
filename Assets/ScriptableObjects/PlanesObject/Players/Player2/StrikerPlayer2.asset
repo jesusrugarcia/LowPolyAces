@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: StrikerPlayer2
   m_EditorClassIdentifier: 
   model: Striker
-  plane: {fileID: 1895929382756998180, guid: 0b9cc3100cd50404c8e2a567cc74f22b, type: 3}
+  plane: {fileID: 7171563708387986392, guid: 0b9cc3100cd50404c8e2a567cc74f22b, type: 3}
   stats: {fileID: 11400000, guid: aa09433b934083546a8efa190f911ec3, type: 2}

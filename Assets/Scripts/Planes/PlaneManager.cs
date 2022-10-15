@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//this class acts as link for all the components of the planes.
+
 public class PlaneManager : MonoBehaviour
 {
     public TeamManager teamManager;
@@ -11,6 +13,7 @@ public class PlaneManager : MonoBehaviour
     public PlaneShooter planeShooter;
     public PlaneMovement planeMovement;
     public GameController controller;
+    public StatusEffect statusManager;
     
     // Start is called before the first frame update
     void Start()

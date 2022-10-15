@@ -51,7 +51,6 @@ MonoBehaviour:
   maxDistance: 2
   speed: 6
   tpDistance: 1
-  farAway: 0
   ready: 0
 --- !u!114 &3344970077317936254
 MonoBehaviour:
@@ -66,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   plane: {fileID: 0}
+  Mine: {fileID: 2275125643518446950, guid: cc67010f2e7d6594985dee77adcff74a, type: 3}
   timer: 0
 --- !u!1 &2758070007791587887
 GameObject:

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: SharkPlayer3
+  m_EditorClassIdentifier: 
+  model: Shark
+  plane: {fileID: 4430528965316089655, guid: eaeb84777ac2c9348baded195b8abb47, type: 3}
+  stats: {fileID: 11400000, guid: 882211936a7055c4bb039d61f34e0122, type: 2}

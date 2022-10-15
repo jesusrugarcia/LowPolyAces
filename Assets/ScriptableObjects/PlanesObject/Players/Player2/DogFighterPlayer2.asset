@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DogFighterPlayer2
   m_EditorClassIdentifier: 
   model: DogFighter
-  plane: {fileID: 2276992334787370756, guid: 8af2cf4b37b22b540bfd6d81a238be31, type: 3}
+  plane: {fileID: 4543834141923259824, guid: 8af2cf4b37b22b540bfd6d81a238be31, type: 3}
   stats: {fileID: 11400000, guid: 51467b2a6a4ab2d4ab1ee3b41b94918d, type: 2}

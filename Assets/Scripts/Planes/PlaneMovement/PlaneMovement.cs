@@ -29,8 +29,10 @@ public class PlaneMovement : MonoBehaviour
     }
 
     public void move(){
-        transform.Translate(Vector3.right * Time.deltaTime * plane.stats.speed);
-        transform.Rotate(0,0,plane.stats.rotation);
+        if(plane.stats.statusEffects[(int)StatusEffects.Stunned] <= 0){
+            transform.Translate(Vector3.right * Time.deltaTime * plane.stats.speed);
+            transform.Rotate(0,0,plane.stats.rotation);
+        }
     }
 
     /* public void checkInScreen(){
@@ -51,12 +53,16 @@ public class PlaneMovement : MonoBehaviour
     } */
 
     public void checkInScreen(){
-        if (transform.position.x < -plane.controller.max * 1.1f || transform.position.x > plane.controller.max * 1.1f){
-            transform.position= new Vector3(-transform.position.x,0,transform.position.z);
+        if (transform.position.x < -plane.controller.max * 1.1f){
+            transform.position= new Vector3(plane.controller.max,0,transform.position.z);
+        } else if (transform.position.x > plane.controller.max * 1.1f){
+            transform.position= new Vector3(-plane.controller.max,0,transform.position.z);
         }
 
-        if (transform.position.z < -plane.controller.maz * 1.1f|| transform.position.z > plane.controller.maz * 1.1f){
-            transform.position= new Vector3(transform.position.x,0,-transform.position.z);
+        if (transform.position.z < -plane.controller.maz * 1.1f){
+            transform.position= new Vector3(transform.position.x,0,plane.controller.maz);
+        } else if (transform.position.z > plane.controller.maz * 1.1f){
+            transform.position= new Vector3(transform.position.x,0,-plane.controller.maz);
         }
     }
 

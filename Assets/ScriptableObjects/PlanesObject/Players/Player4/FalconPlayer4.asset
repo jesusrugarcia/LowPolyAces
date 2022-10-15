@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: FalconPlayer4
+  m_EditorClassIdentifier: 
+  model: Falcon
+  plane: {fileID: 1488287759342575917, guid: ddab98f6a3e2aad4997ce7daf3f019be, type: 3}
+  stats: {fileID: 11400000, guid: f9217fc49b91d5846b7fd95b8badb80e, type: 2}

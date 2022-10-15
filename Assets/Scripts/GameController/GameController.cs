@@ -28,8 +28,10 @@ public class GameController : MonoBehaviour
     public EnemySpawner enemySpawner;
     public PlayerSpawner playerSpawner;
     public PowerUpSpawner powerUpSpawner;
+    public PowerUpsCentralManager centralManager;
 
     public int currentEnemies = 0;
+    public int maxEnemies = 1;
     public int currentPowerUps = 0;
     //public ObjectPools pools;
 

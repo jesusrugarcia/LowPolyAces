@@ -14428,6 +14428,7 @@ GameObject:
   - component: {fileID: 7383464750740307728}
   - component: {fileID: 1381731530311309484}
   - component: {fileID: 8524473942574432392}
+  - component: {fileID: 7512763462741766741}
   m_Layer: 0
   m_Name: OmegaGunnerArcade
   m_TagString: Untagged
@@ -14495,6 +14496,7 @@ MonoBehaviour:
   planeShooter: {fileID: 8524473942574432392}
   planeMovement: {fileID: 0}
   controller: {fileID: 0}
+  statusManager: {fileID: 7512763462741766741}
 --- !u!114 &6376856606919852469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14509,7 +14511,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plane: {fileID: 3985254039140448726}
   explosion: {fileID: 2154406799266094197, guid: 4c57bc5d0366dd143b1bc09c3726b1aa, type: 3}
+  shield: {fileID: 0}
   SFXManager: {fileID: 0}
+  healing: 0
+  healAmount: 0
 --- !u!114 &4966866814222727482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14530,20 +14535,52 @@ MonoBehaviour:
   rotationSpeed: 0
   rotation: 0
   maxRotation: 0
+  timeToRotate: 1
+  timeRotating: 1
   bulletDamage: 1
-  damageOnButton: 0.1
-  damageTurret: 0.1
+  turretDamage: 0.1
+  missileDamage: 10
+  mineDamage: 5
+  drillDamage: 5
   shootSpeed: 0
   magazineSize: 10
   turretShootSpeed: 1
-  specialAmmoType: 0
+  normalDroneShootSpeed: 1
+  specialDroneShootSpeed: 10
+  auxDroneSpeed: 10
+  missileType: 0
+  gadgetType: 0
+  defenseType: 0
   specialAmmo: 0
   maxSpecialAmmo: 1
-  timeToRotate: 1
-  timeRotating: 1
+  defenseAmmo: 0
+  maxDefenseAmmo: 1
+  extraBullets: 0
+  maxMines: 3
+  mines: 0
+  meleeTime: 1
+  trackerBullet: 0
+  searchDistance: 1
   scoreValue: 0
   price: 0
   hasShield: 0
+  damageReductionTankShield: 0.7
+  SpecialShieldDuration: 1
+  healAreaAmount: 0.01
+  rechargeDefenseTime: 5
+  maxDrones: 1
+  drones: 0
+  statusEffects:
+  - 0
+  - 0
+  - 0
+  invIncrease: 0.1
+  ghostIncrease: 1
+  timeTargetting: 2
+  stunnedTime: 1
+  laserActivated: 0
+  laserTime: 1
+  laserDamage: 0.1
   plane: {fileID: 3985254039140448726}
 --- !u!114 &7383464750740307728
 MonoBehaviour:
@@ -14585,13 +14622,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 2091597665663145648, guid: 327923c4be3bef24aa83766cf0d7abc4, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
-  mine: {fileID: 2275125643518446950, guid: cc67010f2e7d6594985dee77adcff74a, type: 3}
+  gadget: {fileID: 0}
+  defense: {fileID: 0}
   shootTimer: 0
   plane: {fileID: 3985254039140448726}
   type: 0
   magazineFull: 0
   magazine: 0
   shootSpeedOnButton: 0.05
+  defenseRecharge: 0
+  defenseActivated: 0
+  mines: []
+  hook: {fileID: 0}
+  firstCoin: {fileID: 0}
+  lastCoin: {fileID: 0}
+--- !u!114 &7512763462741766741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737876632561105729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7242fd2b7ae664842aa16f37d023c090, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeManager: {fileID: 3985254039140448726}
 --- !u!1 &5737876632954651616
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BumbleBeePlayer2
   m_EditorClassIdentifier: 
   model: BumbleBee
-  plane: {fileID: 3156071467063626411, guid: 5761a6e8859959545976ba6c00a08b7d, type: 3}
+  plane: {fileID: 3675743350198082417, guid: 5761a6e8859959545976ba6c00a08b7d, type: 3}
   stats: {fileID: 11400000, guid: 4e8650989e8c8a044a61526b7abba127, type: 2}

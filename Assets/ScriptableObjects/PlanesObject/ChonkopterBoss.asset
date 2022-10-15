@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: ChonkopterBoss
+  m_EditorClassIdentifier: 
+  model: Chonkopter
+  plane: {fileID: 4666513060062104232, guid: f5f5a3c6c4d71ca4fbf1a74e080f9266, type: 3}
+  stats: {fileID: 11400000, guid: 17c4d9a036eddc8488464a725b2829c8, type: 2}

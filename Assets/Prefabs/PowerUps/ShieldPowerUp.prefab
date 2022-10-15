@@ -195,14 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  shield: {fileID: 2244150930521384183, guid: 39fb8db881018454bb7f28fbf77b0caa, type: 3}
-  TurretDrone: {fileID: 0}
-  MineDrone: {fileID: 0}
-  GunnerDrone: {fileID: 0}
-  MissileDrone: {fileID: 0}
-  ShieldDrone: {fileID: 0}
-  RepairDrone: {fileID: 0}
-  type: 3
+  type: 13
 --- !u!54 &4753860430466860266
 Rigidbody:
   m_ObjectHideFlags: 0

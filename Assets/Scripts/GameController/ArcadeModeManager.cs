@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class ArcadeModeManager : GameModeManager
 {
-    public int maxEnemies = 1;
+    
     public float timeToIncreaseEnemies = 20;
     public float timer = 0f;
     public int powerUpsSize = 0;
@@ -53,13 +53,13 @@ public class ArcadeModeManager : GameModeManager
         else {
             endGame();
         }
-        maxEnemies = (int)((controller.gameTimer/timeToIncreaseEnemies) + 1);
+        controller.maxEnemies = (int)((controller.gameTimer/timeToIncreaseEnemies) + 1);
 
         spawnEnemies();
     }
 
     public void spawnEnemies(){
-        if (controller.currentEnemies < maxEnemies){
+        if (controller.currentEnemies < controller.maxEnemies){
             controller.enemySpawner.spawnEnemy();
         }
     }

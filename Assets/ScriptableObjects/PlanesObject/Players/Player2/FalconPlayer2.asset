@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FalconPlayer2
   m_EditorClassIdentifier: 
   model: Falcon
-  plane: {fileID: 4460081729406769180, guid: 6bde99625163afe43ad9d369bf0e5527, type: 3}
+  plane: {fileID: 8062399871141221873, guid: 6bde99625163afe43ad9d369bf0e5527, type: 3}
   stats: {fileID: 11400000, guid: f9217fc49b91d5846b7fd95b8badb80e, type: 2}

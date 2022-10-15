@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
@@ -46,5 +45,17 @@ public class BulletMovement : MonoBehaviour
         if (transform.position.z < -controller.maz || transform.position.z > controller.maz || transform.position.x < -controller.max || transform.position.x > controller.max){
             Destroy(gameObject);
         }
+    }
+
+    public void rotateTowards(GameObject target){
+        try{
+            transform.LookAt(target.transform.position);
+            transform.LookAt(transform.position + (-transform.right));
+        } catch(Exception e){
+            target = gameObject;
+            Debug.Log(e);
+        }
+        
+        
     }
 }

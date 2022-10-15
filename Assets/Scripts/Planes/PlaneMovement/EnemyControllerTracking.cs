@@ -54,7 +54,7 @@ public class EnemyControllerTracking :  PlaneMovement
         for(int i= 0; i < plane.controller.players.Length; i++){
             otherPlane = plane.controller.players[i];
             distance = Vector3.Distance(plane.transform.position, otherPlane.transform.position);
-            if(distance < min && otherPlane.GetComponent<PlaneStats>().health > 0){
+            if(distance < min && otherPlane.GetComponent<PlaneStats>().health > 0 && otherPlane.GetComponent<PlaneStats>().statusEffects[(int)StatusEffects.Ghost] <= 0){
                 objective = otherPlane.transform;
             }
         }
