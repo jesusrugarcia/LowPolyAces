@@ -59,9 +59,10 @@ public class PlaneStatsObject : ScriptableObject
     public int maxDrones = 1;
     public int drones = 0;
 
-     public float[] statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
+    public float[] statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
     public float invIncrease = 0.1f;
     public float ghostIncrease = 1f;
+    public float evasion = 0;
     public float timeTargetting = 2f;
     public float statusEffectTime = 1;
     

@@ -5016,6 +5016,7 @@ MonoBehaviour:
   SpecialShieldDuration: 1
   healAreaAmount: 0.01
   rechargeDefenseTime: 5
+  rechargeSpecialTime: 10
   maxDrones: 1
   drones: 0
   statusEffects:
@@ -5023,7 +5024,9 @@ MonoBehaviour:
   - 0
   invIncrease: 0.1
   ghostIncrease: 1
+  evasion: 0
   timeTargetting: 2
+  statusEffectTime: 2
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1
@@ -5046,6 +5049,8 @@ MonoBehaviour:
   SFXManager: {fileID: 0}
   healing: 0
   healAmount: 0
+  healTimer: 0
+  burnTimer: 0
 --- !u!114 &7613339032082415423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,7 +5063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f6786c72c394343b650d2aaa71d874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
+  bullet: {fileID: 7115774868559060536, guid: a96d6345f2246624486d21edbf9b0e88, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
   gadget: {fileID: 0}
   defense: {fileID: 0}
@@ -5069,9 +5074,12 @@ MonoBehaviour:
   magazine: 0
   shootSpeedOnButton: 0.05
   defenseRecharge: 0
+  specialRecharge: 0
   defenseActivated: 0
   mines: []
   hook: {fileID: 0}
+  firstCoin: {fileID: 0}
+  lastCoin: {fileID: 0}
   input: {fileID: 7613339032082415421}
   missileAction:
     m_Name: Missile

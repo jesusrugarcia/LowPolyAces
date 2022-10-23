@@ -130,7 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  type: 20
+  manager: {fileID: 0}
+  type: 26
 --- !u!1 &4130509079702277224
 GameObject:
   m_ObjectHideFlags: 0

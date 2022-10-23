@@ -259,6 +259,8 @@ MonoBehaviour:
   controller: {fileID: 0}
   plane: {fileID: 0}
   timer: 0
+  meleeOffset: 0
+  meleeFall: 0
 --- !u!114 &2561845590187594279
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -119,9 +119,19 @@ public class PlaneShooter : MonoBehaviour
 
     public virtual void instantiateBullet(float angle = 0){
         var bull = Instantiate(bullet, transform.position, transform.rotation);
-    //TRACKER BULLET
-        if (plane.stats.trackerBullet){
-            Destroy(bull.GetComponent<BulletMovement>());
+        var bullMovement = bull.GetComponent<BulletMovement>();
+        if (bullMovement.isMelee){
+                instantiateMeleeBullet(bull, angle);
+        } else if (plane.stats.trackerBullet){
+            instantiateMissileBullet(bull,angle);
+        }else {
+            instantiateNormalBullet(bull, angle);
+        }
+        
+    }
+
+    public void instantiateMissileBullet(GameObject bull, float angle){
+        Destroy(bull.GetComponent<BulletMovement>());
             MissileManager manager;
             try{
                 manager = bull.GetComponent<MissileManager>();
@@ -137,24 +147,33 @@ public class PlaneShooter : MonoBehaviour
             manager.teamManager = GetComponent<TeamManager>();
             bull.GetComponent<DamageManager>().damage = plane.stats.bulletDamage;
             bull.transform.Rotate(new Vector3(0,0,angle));
+    }
 
-
-        }else {
-         //NORMAL BULLET
-
+    public void instantiateMeleeBullet(GameObject bull, float angle){
             bull.GetComponent<TeamManager>().team = plane.teamManager.team;
             var bullMovement = bull.GetComponent<BulletMovement>();
             bullMovement.controller = plane.controller;
-            if (bullMovement.isMelee){
-                bullMovement.plane = plane;
-                bull.GetComponent<DamageManager>().damage = plane.stats.drillDamage;
-                bullMovement.meleeOffset = angle * 0.01f;
-            } else {
-                bull.GetComponent<DamageManager>().damage = plane.stats.bulletDamage;
-                bull.transform.Rotate(new Vector3(0,0,angle));
+            bullMovement.plane = plane;
+            bull.GetComponent<DamageManager>().damage = plane.stats.drillDamage;
+            bullMovement.meleeOffset = angle * 0.01f;
+    }
+
+    public void instantiateNormalBullet(GameObject bull, float angle){
+            bull.GetComponent<TeamManager>().team = plane.teamManager.team;
+            var bullMovement = bull.GetComponent<BulletMovement>();
+            bullMovement.controller = plane.controller;
+            bullMovement.plane = plane;
+            bull.GetComponent<DamageManager>().damage = plane.stats.bulletDamage;
+            bull.transform.Rotate(new Vector3(0,0,angle));
+            try{
+                var manager = bull.GetComponent<MissileManager>();
+                if(manager != null){
+                    manager.plane = plane;
+                }
+            } catch (Exception e){
+                Debug.Log(e);
             }
-        }
-        
+            
     }
 
     public virtual void shootTurret(GameObject shooter){
@@ -165,7 +184,7 @@ public class PlaneShooter : MonoBehaviour
     }
 
     public void launchMissile(){
-        if(plane.stats.missileType == MissileType.Missile){
+        if(plane.stats.missileType == MissileType.Missile || plane.stats.missileType == MissileType.ClusterMissile){
             var mis = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
             mis.GetComponent<MissileManager>().plane = plane;
             mis.GetComponent<DamageManager>().damage = plane.stats.missileDamage;
@@ -198,6 +217,7 @@ public class PlaneShooter : MonoBehaviour
     public virtual void launchGadget(){
         if (plane.stats.gadgetType == GadgetType.Turbo){
             plane.stats.speed = plane.stats.maxSpeed * 4;
+            var turbo = Instantiate(gadget, transform.position, transform.rotation);
             plane.stats.specialAmmo --;
         } else if (plane.stats.gadgetType == GadgetType.TankShield){
             var tankShield = Instantiate(gadget, transform.position, transform.rotation);
@@ -227,16 +247,20 @@ public class PlaneShooter : MonoBehaviour
         if (plane.stats.defenseType == DefenseType.Dash){
             plane.stats.defenseAmmo --;
             plane.statusManager.addStatus(StatusEffects.Invulnerability , plane.stats.invIncrease);
-            transform.Translate(Vector3.right);
+            transform.Translate(Vector3.right * 2);
+            var dash = Instantiate(defense, transform.position, transform.rotation);
+            var particles = Instantiate(plane.controller.centralManager.InvulnerabilityParticleEffect, transform.position, transform.rotation);
+            particles.GetComponent<ParticleEffectManager>().plane = plane;
         } else if (plane.stats.defenseType == DefenseType.HealShield && !defenseActivated){
             defenseActivated = true;
-            plane.stats.defenseAmmo --;
             var healShield = Instantiate(defense, transform.position, transform.rotation);
             healShield.GetComponent<HealShieldManager>().plane = plane;
         } else if (plane.stats.defenseType == DefenseType.Ghost){
+            var particles = Instantiate(plane.controller.centralManager.GhostParticleEffect, transform.position, transform.rotation);
+            particles.GetComponent<ParticleEffectManager>().plane = plane;
             plane.stats.defenseAmmo --;
             plane.statusManager.addStatus(StatusEffects.Ghost, plane.stats.ghostIncrease);
-        } else if (plane.stats.defenseType == DefenseType.Hook){
+        } else if (plane.stats.defenseType == DefenseType.Hook || plane.stats.defenseType == DefenseType.InverseHook){
             manageHook();
         }
 
@@ -301,6 +325,14 @@ public class PlaneShooter : MonoBehaviour
             mines[i] = mis;
             break;
             } 
+        }
+    }
+
+    public void resizeMinesList(){
+        var newMines = mines = new GameObject[plane.stats.maxMines];
+        for(int i= 0; i< mines.Length; i++){
+            newMines[i] = mines [i];
+            mines = newMines;
         }
     }
 

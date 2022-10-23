@@ -15,4 +15,3 @@ MonoBehaviour:
   planes:
   - {fileID: 11400000, guid: 95f1240b3544f174abbbc5ced5f1a70f, type: 2}
   - {fileID: 11400000, guid: 2c607bf819c955d4ea6496682a7ffc9a, type: 2}
-  - {fileID: 11400000, guid: bbb2fe2907ca1154fa7f13bbc1aa65b4, type: 2}

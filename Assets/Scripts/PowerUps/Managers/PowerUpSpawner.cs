@@ -14,6 +14,7 @@ public class PowerUpSpawner : MonoBehaviour
     public GameObject ElectricClaw;
     public GameObject BurningClaw;
     public GameObject RustingClaw;
+    public GameObject ClusterMissile;
     
     //Gadgets
     public GameObject Turbo;
@@ -27,6 +28,7 @@ public class PowerUpSpawner : MonoBehaviour
     public GameObject HealShield;
     public GameObject Ghost;
     public GameObject Hook;
+    public GameObject InverseHook;
 
 
     public GameObject shield;
@@ -44,35 +46,26 @@ public class PowerUpSpawner : MonoBehaviour
     public GameObject ExtraBullet;
     public GameObject TrackerBullet;
     //Stats
-    public GameObject MaxHealth;
-    public GameObject MaxSpeed;
-
-    public GameObject Acceleration;
-    public GameObject RotationSpeed;
-
-    public GameObject Damage;
-    public GameObject TurretDamage;
-    public GameObject MissileDamage;
-    public GameObject MineDamage;
-    public GameObject DrillDamage;
-
-    public GameObject ShootSpeed;
-    public GameObject MagazineSize;
-    public GameObject TurretShootSpeed;
-    public GameObject NormalDroneShootSpeed;
-    public GameObject SpecialDroneShootSpeed;
-    public GameObject AuxDroneShootSpeed;
-
-    public GameObject MaxSpecialAmmo;
-    public GameObject MaxMines;
-    public GameObject MeleeTime;
-    public GameObject MaxDrones;
+    public GameObject ReinforcedFuselage;
+    public GameObject ExperimentalEngine;
+    public GameObject FineTunnesFlaps;
+    public GameObject ExperimentalAmmunition;
+    public GameObject AutomatizedRechargeSystems;
+    public GameObject BarrelMagazines;
+    public GameObject ExperimentalBarrel;
+    public GameObject EnhancedControllers;
+    public GameObject MarauderSystems;
+    public GameObject ExperimentalDefenseSystems;
+    public GameObject CommanderSystems;
+    public GameObject ExperimentalCamouflage;
+    public GameObject HydraulicPincers;
 
     public void spawnPowerUp(PowerUps type){ //to be updated with propper elements...
         if(controller.currentPowerUps >= controller.gameOptions.maxPowerUps){
             return;
         }
 
+        //misiles
         if(type == PowerUps.Missile){
             var pow = Instantiate(missile,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
@@ -94,8 +87,12 @@ public class PowerUpSpawner : MonoBehaviour
         }else if (type == PowerUps.RustingClaw){
             var pow =Instantiate(RustingClaw,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.ClusterMissile){
+            var pow =Instantiate(ClusterMissile,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
         }
         
+        //gadgets
         else if(type == PowerUps.Turbo){
             var pow =Instantiate(Turbo,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
@@ -112,6 +109,7 @@ public class PowerUpSpawner : MonoBehaviour
             var pow =Instantiate(Coin,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
         }
+        //defenses
         
         else if(type == PowerUps.Dash){
             var pow =Instantiate(Dash,getPosition(),Quaternion.identity);
@@ -125,8 +123,12 @@ public class PowerUpSpawner : MonoBehaviour
         } else if(type == PowerUps.Hook){
             var pow =Instantiate(Hook,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        } 
+        } else if(type == PowerUps.InverseHook){
+            var pow =Instantiate(InverseHook,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        }
         
+        //misc
         else if(type == PowerUps.Shield){
             var pow =Instantiate(shield,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
@@ -135,7 +137,7 @@ public class PowerUpSpawner : MonoBehaviour
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
         }
         
-        
+        //drones
         else if (type == PowerUps.TurretDrone){
             var pow =Instantiate(turretDrone,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
@@ -154,81 +156,59 @@ public class PowerUpSpawner : MonoBehaviour
         }else if (type == PowerUps.ShieldDrone){
             var pow =Instantiate(ShieldDrone,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MissileBullet){
+        }
+        
+        //bullets
+        else if (type == PowerUps.MissileBullet){
             var pow =Instantiate(MissileBullet,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }
-        
-        else if (type == PowerUps.DrillBullet){
+        }else if (type == PowerUps.DrillBullet){
             var pow =Instantiate(DrillBullet,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.ExtraBullet){
-            var pow =Instantiate(ExtraBullet,getPosition(),Quaternion.identity);
+        }
+        
+        //stats
+        else if (type == PowerUps.ReinforcedFuselage){
+            var pow =Instantiate(ReinforcedFuselage,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.TrackerBullet){
-            var pow =Instantiate(TrackerBullet,getPosition(),Quaternion.identity);
+        } else if (type == PowerUps.ExperimentalEngine){
+            var pow =Instantiate(ExperimentalEngine,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.FineTunnedFlaps){
+            var pow =Instantiate(FineTunnesFlaps,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.ExperimentalAmmunition){
+            var pow =Instantiate(ExperimentalAmmunition,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.AutomatizedRechargeSystems){
+            var pow =Instantiate(AutomatizedRechargeSystems,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.BarrelMagazines){
+            var pow =Instantiate(BarrelMagazines,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.ExperimentalBarrel){
+            var pow =Instantiate(ExperimentalBarrel,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.EnhancedControllers){
+            var pow =Instantiate(EnhancedControllers,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.MarauderSystems){
+            var pow =Instantiate(MarauderSystems,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.ExperimentalDefenseSystems){
+            var pow =Instantiate(ExperimentalDefenseSystems,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.CommanderSystems){
+            var pow =Instantiate(CommanderSystems,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.ExperimentalCamouflage){
+            var pow =Instantiate(ExperimentalCamouflage,getPosition(),Quaternion.identity);
+            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
+        } else if (type == PowerUps.HydraulicPincers){
+            var pow =Instantiate(HydraulicPincers,getPosition(),Quaternion.identity);
             pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
         }
         
-        
-        else if (type == PowerUps.MaxHealth){
-            var pow =Instantiate(MaxHealth,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MaxSpeed){
-            var pow =Instantiate(MaxSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.Acceleration){
-            var pow =Instantiate(Acceleration,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.RotationSpeed){
-            var pow =Instantiate(RotationSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.Damage){
-            var pow =Instantiate(Damage,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.TurretDamage){
-            var pow =Instantiate(TurretDamage,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MissileDamage){
-            var pow =Instantiate(MissileDamage,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MineDamage){
-            var pow =Instantiate(MineDamage,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.DrillDamage){
-            var pow =Instantiate(DrillDamage,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.ShootSpeed){
-            var pow =Instantiate(ShootSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MagazineSize){
-            var pow =Instantiate(MagazineSize,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.TurretShootSpeed){
-            var pow =Instantiate(TurretShootSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.NormalDroneSpeed){
-            var pow =Instantiate(NormalDroneShootSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.SpecialDroneSpeed){
-            var pow =Instantiate(SpecialDroneShootSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.AuxDroneSpeed){
-            var pow =Instantiate(AuxDroneShootSpeed,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }else if (type == PowerUps.MaxSpecialAmmo){
-            var pow =Instantiate(MaxSpecialAmmo,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        } else if (type == PowerUps.MaxMines){
-            var pow =Instantiate(MaxMines,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        } else if (type == PowerUps.MeleeTime){
-            var pow =Instantiate(MeleeTime,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        } else if (type == PowerUps.MaxDrones){
-            var pow =Instantiate(MaxDrones,getPosition(),Quaternion.identity);
-            pow.GetComponent<PowerUpsManager>().manager = controller.centralManager;
-        }
         controller.currentPowerUps ++;
     }
 

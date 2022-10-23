@@ -98,6 +98,7 @@ MonoBehaviour:
   rotationSpeedX: 50
   rotationSpeedY: 0
   rotationSpeedZ: 0
+  parent: {fileID: 0}
 --- !u!1 &1001691218699060095
 GameObject:
   m_ObjectHideFlags: 0
@@ -9957,8 +9958,9 @@ MonoBehaviour:
   - 0
   invIncrease: 0.1
   ghostIncrease: 1
+  evasion: 0
   timeTargetting: 2
-  stunnedTime: 1
+  statusEffectTime: 2
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1
@@ -9982,6 +9984,7 @@ MonoBehaviour:
   healing: 0
   healAmount: 0
   healTimer: 0
+  burnTimer: 0
 --- !u!114 &8172815985284627251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9994,7 +9997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f6786c72c394343b650d2aaa71d874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 6914095241137900784, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
+  bullet: {fileID: 2392345152861963521, guid: b0b82d0c2384d1d4b9c5da169c4d81c0, type: 3}
   missile: {fileID: 3841090810802192123, guid: fab96ca101dd09a4aa34d1613d512f67, type: 3}
   gadget: {fileID: 0}
   defense: {fileID: 0}
@@ -10029,18 +10032,18 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
   gadgetAction:
-    m_Name: 
+    m_Name: Gadget
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: d0069346-a84c-4eb5-9f2b-4a780ef15f12
+    m_Id: 73b1dca7-c21a-4edc-b482-b6ba50032a95
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
   defenseAction:
-    m_Name: 
+    m_Name: Defense
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 5220c489-7a54-4f2d-a9a0-5974e469a1c9
+    m_Id: e67ff8c9-737f-4d6f-af48-5d7584e49163
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []

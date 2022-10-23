@@ -239,7 +239,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  type: 7
+  manager: {fileID: 0}
+  type: 11
 --- !u!135 &6466366047657814754
 SphereCollider:
   m_ObjectHideFlags: 0

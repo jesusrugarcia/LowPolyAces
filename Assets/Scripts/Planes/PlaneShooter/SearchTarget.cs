@@ -11,7 +11,7 @@ public struct TargetResult
 
 public static class SearchTarget 
 {
-    public static TargetResult searchTarget(GameObject origin, float targetDistance, Vector3 direction){
+    public static TargetResult searchTarget(GameObject origin, float targetDistance, Vector3 direction, bool checkForMines = false, bool targetAllies = false){
         try{
             TargetResult result = new TargetResult();
             RaycastHit hit;
@@ -20,7 +20,10 @@ public static class SearchTarget
             if(Physics.Raycast(ray, out hit, targetDistance)){
                 var detected = hit.collider.gameObject;
                 var dist = Vector3.Distance(detected.transform.position, origin.transform.position);
-                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team && detected.GetComponent<PlaneStats>().statusEffects[(int)StatusEffects.Ghost] <= 0){
+                var mine = detected.GetComponent<Mine>();
+                if((!targetAllies && !hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team && detected.GetComponent<PlaneStats>().statusEffects[(int)StatusEffects.Ghost] <= 0) || // enemies
+                (checkForMines && mine != null && hit.collider.isTrigger && detected.GetComponent<TeamManager>().team == origin.GetComponent<TeamManager>().team) || //mines
+                (targetAllies && !hit.collider.isTrigger && detected.GetComponent<TeamManager>().team == origin.GetComponent<TeamManager>().team)){ //allues
                     result.target = detected;
                     result.distance = dist;
                 }
@@ -42,7 +45,7 @@ public static class SearchTarget
         }
     }
 
-    public static TargetResult searchTarget(GameObject origin, float thickness, float targetDistance, Vector3 direction){
+    public static TargetResult searchTarget(GameObject origin, float thickness, float targetDistance, Vector3 direction, bool checkForMines = false, bool targetAllies = false){
         try{
             TargetResult result = new TargetResult();
             RaycastHit hit;
@@ -50,7 +53,10 @@ public static class SearchTarget
             if(Physics.SphereCast(origin.transform.position, thickness, direction, out hit, targetDistance)){
                 var detected = hit.collider.gameObject;
                 var dist = hit.distance; //Vector3.Distance(detected.transform.position, origin.transform.position);
-                if(!hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team){
+                var mine = detected.GetComponent<Mine>();
+                if((!targetAllies && !hit.collider.isTrigger && detected.GetComponent<TeamManager>().team != origin.GetComponent<TeamManager>().team && detected.GetComponent<PlaneStats>().statusEffects[(int)StatusEffects.Ghost] <= 0) || // enemies
+                (checkForMines && mine != null && hit.collider.isTrigger && detected.GetComponent<TeamManager>().team == origin.GetComponent<TeamManager>().team) || //mines
+                (targetAllies && !hit.collider.isTrigger && detected.GetComponent<TeamManager>().team == origin.GetComponent<TeamManager>().team)){ //allues
                     result.target = detected;
                     result.distance = dist;
                 }

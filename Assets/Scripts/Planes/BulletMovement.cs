@@ -9,6 +9,8 @@ public class BulletMovement : MonoBehaviour
     public PlaneManager plane;
     public float timer = 0;
     public float meleeOffset;
+    public bool meleeFall = false;
+    public GameObject hitEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,13 @@ public class BulletMovement : MonoBehaviour
         if (isMelee){
             timer += Time.deltaTime;
             if (timer >= plane.stats.meleeTime){
-                Destroy(gameObject);
+                if (!meleeFall){
+                    meleeFall = true;
+                    timer = 0;
+                }else {
+                    Destroy(gameObject);
+                }
+                
             }
         }
         move();
@@ -35,9 +43,11 @@ public class BulletMovement : MonoBehaviour
     public void move(){
         if(!isMelee){
             transform.Translate(Vector3.right * Time.deltaTime * speed);
-        } else {
+        } else if(!meleeFall){
             transform.position = plane.transform.position + plane.transform.right + (meleeOffset + plane.stats.extraBullets * 0.1f) * plane.transform.up;
             transform.rotation = plane.transform.rotation;
+        } else {
+            transform.position = transform.position + (transform.right * 0.1f) + new Vector3(0,-0.2f,0);
         }
     }
 
@@ -56,6 +66,19 @@ public class BulletMovement : MonoBehaviour
             Debug.Log(e);
         }
         
+        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        try{
+            var plan = other.gameObject.GetComponent<PlaneManager>();
+            if(plan.teamManager.team != GetComponent<TeamManager>().team && plan.stats.health > GetComponent<DamageManager>().damage && plan.stats.statusEffects[(int)StatusEffects.Invulnerability] <= 0){
+                Instantiate(hitEffect,transform.position,transform.rotation);
+            }
+        } catch (Exception e){
+            Debug.Log(e);
+        }
         
     }
 }

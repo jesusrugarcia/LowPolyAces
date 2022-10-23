@@ -16,11 +16,57 @@ MonoBehaviour:
   health: 1
   maxSpeed: 5
   speed: 0
+  acceleration: 0.1
   rotationSpeed: 3
   rotation: 0
   maxRotation: 3
-  acceleration: 0.1
-  shootSpeed: 1
-  scoreValue: 10
   timeToRotate: 1
+  timeRotating: 1
+  bulletDamage: 1
+  turretDamage: 0.1
+  missileDamage: 10
+  mineDamage: 5
+  drillDamage: 5
+  shootSpeed: 1
+  magazineSize: 10
+  turretShootSpeed: 1
+  normalDroneShootSpeed: 1
+  specialDroneShootSpeed: 10
+  auxDroneSpeed: 10
+  missileType: 0
+  gadgetType: 0
+  defenseType: 0
+  specialAmmo: 0
+  maxSpecialAmmo: 1
+  defenseAmmo: 0
+  maxDefenseAmmo: 1
+  extraBullets: 0
+  maxMines: 3
+  mines: 0
+  meleeTime: 1
+  trackerBullet: 0
+  searchDistance: 1
+  scoreValue: 10
   price: 0
+  hasShield: 0
+  damageReductionTankShield: 0.7
+  SpecialShieldDuration: 5
+  healAreaAmount: 0.01
+  rechargeDefenseTime: 5
+  rechargeSpecialTime: 10
+  maxDrones: 1
+  drones: 0
+  statusEffects:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  invIncrease: 0.5
+  ghostIncrease: 5
+  evasion: 0
+  timeTargetting: 5
+  statusEffectTime: 5
+  laserActivated: 0
+  laserTime: 5
+  laserDamage: 0.1

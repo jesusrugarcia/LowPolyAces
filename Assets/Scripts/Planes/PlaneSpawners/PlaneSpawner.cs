@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum movement {
@@ -111,9 +110,10 @@ public class PlaneSpawner : MonoBehaviour
         stats.maxDrones = planeModel.stats.maxDrones;
         stats.drones = planeModel.stats.drones;
 
-        stats.statusEffects = planeModel.stats.statusEffects;
+        stats.statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];//planeModel.stats.statusEffects;
         stats.invIncrease = planeModel.stats.invIncrease;
         stats.ghostIncrease = planeModel.stats.ghostIncrease;
+        stats.evasion = planeModel.stats.evasion;
         stats.timeTargetting = planeModel.stats.timeTargetting;
         stats.statusEffectTime = planeModel.stats.statusEffectTime;
 
@@ -123,6 +123,8 @@ public class PlaneSpawner : MonoBehaviour
 
         if(movement == movement.Player){ //to be ajusted for balance
            stats.statusEffects[(int)StatusEffects.Invulnerability] = 1;
+           var particles = Instantiate(controller.centralManager.InvulnerabilityParticleEffect, transform.position, transform.rotation);
+          particles.GetComponent<ParticleEffectManager>().plane = plane.GetComponent<PlaneManager>();
         }
     }
 

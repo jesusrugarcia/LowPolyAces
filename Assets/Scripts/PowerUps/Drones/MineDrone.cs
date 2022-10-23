@@ -14,7 +14,7 @@ public class MineDrone : MonoBehaviour
 
     private void FixedUpdate() {
         timer += Time.deltaTime;
-        if (timer >= plane.stats.specialDroneShootSpeed && plane.stats.mines < plane.stats.maxMines){
+        if (timer >= plane.stats.specialDroneShootSpeed  ){//&& plane.stats.mines < plane.stats.maxMines){
             var mine = Instantiate(Mine, transform.position, Quaternion.Euler(-90,0,0));
             mine.GetComponent<TeamManager>().team = plane.teamManager.team;
             mine.GetComponent<DamageManager>().damage = plane.stats.mineDamage;

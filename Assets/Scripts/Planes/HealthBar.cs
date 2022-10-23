@@ -9,6 +9,7 @@ public class HealthBar : MonoBehaviour
 
     public Slider slider;
     public GameObject MissileIcon;
+    public GameObject DefenseIcon;
     public Image ammo;
 
     public void setHealth(){
@@ -30,6 +31,25 @@ public class HealthBar : MonoBehaviour
         
         setHealth();
         setAmmo();
+        SetMissileIcon();
+        SetDefenseIcon();
+    }
+
+    public void SetMissileIcon(){
+        if(plane.stats.specialAmmo > 0){
+            MissileIcon.SetActive(true);
+        } else {
+            MissileIcon.SetActive(false);
+        }
+        
+    }
+
+    public void SetDefenseIcon(){
+        if(plane.stats.defenseAmmo > 0){
+            DefenseIcon.SetActive(true);
+        } else {
+            DefenseIcon.SetActive(false);
+        }
     }
 
 }

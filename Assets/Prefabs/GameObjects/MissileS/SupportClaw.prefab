@@ -4879,6 +4879,14 @@ MonoBehaviour:
   target: {fileID: 0}
   targetDistance: 15
   speed: 10
+  maxRotation: 5
+  explodesMines: 0
+  targetAllies: 1
+  isExplosion: 0
+  explosion: {fileID: 0}
+  isCluster: 0
+  clusterQuantity: 3
+  clusterMissiles: {fileID: 0}
   isFlare: 0
   flareArea: {fileID: 0}
 --- !u!114 &5834122201456813477

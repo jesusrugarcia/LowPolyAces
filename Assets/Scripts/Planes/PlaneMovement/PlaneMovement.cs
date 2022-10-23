@@ -53,15 +53,15 @@ public class PlaneMovement : MonoBehaviour
     } */
 
     public void checkInScreen(){
-        if (transform.position.x < -plane.controller.max * 1.1f){
+        if (transform.position.x < -plane.controller.max - 0.1f){
             transform.position= new Vector3(plane.controller.max,0,transform.position.z);
-        } else if (transform.position.x > plane.controller.max * 1.1f){
+        } else if (transform.position.x > plane.controller.max + 0.1f){
             transform.position= new Vector3(-plane.controller.max,0,transform.position.z);
         }
 
-        if (transform.position.z < -plane.controller.maz * 1.1f){
+        if (transform.position.z < -plane.controller.maz - 0.1f){
             transform.position= new Vector3(transform.position.x,0,plane.controller.maz);
-        } else if (transform.position.z > plane.controller.maz * 1.1f){
+        } else if (transform.position.z > plane.controller.maz + 0.1f){
             transform.position= new Vector3(transform.position.x,0,-plane.controller.maz);
         }
     }

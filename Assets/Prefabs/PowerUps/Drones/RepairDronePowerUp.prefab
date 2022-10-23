@@ -311,7 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  type: 18
+  manager: {fileID: 0}
+  type: 24
 --- !u!54 &1788731459831080574
 Rigidbody:
   m_ObjectHideFlags: 0

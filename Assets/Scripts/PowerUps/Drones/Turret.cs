@@ -64,8 +64,8 @@ public class Turret : MonoBehaviour
     }
 
     public void searchTarget(){
-        Debug.DrawRay(transform.position,transform.right * targetDistance,Color.red);
-        var detected = SearchTarget.searchTarget(gameObject, targetDistance, transform.right).target;
+        Debug.DrawRay(transform.position,transform.right * (targetDistance + plane.stats.searchDistance),Color.red);
+        var detected = SearchTarget.searchTarget(gameObject, targetDistance + plane.stats.searchDistance, transform.right).target;
         if (detected != gameObject){
             target = detected;
         } else if (target == null || Vector3.Distance(transform.position, target.transform.position) > targetDistance){

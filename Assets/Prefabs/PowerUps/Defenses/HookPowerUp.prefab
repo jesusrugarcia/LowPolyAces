@@ -224,4 +224,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  type: 11
+  manager: {fileID: 0}
+  type: 16

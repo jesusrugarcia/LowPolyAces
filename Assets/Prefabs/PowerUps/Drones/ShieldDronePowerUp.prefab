@@ -359,7 +359,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 1
   max: 2
-  type: 17
+  manager: {fileID: 0}
+  type: 23
 --- !u!1 &8475134761134468367
 GameObject:
   m_ObjectHideFlags: 0

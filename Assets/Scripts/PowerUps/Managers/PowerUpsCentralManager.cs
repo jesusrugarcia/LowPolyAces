@@ -13,6 +13,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject ElectricClaw;
     public GameObject BurningClaw;
     public GameObject RustingClaw;
+    public GameObject ClusterMissile;
     //Gadgets
     public GameObject HealArea;
     public GameObject TankShield;
@@ -20,6 +21,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     //Defenses
     public GameObject HealShield;
     public GameObject Hook;
+    public GameObject InverseHook;
     //Drones
     public GameObject TurretDrone;
     public GameObject MineDrone;
@@ -29,14 +31,22 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject RepairDrone;
     public GameObject MissileBullet;
     public GameObject DrillBullet;
+    //ParticleEffects
+    public GameObject DashParticleEffect;
+    public GameObject TurboParticleEffect;
+    public GameObject InvulnerabilityParticleEffect;
+    public GameObject GhostParticleEffect;
+    public GameObject BurningParticleEffect;
+    public GameObject StunnedParticleEffect;
+    public GameObject RustingParticleEffect;
 
 //this method calls for the apropiate method when obtaining a power up.
     public void managePowerUp(Collision other, PowerUps type, GameObject origin){
         if(type == PowerUps.Missile || type == PowerUps.Mine || type == PowerUps.Flare || type == PowerUps.SupportClaw || 
-        type == PowerUps.ElectricClaw || type == PowerUps.BurningClaw || type == PowerUps.RustingClaw || type == PowerUps.Turbo || 
+        type == PowerUps.ElectricClaw || type == PowerUps.BurningClaw || type == PowerUps.RustingClaw || type == PowerUps.ClusterMissile || type == PowerUps.Turbo || 
         type == PowerUps.AreaOfHeal || type == PowerUps.TankShield || type == PowerUps.Laser || type == PowerUps.Coin){
             addWeaponPowerUp(other.gameObject, type, origin);
-        } else if(type == PowerUps.Dash || type == PowerUps.Ghost || type == PowerUps.HealShield || type == PowerUps.Hook){
+        } else if(type == PowerUps.Dash || type == PowerUps.Ghost || type == PowerUps.HealShield || type == PowerUps.Hook || type == PowerUps.InverseHook){
             addDefensePowerUp(other.gameObject, type, origin);
         }else if(type == PowerUps.Shield){
             addShield(other.gameObject, origin);
@@ -45,8 +55,6 @@ public class PowerUpsCentralManager : MonoBehaviour
             addDrone(other.gameObject, type, origin);
         } else if (type == PowerUps.MissileBullet || type == PowerUps.DrillBullet){
             addBulletType(other.gameObject, type, origin);
-        }else if (type == PowerUps.TrackerBullet){
-            addTrackerBullet(other.gameObject, origin);
         }else {
             addStat(other.gameObject, type, origin);
         }
@@ -95,10 +103,15 @@ public class PowerUpsCentralManager : MonoBehaviour
                 planeManager.stats.missileType = MissileType.RustingClaw;
                 planeManager.planeShooter.missile = RustingClaw;
                 destroyable = true;
+            } else if(type == PowerUps.ClusterMissile && !(planeManager.stats.missileType == MissileType.ClusterMissile)){
+                planeManager.stats.missileType = MissileType.ClusterMissile;
+                planeManager.planeShooter.missile = ClusterMissile;
+                destroyable = true;
             }
             //Gadgets
             else if (type == PowerUps.Turbo && !(planeManager.stats.gadgetType == GadgetType.Turbo)){
                 planeManager.stats.gadgetType = GadgetType.Turbo;
+                planeManager.planeShooter.gadget = TurboParticleEffect;
                 destroyable = true;
             } else if (type == PowerUps.AreaOfHeal && !(planeManager.stats.gadgetType == GadgetType.AreaOfHeal)){
                 planeManager.stats.gadgetType = GadgetType.AreaOfHeal;
@@ -138,6 +151,7 @@ public class PowerUpsCentralManager : MonoBehaviour
 
             if(type == PowerUps.Dash && planeManager.stats.defenseType != DefenseType.Dash){
                 planeManager.stats.defenseType = DefenseType.Dash;
+                planeManager.planeShooter.defense = DashParticleEffect;
                 destroyable = true;
             } else if(type == PowerUps.Ghost && planeManager.stats.defenseType != DefenseType.Ghost){
                 planeManager.stats.defenseType = DefenseType.Ghost;
@@ -145,6 +159,10 @@ public class PowerUpsCentralManager : MonoBehaviour
             } else if(type == PowerUps.Hook && planeManager.stats.defenseType != DefenseType.Hook){
                 planeManager.stats.defenseType = DefenseType.Hook;
                 planeManager.planeShooter.defense = Hook;
+                destroyable = true;
+            } else if(type == PowerUps.InverseHook && planeManager.stats.defenseType != DefenseType.InverseHook){
+                planeManager.stats.defenseType = DefenseType.InverseHook;
+                planeManager.planeShooter.defense = InverseHook;
                 destroyable = true;
             } else if(type == PowerUps.HealShield && planeManager.stats.defenseType != DefenseType.HealShield){
                 planeManager.stats.defenseType = DefenseType.HealShield;
@@ -169,7 +187,7 @@ public class PowerUpsCentralManager : MonoBehaviour
             if(!planeManager.stats.hasShield){
                 planeManager.stats.hasShield = true;
                 planeManager.controller.reduceCurrentPowerUps();
-                Destroy(gameObject);
+                Destroy(origin);
                 var shi = Instantiate(shield, plane.transform.position,Quaternion.identity);
                 var shieldManager = shi.GetComponent<ShieldManager>();
                 shieldManager.teamManager.team = planeManager.teamManager.team;
@@ -261,91 +279,87 @@ public class PowerUpsCentralManager : MonoBehaviour
         
     }
 
-    public void addTrackerBullet(GameObject plane, GameObject origin){
-        try{
-            var planeManager = plane.GetComponent<PlaneManager>();
-            if (!planeManager.stats.trackerBullet){
-                planeManager.stats.trackerBullet = true;
-            } else {
-                planeManager.stats.searchDistance ++;
-            }
-            planeManager.controller.reduceCurrentPowerUps();
-            Destroy(origin);
-        } catch( Exception e){
-            Debug.Log(e);
-        }
-    }
-
     public void addStat(GameObject plane, PowerUps type, GameObject origin){
         try{
             var planeManager = plane.GetComponent<PlaneManager>();
             bool destroyable = false;
 
-            if ( type == PowerUps.Repair && planeManager.stats.health < planeManager.stats.maxHealth){
-                planeManager.stats.health ++;
+            if(type == PowerUps.ReinforcedFuselage){
                 destroyable = true;
-            } else if (type == PowerUps.MaxHealth){
-                planeManager.stats.maxHealth ++;
-                planeManager.stats.health ++;
+                planeManager.stats.maxHealth += 5;
+                planeManager.stats.health += 5;
+            } else if(type == PowerUps.ExperimentalEngine){
                 destroyable = true;
-            } else if(type == PowerUps.MaxSpeed){
-                planeManager.stats.maxSpeed += 0.5f;
+                planeManager.stats.maxSpeed += 1;
+                planeManager.stats.acceleration += 0.2f;
+            } else if(type == PowerUps.FineTunnedFlaps){
                 destroyable = true;
-            } else if(type == PowerUps.Acceleration){
-                planeManager.stats.acceleration += 0.5f;
+                planeManager.stats.rotationSpeed += 1;
+                planeManager.stats.maxRotation += 1f;
+                if (planeManager.stats.timeToRotate >= 0.3f){
+                    planeManager.stats.timeToRotate -= 0.1f;
+                }
+                planeManager.stats.timeRotating += 0.1f;
+            } else if(type == PowerUps.ExperimentalAmmunition){
                 destroyable = true;
-            } else if(type == PowerUps.RotationSpeed){
-                planeManager.stats.rotationSpeed += 0.5f;
+                planeManager.stats.bulletDamage += 0.5f;
+                planeManager.stats.turretDamage += 0.15f;
+                planeManager.stats.missileDamage += 2;
+                planeManager.stats.mineDamage += 1;
+                planeManager.stats.drillDamage += 0.5f;
+                planeManager.stats.laserDamage += 0.1f;
+            } else if(type == PowerUps.AutomatizedRechargeSystems){
                 destroyable = true;
-            } else if(type == PowerUps.Damage){
-                planeManager.stats.bulletDamage ++;
+                if (planeManager.stats.shootSpeed > 0.1f){planeManager.stats.shootSpeed -= 0.1f;}
+                if(planeManager.stats.turretShootSpeed > 0.1f){planeManager.stats.turretShootSpeed -= 0.1f;}
+                if(planeManager.stats.normalDroneShootSpeed > 0.1f){planeManager.stats.normalDroneShootSpeed -= 0.1f;}
+                if(planeManager.stats.specialDroneShootSpeed > 1f){planeManager.stats.specialDroneShootSpeed -= 1f;}
+                if(planeManager.stats.auxDroneSpeed > 1){planeManager.stats.auxDroneSpeed-= 1;}
+                if(planeManager.stats.rechargeDefenseTime > 0.5f){planeManager.stats.rechargeDefenseTime -= 0.5f;}
+                if(planeManager.stats.rechargeSpecialTime > 1){planeManager.stats.rechargeSpecialTime -=1;}
+            } else if(type == PowerUps.BarrelMagazines){
                 destroyable = true;
-            } else if(type == PowerUps.TurretDamage){
-                planeManager.stats.turretDamage += 0.5f;
+                planeManager.stats.magazineSize += 1;
+                planeManager.stats.maxSpecialAmmo += 1;
+                planeManager.stats.maxMines += 1;
+                planeManager.planeShooter.resizeMinesList();
+            } else if(type == PowerUps.ExperimentalBarrel){
                 destroyable = true;
-            } else if(type == PowerUps.MissileDamage){
-                planeManager.stats.missileDamage ++;
+                planeManager.stats.extraBullets += 1;
+            } else if(type == PowerUps.EnhancedControllers){
                 destroyable = true;
-            } else if(type == PowerUps.MineDamage){
-                planeManager.stats.mineDamage ++;
+                planeManager.stats.meleeTime += 1;
+                planeManager.stats.laserTime += 1;
+            } else if(type == PowerUps.MarauderSystems){
                 destroyable = true;
-            } else if(type == PowerUps.DrillDamage){
-                planeManager.stats.drillDamage ++;
+                planeManager.stats.trackerBullet = true;
+                planeManager.stats.searchDistance += 0.5f;
+            } else if(type == PowerUps.ExperimentalDefenseSystems){
                 destroyable = true;
-            } else if(type == PowerUps.ShootSpeed && planeManager.stats.shootSpeed > 0.2f){
-                planeManager.stats.shootSpeed -= 0.1f;
+                if(planeManager.stats.damageReductionTankShield < 0.9f){planeManager.stats.damageReductionTankShield += 0.1f;}
+                planeManager.stats.SpecialShieldDuration += 1;
+                planeManager.stats.healAreaAmount += 0.1f;
+                planeManager.stats.maxDefenseAmmo += 1;
+            } else if(type == PowerUps.CommanderSystems){
                 destroyable = true;
-            } else if(type == PowerUps.MagazineSize){
-                planeManager.stats.magazineSize ++;
+                planeManager.stats.maxDrones += 1;
+                planeManager.stats.searchDistance += 0.5f;
+                planeManager.stats.timeTargetting += 1f;
+            } else if(type == PowerUps.ExperimentalCamouflage){
                 destroyable = true;
-            } else if(type == PowerUps.TurretShootSpeed && planeManager.stats.turretShootSpeed > 0.2f){
-                planeManager.stats.turretShootSpeed -= 0.1f;
+                planeManager.stats.evasion += 0.1f;
+                planeManager.stats.invIncrease += 0.2f;
+                planeManager.stats.ghostIncrease += 1;
+            } else if(type == PowerUps.HydraulicPincers){
                 destroyable = true;
-            } else if(type == PowerUps.NormalDroneSpeed && planeManager.stats.normalDroneShootSpeed > 0.2f){
-                planeManager.stats.normalDroneShootSpeed -= 0.1f;
+                planeManager.stats.statusEffectTime += 1;
+                planeManager.stats.missileDamage += 0.2f;
+            } else if(type == PowerUps.Repair && planeManager.stats.health <= planeManager.stats.maxHealth){
                 destroyable = true;
-            } else if(type == PowerUps.SpecialDroneSpeed && planeManager.stats.specialDroneShootSpeed > 2f){
-                planeManager.stats.specialDroneShootSpeed -= 0.5f;
-                destroyable = true;
-            } else if(type == PowerUps.AuxDroneSpeed && planeManager.stats.auxDroneSpeed > 2f){
-                planeManager.stats.auxDroneSpeed -= 0.5f;
-                destroyable = true;
-            } else if(type == PowerUps.MaxSpecialAmmo){
-                planeManager.stats.maxSpecialAmmo ++;
-                planeManager.stats.specialAmmo ++;
-                destroyable = true;
-            } else if(type == PowerUps.ExtraBullet){
-                planeManager.stats.extraBullets ++;
-                destroyable = true;
-            } else if(type == PowerUps.MaxMines){
-                planeManager.stats.maxMines ++;
-                destroyable = true;
-            } else if(type == PowerUps.MeleeTime){
-                planeManager.stats.meleeTime ++;
-                destroyable = true;
-            } else if(type == PowerUps.MaxDrones){
-                planeManager.stats.maxDrones ++;
-                destroyable = true;
+                planeManager.stats.health += 3;
+                if(planeManager.stats.health > planeManager.stats.maxHealth){
+                    planeManager.stats.health = planeManager.stats.maxHealth;
+                }
             }
 
             if (destroyable){
@@ -357,8 +371,6 @@ public class PowerUpsCentralManager : MonoBehaviour
             Debug.Log(e);
         }
     }
-
-
 
     public void initialSetUp(PlaneManager plane){
         missileSetUp(plane);
@@ -379,6 +391,8 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.missile =  BurningClaw;
         } else if(plane.stats.missileType == MissileType.RustingClaw){
             plane.planeShooter.missile =  RustingClaw;
+        } else if(plane.stats.missileType == MissileType.ClusterMissile){
+            plane.planeShooter.missile =  ClusterMissile;
         }
     }
 
@@ -389,6 +403,8 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.gadget = Coin;
         } else if(plane.stats.gadgetType == GadgetType.TankShield){
             plane.planeShooter.gadget = TankShield ;
+        } else if(plane.stats.gadgetType == GadgetType.Turbo){
+            plane.planeShooter.gadget = TurboParticleEffect ;
         }
     }
 
@@ -397,7 +413,12 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.defense =  HealShield;
         } else if(plane.stats.defenseType == DefenseType.Hook){
             plane.planeShooter.defense = Hook ;
+        } else if(plane.stats.defenseType == DefenseType.InverseHook){
+            plane.planeShooter.defense = InverseHook ;
+        }  else if(plane.stats.defenseType == DefenseType.Dash){
+            plane.planeShooter.defense = DashParticleEffect ;
         }
     }
+
     
 }

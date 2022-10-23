@@ -13,6 +13,8 @@ public enum gameMode {
 [Serializable]
 public class GameOptions
 {
+    [Range(0f,1f)]
+    public float musicVolume = 0.5f;
     public gameMode mode = gameMode.arcade;
     public int playerNum = 1 ;
 
@@ -21,7 +23,7 @@ public class GameOptions
     
     //Arcade
     public float timeToIncreaseEnemies = 60;
-    public float timeToSpawnPowerUps = 10;
+    public float timeToSpawnPowerUps = 5;
     public int maxPowerUps = 5;
 
     //Versus

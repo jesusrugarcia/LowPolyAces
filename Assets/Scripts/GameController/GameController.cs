@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public CameraPointCalculator cameraPointCalculator;
+    public AudioManager audioManager;
     public GameMenu gameMenu;
     public GameObject ButtonToActivate;
+    public GameObject EvadedText;
 
     public float gameTimer = 0;
     public float score = 0;
@@ -40,9 +43,10 @@ public class GameController : MonoBehaviour
     private void Start() {
         //mapGenerator.seed = Random.Range(-9999,9999);
         //mapGenerator.GenerateMap();
-        data = FileManager.loadData(4); //ojo que esto es el numero de aviones en el juego.
+        data = FileManager.loadData(playerSpawner.playerList.planes.Length); //ojo que esto es el numero de aviones en el juego.
         gameOptions = FileManager.loadOptions();
-
+        cameraPointCalculator.calculateBoundaries();
+        audioManager.updateVolume();
         max = gameOptions.max;
         maz = gameOptions.maz;
         players = new GameObject[gameOptions.playerNum];

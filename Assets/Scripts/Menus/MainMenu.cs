@@ -20,10 +20,14 @@ public class MainMenu : MonoBehaviour
     public Text arcadeSpawnTimeText;
     public Text versusTimeText;
     public Text versusLifesText;
+    public Text volumeText;
+
+    public AudioManager audioManager;
 
     void Start()
     {
          gameOptions = FileManager.loadOptions();
+         audioManager.updateVolume();
     }
 
     public void playGame(){
@@ -187,6 +191,30 @@ public class MainMenu : MonoBehaviour
         versusLifesText.text = gameOptions.maxLives.ToString();
     }
 
+    public void increaseVolume(){
+        gameOptions.musicVolume += 0.01f;
+        volumeText.text = (gameOptions.musicVolume*100).ToString();
+        audioManager.updateVolume();
+    }
+
+    public void increaseVolumeUltra(){
+        gameOptions.musicVolume += 0.1f;
+        volumeText.text = (gameOptions.musicVolume*100).ToString();
+        audioManager.updateVolume();
+    }
+
+    public void decreaseVolume(){
+        gameOptions.musicVolume += -0.01f;
+        volumeText.text = (gameOptions.musicVolume*100).ToString();
+        audioManager.updateVolume();
+    }
+
+    public void decreaseVolumeUltra(){
+        gameOptions.musicVolume += -0.1f;
+        volumeText.text = (gameOptions.musicVolume*100).ToString();
+        audioManager.updateVolume();
+    }
+
     public void setText(){
         playersText.text = gameOptions.playerNum.ToString();
         timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
@@ -194,5 +222,6 @@ public class MainMenu : MonoBehaviour
         arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
         versusTimeText.text = gameOptions.playTime.ToString();
         versusLifesText.text = gameOptions.maxLives.ToString();
+        volumeText.text = (gameOptions.musicVolume*100).ToString();
     }
 }

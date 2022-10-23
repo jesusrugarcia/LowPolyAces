@@ -58,18 +58,31 @@ public class CollisionManager : MonoBehaviour
     }
 
     public void damagePlane(Collider other = null, float damage = 0){
-            if (damage == 0){
-                plane.stats.health += - other.GetComponent<DamageManager>().damage;
-            } else {
-                plane.stats.health += - damage;
-            }
+        var evaded = UnityEngine.Random.Range(0f,1f);
+        if (plane.stats.statusEffects[((int)StatusEffects.Ghost)] > 0){
+            evaded -= 0.3f;
+        }
+        Debug.Log("evaded: " + evaded + " evasion : " + plane.stats.evasion);
+        if(evaded < plane.stats.evasion){
+            plane.controller.EvadedText.transform.position = transform.position;
+            plane.controller.EvadedText.GetComponent<Evaded>().timer = 0;
+            plane.controller.EvadedText.SetActive(true);
             
-            plane.healthBar.setHealth();
-            if (plane.stats.health <= 0){
-                destroyPlane(other);
-            }
+            return; //damage evaded
+        }
 
-            Destroy(other.gameObject);
+        if (damage == 0){
+            plane.stats.health += - other.GetComponent<DamageManager>().damage;
+        } else {
+            plane.stats.health += - damage;
+        }
+        
+        plane.healthBar.setHealth();
+        if (plane.stats.health <= 0){
+            destroyPlane(other);
+        }
+
+        Destroy(other.gameObject);
     }
 
     public void destroyPlane(Collider other){

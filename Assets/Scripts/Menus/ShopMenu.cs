@@ -12,6 +12,7 @@ public class ShopMenu : MonoBehaviour
     public PlaneStatsObject stats;
 
     public SaveData data;
+    public GameOptions gameOptions;
 
     public GameObject[] equipButtons;
     public GameObject buyButton;
@@ -28,10 +29,15 @@ public class ShopMenu : MonoBehaviour
     public Text price;
     public Text points;
 
+    public AudioManager audioManager;
+
     private void Start() {
         data = FileManager.loadData(planes.planes.Length);
+        gameOptions = FileManager.loadOptions();
+        audioManager.updateVolume();
+        currentPlane = data.selectedPlayer[0];
         loadPlane();
-        points.text = "Points: " + data.points.ToString("0");
+        points.text = "Points: " + data.points.ToString();
         currentPlane = data.selectedPlayer[0];
     }
 

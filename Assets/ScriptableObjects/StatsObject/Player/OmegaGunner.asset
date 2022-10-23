@@ -14,22 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 14
   health: 14
-  maxSpeed: 5
+  maxSpeed: 6
   speed: 0
-  acceleration: 0.2
+  acceleration: 0.3
   rotationSpeed: 2
   rotation: 0
   maxRotation: 2
   timeToRotate: 1
   timeRotating: 1
   bulletDamage: 0.5
-  turretDamage: 0.1
+  turretDamage: 0.2
   missileDamage: 10
   mineDamage: 5
   drillDamage: 5
-  shootSpeed: 4.5
+  shootSpeed: 3
   magazineSize: 1
-  turretShootSpeed: 0.8
+  turretShootSpeed: 0.4
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
@@ -50,7 +50,7 @@ MonoBehaviour:
   price: 500
   hasShield: 0
   damageReductionTankShield: 0.7
-  SpecialShieldDuration: 1
+  SpecialShieldDuration: 5
   healAreaAmount: 0.01
   rechargeDefenseTime: 5
   rechargeSpecialTime: 10
@@ -60,10 +60,11 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  invIncrease: 0.1
-  ghostIncrease: 1
-  timeTargetting: 2
-  stunnedTime: 1
+  invIncrease: 0.5
+  ghostIncrease: 5
+  evasion: 0
+  timeTargetting: 5
+  statusEffectTime: 5
   laserActivated: 0
-  laserTime: 1
+  laserTime: 5
   laserDamage: 0.1

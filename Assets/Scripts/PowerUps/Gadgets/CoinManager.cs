@@ -78,11 +78,11 @@ public class CoinManager : MonoBehaviour
 
     public void searchTarget(){
         try{
-            Debug.DrawRay(transform.position,transform.forward * targetDistance,Color.red);
-        var detected = SearchTarget.searchTarget(gameObject, targetDistance, transform.forward).target;
+            Debug.DrawRay(transform.position,transform.forward * (targetDistance + plane.stats.searchDistance),Color.red);
+        var detected = SearchTarget.searchTarget(gameObject, targetDistance + plane.stats.searchDistance, transform.forward).target;
         if (detected != gameObject){
             next = detected;
-        } else if (Vector3.Distance(transform.position, next.transform.position) > targetDistance){
+        } else if (Vector3.Distance(transform.position, next.transform.position) > (targetDistance + plane.stats.searchDistance)){
             next = null;
         }
         } catch(Exception e){

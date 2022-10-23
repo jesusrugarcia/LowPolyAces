@@ -12,24 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e611aeeb56c49d04b83f2260b6cdaee2, type: 3}
   m_Name: Dreadnaught
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
-  maxSpeed: 4
+  maxHealth: 30
+  health: 30
+  maxSpeed: 4.5
   speed: 0
   acceleration: 0.1
-  rotationSpeed: 2
+  rotationSpeed: 2.5
   rotation: 0
-  maxRotation: 2
+  maxRotation: 2.5
   timeToRotate: 1
   timeRotating: 1
   bulletDamage: 0.7
-  turretDamage: 0.1
+  turretDamage: 0.5
   missileDamage: 10
   mineDamage: 5
   drillDamage: 5
   shootSpeed: 1.4
   magazineSize: 1
-  turretShootSpeed: 0.9
+  turretShootSpeed: 0.6
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
@@ -50,7 +50,7 @@ MonoBehaviour:
   price: 500
   hasShield: 0
   damageReductionTankShield: 0.7
-  SpecialShieldDuration: 1
+  SpecialShieldDuration: 5
   healAreaAmount: 0.01
   rechargeDefenseTime: 5
   rechargeSpecialTime: 10
@@ -60,10 +60,11 @@ MonoBehaviour:
   - 0.05
   - 0
   - 0
-  invIncrease: 0.1
-  ghostIncrease: 1
-  timeTargetting: 2
-  stunnedTime: 1
+  invIncrease: 0.5
+  ghostIncrease: 5
+  evasion: 0
+  timeTargetting: 5
+  statusEffectTime: 5
   laserActivated: 0
-  laserTime: 1
+  laserTime: 5
   laserDamage: 0.1

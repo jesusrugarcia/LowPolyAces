@@ -50,7 +50,7 @@ MonoBehaviour:
   price: 200
   hasShield: 0
   damageReductionTankShield: 0.7
-  SpecialShieldDuration: 1
+  SpecialShieldDuration: 5
   healAreaAmount: 0.01
   rechargeDefenseTime: 5
   rechargeSpecialTime: 10
@@ -60,10 +60,11 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  invIncrease: 0.1
-  ghostIncrease: 1
-  timeTargetting: 2
-  stunnedTime: 1
+  invIncrease: 0.5
+  ghostIncrease: 5
+  evasion: 0
+  timeTargetting: 5
+  statusEffectTime: 5
   laserActivated: 0
-  laserTime: 1
+  laserTime: 5
   laserDamage: 0.1

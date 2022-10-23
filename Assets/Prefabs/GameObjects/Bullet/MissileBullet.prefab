@@ -4951,9 +4951,14 @@ MonoBehaviour:
   plane: {fileID: 0}
   teamManager: {fileID: 4714010679742660648}
   target: {fileID: 0}
-  explosion: {fileID: 520124061499804318, guid: e61cfd577f177fd4ea30cc31e1750252, type: 3}
   targetDistance: 1
   speed: 10
+  maxRotation: 5
   explodesMines: 1
+  isExplosion: 1
+  explosion: {fileID: 520124061499804318, guid: e61cfd577f177fd4ea30cc31e1750252, type: 3}
+  isCluster: 0
+  clusterQuantity: 3
+  clusterMissiles: {fileID: 0}
   isFlare: 0
   flareArea: {fileID: 0}

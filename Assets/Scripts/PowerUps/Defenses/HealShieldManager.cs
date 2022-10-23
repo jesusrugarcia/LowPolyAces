@@ -37,6 +37,7 @@ public class HealShieldManager : MonoBehaviour
 
     public void destroyShield(){
         plane.planeShooter.defenseActivated = false;
+        plane.stats.defenseAmmo --;
         Destroy(gameObject);
     }
 }

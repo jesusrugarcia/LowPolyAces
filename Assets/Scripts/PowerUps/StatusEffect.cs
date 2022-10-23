@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public enum StatusEffects{
@@ -16,12 +15,7 @@ public class StatusEffect : MonoBehaviour
 
     void FixedUpdate()
     {
-        for (int i = 0; i < planeManager.stats.statusEffects.Length; i++){
-            planeManager.stats.statusEffects[i] -= Time.deltaTime;
-            if(planeManager.stats.statusEffects[i] < 0){
-                planeManager.stats.statusEffects[i] = 0;
-            }
-        }
+        manageStatus();
     }
 
     public void addStatus(StatusEffects type, float time){
@@ -34,7 +28,17 @@ public class StatusEffect : MonoBehaviour
 
     public void removeStatus(StatusEffects type){
         planeManager.stats.statusEffects[(int)type] = 0;
-        
         //Debug.Log("Inv: " + planeManager.stats.statusEffects[(int)type]);
     }
+
+    public void manageStatus(){
+        for (int i = 0; i < planeManager.stats.statusEffects.Length; i++){
+            planeManager.stats.statusEffects[i] -= Time.deltaTime;
+            if(planeManager.stats.statusEffects[i] <= 0){
+                planeManager.stats.statusEffects[i] = 0;
+            }
+        }
+    }
+
+    
 }

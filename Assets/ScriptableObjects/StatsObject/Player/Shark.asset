@@ -27,17 +27,17 @@ MonoBehaviour:
   missileDamage: 10
   mineDamage: 5
   drillDamage: 5
-  shootSpeed: 0.5
+  shootSpeed: 0.6
   magazineSize: 1
   turretShootSpeed: 1
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
-  missileType: 0
+  missileType: 8
   gadgetType: 0
   defenseType: 0
-  specialAmmo: 0
-  maxSpecialAmmo: 1
+  specialAmmo: 2
+  maxSpecialAmmo: 2
   defenseAmmo: 0
   maxDefenseAmmo: 1
   extraBullets: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   price: 500
   hasShield: 0
   damageReductionTankShield: 0.7
-  SpecialShieldDuration: 1
+  SpecialShieldDuration: 5
   healAreaAmount: 0.01
   rechargeDefenseTime: 5
   rechargeSpecialTime: 10
@@ -60,10 +60,11 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  invIncrease: 0.1
-  ghostIncrease: 1
-  timeTargetting: 2
-  stunnedTime: 1
+  invIncrease: 0.5
+  ghostIncrease: 5
+  evasion: 0
+  timeTargetting: 5
+  statusEffectTime: 5
   laserActivated: 0
-  laserTime: 1
+  laserTime: 5
   laserDamage: 0.1
