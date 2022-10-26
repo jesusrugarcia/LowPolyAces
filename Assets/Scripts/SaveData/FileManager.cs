@@ -6,6 +6,7 @@ public static class FileManager
 {
     public static string saveName = "saveData";
     public static string optionName = "gameOptions";
+    public static string mapName = "mapGraph";
 
     public static void saveData(SaveData data){
         var jsonData = JsonUtility.ToJson(data);
@@ -44,6 +45,23 @@ public static class FileManager
             var data = new GameOptions();
             saveOptions(data);
             return data;
+        }
+        
+    }
+
+    public static void saveMap(WorldMapGraph data){
+        var jsonData = JsonUtility.ToJson(data);
+        System.IO.File.WriteAllText(Application.dataPath + "/" + mapName + ".json", jsonData);
+    }
+
+    public static WorldMapGraph loadMap(){
+        try{
+            var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + mapName + ".json");
+            var data = JsonUtility.FromJson<WorldMapGraph>(jsonData);
+            return data;
+        }
+        catch (System.Exception){
+            return null;
         }
         
     }

@@ -122,11 +122,7 @@ public class ChonkopterBossManager : BossManager
             lineRenderer.endColor = prepColor.color;
             lineRenderer.material = prepColor;
         }
-        //Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
-        //mat.SetColor("_BaseColor",Color.red);
-        //lineRenderer.startColor = Color.red;
-        //lineRenderer.endColor = Color.red;
-        //lineRenderer.material = mat ;
+        
         lineRenderer.startWidth = thickness;
         lineRenderer.endWidth = thickness;
         lineRenderer.SetPosition(0,start);

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CameraPointCalculator : MonoBehaviour
@@ -8,6 +7,11 @@ public class CameraPointCalculator : MonoBehaviour
     public float timer = 0;
     public float timeToIncrease = 5;
     public float distanceIncrease = 0.1f;
+    public float x;
+    public float z;
+
+    public bool localTerrain = true;
+    public float realDistance = -900;
 
     void calculateBoundariesDebug()
     {
@@ -34,7 +38,7 @@ public class CameraPointCalculator : MonoBehaviour
     void FixedUpdate()
     {
         timer += Time.deltaTime;
-        if (timer >= timeToIncrease){
+        if (timer >= timeToIncrease && localTerrain){
             timer = 0;
             transform.position = new Vector3(0,transform.position.y + distanceIncrease, 0);
             calculateBoundaries();
@@ -43,11 +47,29 @@ public class CameraPointCalculator : MonoBehaviour
 
     public void calculateBoundaries(){
         Camera camera = GetComponent<Camera>();
-        Vector3 p = camera.ViewportToWorldPoint(new Vector3(1, 0.5f, transform.position.y));
-        Debug.Log("max: " + p.x);
-        controller.max = p.x;
-        Vector3 q = camera.ViewportToWorldPoint(new Vector3(0.5f, 1, transform.position.y));
-        controller.maz = q.z;
-        Debug.Log("maz: " + q.z);
+        Vector3 p;
+        Vector3 q;
+        if(localTerrain){
+            p = camera.ViewportToWorldPoint(new Vector3(1, 0.5f, transform.position.y));
+            q = camera.ViewportToWorldPoint(new Vector3(0.5f, 1, transform.position.y));
+        } else {
+            p = camera.ViewportToWorldPoint(new Vector3(1, 0.5f, realDistance));
+            q = camera.ViewportToWorldPoint(new Vector3(0.5f, 1, realDistance));
+        }
+        
+
+        //Debug.Log("max: " + p.x);
+        //Debug.Log("maz: " + q.z);
+        x = p.x;
+        z = q.z;
+
+        try{
+            controller.max = p.x;
+            controller.maz = q.z;
+        } catch (Exception e){
+            Debug.Log(e);
+        }
+        
+        
     }
 }

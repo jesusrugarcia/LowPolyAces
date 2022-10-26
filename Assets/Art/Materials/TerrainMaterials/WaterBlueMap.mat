@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: WaterBlueMap
+  m_Shader: {fileID: -6465566751694194690, guid: f84c1d5a6bb90aa4f93b4c501106ab10, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_32448880b79846f89cf195664278f13b: 12
+    - Vector1_96f39214aaf0473ca4fac4797a1b76ca: 0.01
+    - Vector1_a2446a13021f441db0829f4446f640c9: 9
+    - Vector1_b1a9ac5547494852952bf92e87693197: 0.42
+    - Vector1_bd7a12d2ad03480aa10ec4f3c3903cab: 130
+    - Vector1_ce73e15711e644c18297191c4c8434ab: 1
+    - Vector1_d3ca4672a8524691a0e53545947e10d1: 138.4
+    - Vector1_de4a6424b4b34d4093696c77890fd639: 100
+    - Vector1_ee35cd4896f94d5db3f263b442b82669: 2
+    - Vector1_f59eb908174d45a996f4793445f77601: 1
+    - Vector1_f749f6e9bbf1423b8230201d78a2ef7c: 7
+    - Vector1_fc6d457e309f4e17a711b3ce3fdbd784: 137.43
+    m_Colors:
+    - Color_21410f9d094348fc9d353b042ec803ca: {r: 0, g: 0.7960785, b: 0.96470594, a: 0}
+    - Color_5439cc7b4f8644d3bf6f99ea1e22a749: {r: 0.09549662, g: 0.5471698, b: 0.5471698, a: 1}
+    - Color_9bf72742d5bc4b7b9f4b47938ca96b1a: {r: 0.039215688, g: 0.54509807, b: 0.8352942, a: 1}
+    - Color_f8c4da7b790e41628c2aa398151d3b13: {r: 1.1294118, g: 2, b: 2, a: 0.1764706}
+  m_BuildTextureStacks: []
