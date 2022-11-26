@@ -98,6 +98,7 @@ MonoBehaviour:
   rotationSpeedX: 50
   rotationSpeedY: 0
   rotationSpeedZ: 0
+  parent: {fileID: 0}
 --- !u!1 &7090933008174249914
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +110,7 @@ GameObject:
   - component: {fileID: 7576143832725662976}
   - component: {fileID: 6812826081812161189}
   - component: {fileID: 8748508840376325743}
+  - component: {fileID: 1960000418671918157}
   m_Layer: 0
   m_Name: PlaneWw2
   m_TagString: Untagged
@@ -183,3 +185,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1960000418671918157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7090933008174249914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7343b475bdf361d48b22d89ccb5b2155, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 547a7073-dbec-42c0-b074-b1f5c9618994
+    m_ActionName: Player/Rotate[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: bf8c5005-41d6-4f2d-a025-a81a8a0f0a78
+    m_ActionName: Player/Missile[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0d2cd649-d27c-4ed3-9792-dd7b39280dbe
+    m_ActionName: Player/Accelerate[/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 791ef3bd-41e5-467d-b449-8d31d9451a85
+    m_ActionName: Player/Decelerate[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ce39695a-246d-4443-bd2b-543e89ee9641
+    m_ActionName: Player/Shoot[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ecbb4107-b894-4eaa-b2f5-247ac57eab36
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f8ce6ca3-6e78-45b2-85ce-aa87202bdf73
+    m_ActionName: Player/Gadget[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed83648d-cc24-4743-9d20-2782ef0d05c2
+    m_ActionName: Player/Defense[/Keyboard/shift]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}

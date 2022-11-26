@@ -21,8 +21,8 @@ public class ChonkopterBossManager : BossManager
     public override void Start()
     {
         phase = DRONES;
-        plane.stats.maxHealth = plane.controller.gameOptions.playerNum * 50;
-        plane.stats.health = plane.controller.gameOptions.playerNum * 50;
+        plane.stats.maxHealth = plane.controller.gameOptions.playerNum * 100;
+        plane.stats.health = plane.controller.gameOptions.playerNum * 100;
     }
 
     public override void activatePhase(){

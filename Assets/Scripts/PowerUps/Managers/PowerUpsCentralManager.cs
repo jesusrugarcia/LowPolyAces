@@ -5,6 +5,14 @@ using UnityEngine;
 public class PowerUpsCentralManager : MonoBehaviour
 {
     public GameObject shield;
+    //Bullets
+    public GameObject NormalBullet;
+    public GameObject NormalBulletPlayer1;
+    public GameObject NormalBulletPlayer2;
+    public GameObject NormalBulletPlayer3;
+    public GameObject NormalBulletPlayer4;
+    public GameObject MissileBullet;
+    public GameObject DrillBullet;
     //Missiles
     public GameObject Missile;
     public GameObject Mine;
@@ -29,8 +37,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject MissileDrone;
     public GameObject ShieldDrone;
     public GameObject RepairDrone;
-    public GameObject MissileBullet;
-    public GameObject DrillBullet;
+    
     //ParticleEffects
     public GameObject DashParticleEffect;
     public GameObject TurboParticleEffect;
@@ -41,7 +48,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject RustingParticleEffect;
 
 //this method calls for the apropiate method when obtaining a power up.
-    public void managePowerUp(Collision other, PowerUps type, GameObject origin){
+    public void managePowerUp(GameObject other, PowerUps type, GameObject origin){
         if(type == PowerUps.Missile || type == PowerUps.Mine || type == PowerUps.Flare || type == PowerUps.SupportClaw || 
         type == PowerUps.ElectricClaw || type == PowerUps.BurningClaw || type == PowerUps.RustingClaw || type == PowerUps.ClusterMissile || type == PowerUps.Turbo || 
         type == PowerUps.AreaOfHeal || type == PowerUps.TankShield || type == PowerUps.Laser || type == PowerUps.Coin){
@@ -53,7 +60,7 @@ public class PowerUpsCentralManager : MonoBehaviour
         } else if(type == PowerUps.TurretDrone || type== PowerUps.MineDrone || type== PowerUps.GunnerDrone || type== PowerUps.RepairDrone || 
         type== PowerUps.ShieldDrone || type== PowerUps.MissileDrone){
             addDrone(other.gameObject, type, origin);
-        } else if (type == PowerUps.MissileBullet || type == PowerUps.DrillBullet){
+        } else if (type == PowerUps.NormalBullet || type == PowerUps.MissileBullet || type == PowerUps.DrillBullet){
             addBulletType(other.gameObject, type, origin);
         }else {
             addStat(other.gameObject, type, origin);
@@ -215,7 +222,7 @@ public class PowerUpsCentralManager : MonoBehaviour
                 droneMovement.ready = true;
 
                 
-                planeManager.stats.drones++;
+                planeManager.stats.addDrone(type);
                 planeManager.controller.reduceCurrentPowerUps();
                 Destroy(origin);
 
@@ -261,11 +268,17 @@ public class PowerUpsCentralManager : MonoBehaviour
         try{
             bool destroyable = false;
             var planeManager = plane.GetComponent<PlaneManager>();
-            if (type == PowerUps.MissileBullet && planeManager.planeShooter.bullet != MissileBullet){
+            if (type == PowerUps.MissileBullet && planeManager.stats.bulletType != BulletType.missile){
+                planeManager.stats.bulletType = BulletType.missile;
                 planeManager.planeShooter.bullet = MissileBullet;
                 destroyable = true;
-            }else if (type == PowerUps.DrillBullet && planeManager.planeShooter.bullet != DrillBullet){
+            }else if (type == PowerUps.DrillBullet && planeManager.stats.bulletType != BulletType.drill){
                 planeManager.planeShooter.bullet = DrillBullet;
+                planeManager.stats.bulletType = BulletType.drill;
+                destroyable = true;
+            } else if (type == PowerUps.NormalBullet && planeManager.stats.bulletType != BulletType.normal){
+                planeManager.planeShooter.bullet = assignNormalBullet(planeManager);
+                planeManager.stats.bulletType = BulletType.normal;
                 destroyable = true;
             }
 
@@ -342,7 +355,7 @@ public class PowerUpsCentralManager : MonoBehaviour
                 planeManager.stats.maxDefenseAmmo += 1;
             } else if(type == PowerUps.CommanderSystems){
                 destroyable = true;
-                planeManager.stats.maxDrones += 1;
+                planeManager.stats.increaseDroneList();
                 planeManager.stats.searchDistance += 0.5f;
                 planeManager.stats.timeTargetting += 1f;
             } else if(type == PowerUps.ExperimentalCamouflage){
@@ -376,6 +389,8 @@ public class PowerUpsCentralManager : MonoBehaviour
         missileSetUp(plane);
         gadgetSetUp(plane);
         defenseSetUp(plane);
+        bulletSetUp(plane);
+        spawnInitialDrones(plane);
     }
 
     public void missileSetUp(PlaneManager plane){
@@ -417,6 +432,44 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.defense = InverseHook ;
         }  else if(plane.stats.defenseType == DefenseType.Dash){
             plane.planeShooter.defense = DashParticleEffect ;
+        }
+    }
+
+    public void bulletSetUp(PlaneManager plane){
+        if(plane.stats.bulletType == BulletType.normal){
+            plane.planeShooter.bullet =  assignNormalBullet(plane);
+        } else if(plane.stats.bulletType == BulletType.drill){
+            plane.planeShooter.bullet =  DrillBullet;
+        } else if(plane.stats.bulletType == BulletType.missile){
+            plane.planeShooter.bullet =  MissileBullet;
+        }
+    }
+
+    public GameObject assignNormalBullet(PlaneManager plane){
+        if(plane.teamManager.team == 1){
+            return NormalBulletPlayer1;
+        } else if(plane.teamManager.team == 2){
+            return NormalBulletPlayer2;
+        } else if(plane.teamManager.team == 3){
+            return NormalBulletPlayer3;
+        } else if(plane.teamManager.team == 4){
+            return NormalBulletPlayer4;
+        }
+        return NormalBullet;
+    }
+
+    public void spawnInitialDrones(PlaneManager plane){
+        for(int i=0; i< plane.stats.dronesList.Length;i++){
+            
+            try{
+                var drone = InstantiateDrone(plane.stats.dronesList[i],plane);
+                var droneMovement = drone.GetComponent<DroneMovement>();
+                droneMovement.plane = plane.gameObject;
+                droneMovement.ready = true;
+            } catch (Exception e){
+                Debug.Log(e);
+            }
+            
         }
     }
 

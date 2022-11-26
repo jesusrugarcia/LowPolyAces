@@ -27,6 +27,7 @@ public class HealthBar : MonoBehaviour
     private void FixedUpdate() {
         Vector3 pos = plane.transform.position;
         pos.z += 0.5f;
+        //pos.y += 2f;
         transform.position = pos;
         
         setHealth();

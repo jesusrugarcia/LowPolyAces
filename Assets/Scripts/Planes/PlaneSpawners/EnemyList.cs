@@ -12,4 +12,6 @@ public class EnemyList : MonoBehaviour
     public PlanesListScriptableObject prefabsHard;
     [SerializeField]
     public PlanesListScriptableObject prefabsImposible;
+    [SerializeField]
+    public PlanesListScriptableObject prefabsBoss;
 }

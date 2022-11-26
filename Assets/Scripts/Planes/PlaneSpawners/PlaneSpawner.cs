@@ -13,7 +13,7 @@ public class PlaneSpawner : MonoBehaviour
     public GameObject healthBar;
     public GameObject healthBarEnemy;
 
-    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team, GameObject origin = null){
+    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team, GameObject origin = null, StatsSave stats = null){
         Time.timeScale = 0f;
         GameObject plane;
         if (origin != null){
@@ -30,6 +30,17 @@ public class PlaneSpawner : MonoBehaviour
         planeManager.controller = controller;
         planeManager.teamManager.team = team;
 
+        if(stats == null){
+            copyStats(plane, planeModel, movement);
+            planeManager.stats.hasShield = planeModel.stats.hasShield;
+        } else {
+            planeManager.stats.copyStats(stats);
+            initialInv(plane, movement);
+        }
+        
+        addMovement(plane, movement);
+        controller.centralManager.initialSetUp(plane.GetComponent<PlaneManager>());
+
         GameObject health;
         if (movement != movement.Player){
             health = Instantiate(healthBarEnemy,plane.transform.position, Quaternion.Euler(270,0,0));
@@ -44,9 +55,7 @@ public class PlaneSpawner : MonoBehaviour
         healthComponent.plane = plane.GetComponent<PlaneManager>();
         plane.GetComponent<PlaneManager>().healthBar = healthComponent;
 
-        copyStats(plane, planeModel, movement);
-        addMovement(plane, movement);
-        controller.centralManager.initialSetUp(plane.GetComponent<PlaneManager>());
+        
         Time.timeScale = 1f;
         return plane;
     }
@@ -57,6 +66,9 @@ public class PlaneSpawner : MonoBehaviour
         
         stats.maxHealth = planeModel.stats.maxHealth;
         stats.health = planeModel.stats.health;
+        if(stats.health < 1){
+            stats.health = 1;
+        }
 
         stats.maxSpeed = planeModel.stats.maxSpeed;
         stats.speed = planeModel.stats.speed;
@@ -82,6 +94,7 @@ public class PlaneSpawner : MonoBehaviour
         stats.specialDroneShootSpeed = planeModel.stats.specialDroneShootSpeed;
         stats.auxDroneSpeed = planeModel.stats.auxDroneSpeed;
 
+        stats.bulletType = planeModel.stats.bulletType;
         stats.missileType = planeModel.stats.missileType;
         stats.gadgetType = planeModel.stats.gadgetType;
         stats.defenseType = planeModel.stats.defenseType;
@@ -109,6 +122,15 @@ public class PlaneSpawner : MonoBehaviour
         
         stats.maxDrones = planeModel.stats.maxDrones;
         stats.drones = planeModel.stats.drones;
+        stats.dronesList = planeModel.stats.dronesList;
+        try {
+            if (stats.dronesList.Length == 0){
+                stats.dronesList = new PowerUps[stats.maxDrones];
+            }
+        } catch(Exception e){
+            Debug.Log(e);
+            stats.dronesList = new PowerUps[stats.maxDrones];
+        }
 
         stats.statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];//planeModel.stats.statusEffects;
         stats.invIncrease = planeModel.stats.invIncrease;
@@ -121,6 +143,11 @@ public class PlaneSpawner : MonoBehaviour
         stats.laserTime = planeModel.stats.laserTime;
         stats.laserDamage = planeModel.stats.laserDamage;
 
+        initialInv(plane, movement);
+    }
+
+    public void initialInv(GameObject plane, movement movement){
+        var stats = plane.GetComponent<PlaneStats>();
         if(movement == movement.Player){ //to be ajusted for balance
            stats.statusEffects[(int)StatusEffects.Invulnerability] = 1;
            var particles = Instantiate(controller.centralManager.InvulnerabilityParticleEffect, transform.position, transform.rotation);

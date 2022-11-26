@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: ListArcadeImpossible
   m_EditorClassIdentifier: 
   planes:
-  - {fileID: 11400000, guid: bbb2fe2907ca1154fa7f13bbc1aa65b4, type: 2}
   - {fileID: 11400000, guid: 7cf640160d4d18348b9abbb245bed037, type: 2}
   - {fileID: 11400000, guid: 7cf640160d4d18348b9abbb245bed037, type: 2}
   - {fileID: 11400000, guid: 7cf640160d4d18348b9abbb245bed037, type: 2}

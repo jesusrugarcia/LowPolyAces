@@ -25,7 +25,7 @@ public class DroneMovement : MonoBehaviour
     public void checkPlaneAlive(){
         if(ready){
             try{
-                if(plane == null ){
+                if(plane == null || plane.gameObject.activeSelf == false){
                     Destroy(gameObject);
                 }
             } catch (Exception e){

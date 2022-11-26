@@ -62,7 +62,7 @@ public class CollisionManager : MonoBehaviour
         if (plane.stats.statusEffects[((int)StatusEffects.Ghost)] > 0){
             evaded -= 0.3f;
         }
-        Debug.Log("evaded: " + evaded + " evasion : " + plane.stats.evasion);
+       // Debug.Log("evaded: " + evaded + " evasion : " + plane.stats.evasion);
         if(evaded < plane.stats.evasion){
             plane.controller.EvadedText.transform.position = transform.position;
             plane.controller.EvadedText.GetComponent<Evaded>().timer = 0;
@@ -90,6 +90,8 @@ public class CollisionManager : MonoBehaviour
             destroyArcade();
         } else if(plane.controller.gameOptions.mode == gameMode.versus){
             destroyVersus(other);
+        } else if(plane.controller.gameOptions.mode == gameMode.roguelite){
+            destroyRoguelite();
         }
         //SFXManager.playExplosion();
         
@@ -98,7 +100,9 @@ public class CollisionManager : MonoBehaviour
     public void OnDestroy()
     {
          Instantiate(explosion,transform.position, Quaternion.Euler(0,0,0));
-         plane.controller.reduceCurrentEnemies();
+         if(plane.teamManager.team < 1){
+            plane.controller.reduceCurrentEnemies();
+         }
     }
 
     public void destroyArcade(){
@@ -110,6 +114,20 @@ public class CollisionManager : MonoBehaviour
         } else {
             Destroy(GetComponent<Rigidbody>());
             plane.controller.score += plane.stats.scoreValue;
+            Destroy(plane.healthBar.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    public void destroyRoguelite(){
+        if (plane.teamManager.team > 0){ //ojo al gamemodde
+            plane.controller.playersAlive += -1; 
+            Instantiate(explosion,transform.position, Quaternion.Euler(0,0,0));
+            gameObject.SetActive(false);
+            plane.healthBar.gameObject.SetActive(false);
+        } else {
+            Destroy(GetComponent<Rigidbody>());
+            //plane.controller.score += plane.stats.scoreValue;
             Destroy(plane.healthBar.gameObject);
             Destroy(gameObject);
         }

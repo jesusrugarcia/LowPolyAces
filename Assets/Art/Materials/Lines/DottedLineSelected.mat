@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RectangleDottedLine
-  m_Shader: {fileID: -6465566751694194690, guid: 32d261724f61b6043850019b22c22b79, type: 3}
+  m_Name: DottedLineSelected
+  m_Shader: {fileID: -6465566751694194690, guid: db5d23ad231405d40b2633daeb008785, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,10 +32,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_37d6dd9150064e6d98362ae1feb1f2cc: 0.28
-    - Vector1_d5feb44793db4afba20858ec41b06059: 1
-    - Vector1_d638b5a3f3a1434385363aa599ddfd61: 0.13
+    - Vector1_167b11cfee65403c96eb23e7f6fea9fc: 0.5
+    - Vector1_27c153cebb54430490bb32221c6d7ffe: 0.5
+    - Vector1_68bd9bf5d07e456e89659cca5c70d7a4: 2
     m_Colors:
-    - Color_bba1eea8068040c6ba52919034965ccc: {r: 1, g: 0.03301889, b: 0.03301889, a: 0}
-    - Vector2_a4e63a81ead2407a85e9dac6e2ea5c86: {r: 10.66, g: 1, b: 0, a: 0}
+    - Color_7c9cc033657443678ed75eb51ed17298: {r: 85.445015, g: 85.445015, b: 85.445015, a: 0}
+    - Vector2_d37c47588a00406e8ce09490da679dba: {r: 15, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []

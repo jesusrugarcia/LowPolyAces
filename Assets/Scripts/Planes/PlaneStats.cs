@@ -31,6 +31,13 @@ public enum DefenseType{
     InverseHook,
 }
 
+public enum BulletType{
+    normal,
+    drill,
+    missile,
+}
+
+[Serializable]
 public class PlaneStats : MonoBehaviour
 {
     public float maxHealth = 0; //max health of the plane
@@ -59,6 +66,7 @@ public class PlaneStats : MonoBehaviour
     public float specialDroneShootSpeed = 10f; //missile mine and the such drone shootspeed
     public float auxDroneSpeed = 10f; //healer and shield drone effect speed in secons, as all of the above
 
+    public BulletType bulletType;
     public MissileType missileType;
     public GadgetType gadgetType;
     public DefenseType defenseType;
@@ -86,6 +94,7 @@ public class PlaneStats : MonoBehaviour
 
     public int maxDrones = 1; //max drones a plane can have simultaneously
     public int drones = 0;
+    public PowerUps[] dronesList;
 
     public float[] statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length]; // a list containing the time each status effect has before deactivating. if statusEffect[0] = 0.3 the plane has 0.3 seconds of invulneravility left, for example.
     public float invIncrease = 0.1f; //inv gained when dashing
@@ -102,6 +111,108 @@ public class PlaneStats : MonoBehaviour
     public PlaneManager plane;
 
     private void Start() {
-        health = maxHealth;
+        //health = maxHealth;
+        try {
+            if(dronesList == null){
+                dronesList = new PowerUps[maxDrones];
+            }
+        } catch( Exception e){
+            dronesList = new PowerUps[maxDrones];
+            Debug.Log(e);
+        }
+    }
+
+    public void copyStats(StatsSave stats){
+        maxHealth = stats.maxHealth;
+        health = stats.health;
+
+        maxSpeed = stats.maxSpeed;
+        acceleration = stats.acceleration;
+
+        rotationSpeed = stats.rotationSpeed;
+        rotation =stats.rotation;
+        maxRotation = stats.maxRotation;
+        timeToRotate = stats.timeToRotate;
+        timeRotating = stats.timeRotating;
+
+        bulletDamage = stats.bulletDamage;
+        turretDamage = stats.turretDamage;
+        missileDamage = stats.missileDamage;
+        mineDamage = stats.mineDamage;
+        drillDamage = stats.drillDamage;
+        
+
+        shootSpeed = stats.shootSpeed;
+        magazineSize = stats.magazineSize;
+        turretShootSpeed = stats.turretShootSpeed;
+        normalDroneShootSpeed = stats.normalDroneShootSpeed;
+        specialDroneShootSpeed = stats.specialDroneShootSpeed;
+        auxDroneSpeed = stats.auxDroneSpeed;
+
+        bulletType = stats.bulletType;
+       missileType = stats.missileType;
+        gadgetType = stats.gadgetType;
+        defenseType = stats.defenseType;
+        
+        maxSpecialAmmo = stats.maxSpecialAmmo;
+        specialAmmo = stats.specialAmmo;
+        maxDefenseAmmo = stats.maxDefenseAmmo;
+        defenseAmmo = stats.defenseAmmo;
+        extraBullets = stats.extraBullets;
+        //maxMines = stats.maxMines;
+        mines = stats.mines;
+        meleeTime = stats.meleeTime;
+        trackerBullet = stats.trackerBullet;
+       searchDistance = stats.searchDistance;
+
+        scoreValue = stats.scoreValue;
+        price = stats.price; 
+
+        hasShield = false;
+        damageReductionTankShield = stats.damageReductionTankShield;
+        SpecialShieldDuration = stats.SpecialShieldDuration;
+        healAreaAmount = stats.healAreaAmount;
+        rechargeDefenseTime = stats.rechargeDefenseTime;
+        rechargeSpecialTime = stats.rechargeSpecialTime;
+        
+        maxDrones = stats.maxDrones;
+        drones = stats.drones;
+        dronesList = stats.dronesList;
+
+        
+       invIncrease = stats.invIncrease;
+        ghostIncrease = stats.ghostIncrease;
+        evasion = stats.evasion;
+        timeTargetting = stats.timeTargetting;
+        statusEffectTime = stats.statusEffectTime;
+
+        laserActivated = stats.laserActivated;
+        laserTime = stats.laserTime;
+        laserDamage = stats.laserDamage;
+
+        statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
+    }
+
+    public void addDrone(PowerUps type){
+        Debug.Log(type);
+        if (drones >= maxDrones){
+            Debug.Log("RETURNED");
+            return;
+        }
+       
+        if (dronesList.Length <= maxDrones){
+            dronesList[drones] = type;
+            Debug.Log("PUT NORMALLY: " + type);
+            drones ++;
+        } 
+    }
+
+    public void increaseDroneList(){
+        maxDrones++;
+        PowerUps[] dronesNew = new PowerUps[maxDrones];
+        for(int i=0; i < dronesList.Length;i++){
+            dronesNew[i] = dronesList[i];
+        } 
+        dronesList = dronesNew;
     }
 }

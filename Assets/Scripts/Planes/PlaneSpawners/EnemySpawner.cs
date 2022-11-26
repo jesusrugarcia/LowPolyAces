@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
     public void spawnEnemy(){
         //timeToDelay = controller.currentEnemies/timeToDelayMultiplier;
         delayTimer += Time.deltaTime;
-        if(delayTimer < timeToDelay){
+        if(delayTimer < timeToDelay && controller.currentEnemies < controller.playersAlive){
             return;
         }
         

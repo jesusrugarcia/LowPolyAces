@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class MapTextureManager : MonoBehaviour
@@ -12,8 +11,13 @@ public class MapTextureManager : MonoBehaviour
     public Material[] terrainMaterials;
 
     private void Start() {
-        waterRenderer = water.GetComponent<Renderer>();
-        terrainRenderer = terrain.GetComponent<Renderer>();
+        try{
+            waterRenderer = water.GetComponent<Renderer>();
+            terrainRenderer = terrain.GetComponent<Renderer>();
+        } catch (Exception e){
+            Debug.Log(e);
+        }
+        
     }
     
     public void changeWaterColor(int color){

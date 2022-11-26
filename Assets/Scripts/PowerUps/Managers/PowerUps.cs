@@ -35,6 +35,7 @@ public enum PowerUps{
     //BulletTypes
     MissileBullet,
     DrillBullet,
+    NormalBullet,
      //Stats Simplified
     ReinforcedFuselage, //maxHealth
     ExperimentalEngine, //MaxSpeed, Acceleration

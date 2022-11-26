@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
 
 public class VersusModeManager : GameModeManager
 {
@@ -10,12 +12,13 @@ public class VersusModeManager : GameModeManager
     public int[] lives;
 
     public GameObject onFinish;
-    public Text player1;
-    public Text player2;
-    public Text player3;
-    public Text player4;
-    public Text winner;
-    public Text time;
+    public GameObject ButtonToActivate;
+    public TMP_Text player1;
+    public TMP_Text player2;
+    public TMP_Text player3;
+    public TMP_Text player4;
+    public TMP_Text winner;
+    public TMP_Text time;
 
 
     public override void StartGame()
@@ -47,6 +50,9 @@ public class VersusModeManager : GameModeManager
     }
 
     public override void endGame(){
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(ButtonToActivate);
+        EventSystem.current.SetSelectedGameObject(ButtonToActivate, new BaseEventData(EventSystem.current));
         Time.timeScale = 0.0f;
         controller.playersAlive = 0;
         onFinish.SetActive(true);

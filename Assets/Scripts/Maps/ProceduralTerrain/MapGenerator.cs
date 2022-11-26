@@ -65,6 +65,11 @@ public class MapGenerator : MonoBehaviour
         
     }
 
+    public void GenerateMap(int newSeed){
+        seed = newSeed;
+        GenerateMap();
+    }
+
     void OnValidate()
     {
         if(lacunarity < 1){

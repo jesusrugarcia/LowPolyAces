@@ -12,6 +12,7 @@ public class SaveData
     public int[] selectedPlayer = {0,0,0,0};
     public float points = 0;
     public bool[] unlockedPlanes;
+    
 
     public SaveData(int bestTime, int bestEnemies, int bestTotal, int size){
         this.bestTime = bestTime;

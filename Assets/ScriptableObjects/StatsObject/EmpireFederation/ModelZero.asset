@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e611aeeb56c49d04b83f2260b6cdaee2, type: 3}
+  m_Name: ModelZero
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 5
+  maxSpeed: 5
+  speed: 0
+  acceleration: 0.5
+  rotationSpeed: 4
+  rotation: 0
+  maxRotation: 4
+  timeToRotate: 1
+  timeRotating: 0.3
+  bulletDamage: 0.5
+  turretDamage: 0.1
+  missileDamage: 10
+  mineDamage: 5
+  drillDamage: 5
+  shootSpeed: 1
+  magazineSize: 3
+  turretShootSpeed: 1
+  normalDroneShootSpeed: 1
+  specialDroneShootSpeed: 10
+  auxDroneSpeed: 10
+  bulletType: 0
+  missileType: 0
+  gadgetType: 0
+  defenseType: 0
+  specialAmmo: 1
+  maxSpecialAmmo: 1
+  defenseAmmo: 1
+  maxDefenseAmmo: 1
+  extraBullets: 0
+  maxMines: 3
+  mines: 0
+  meleeTime: 1
+  trackerBullet: 0
+  searchDistance: 1
+  scoreValue: 100
+  price: 100
+  hasShield: 0
+  damageReductionTankShield: 0.7
+  SpecialShieldDuration: 1
+  healAreaAmount: 0.01
+  rechargeDefenseTime: 5
+  rechargeSpecialTime: 10
+  maxDrones: 1
+  drones: 0
+  statusEffects:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  invIncrease: 0.1
+  ghostIncrease: 1
+  evasion: 0
+  timeTargetting: 2
+  statusEffectTime: 1
+  laserActivated: 0
+  laserTime: 1
+  laserDamage: 0.1

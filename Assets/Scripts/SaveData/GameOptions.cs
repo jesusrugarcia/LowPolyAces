@@ -7,7 +7,8 @@ public enum gameMode {
     arcade,
     versus,
     race,
-    survival
+    survival,
+    roguelite
 }
 
 [Serializable]

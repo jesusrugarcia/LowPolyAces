@@ -7,10 +7,6 @@ public class Bezier : MonoBehaviour
     public LineRenderer lineRenderer;
     public int numberOfPoints = 25;
     
-    private int curveCount = 0;    
-    private int layerOrder = 0;
-    private int SEGMENT_COUNT = 50;
-    
         
     void Start()
     {

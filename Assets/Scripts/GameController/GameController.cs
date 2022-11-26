@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     public SaveData data;
     public GameOptions gameOptions;
+    public RogueliteSave rogueliteSave;
     
 
     [SerializeField]
@@ -41,8 +42,7 @@ public class GameController : MonoBehaviour
     public MapGenerator mapGenerator;
 
     private void Start() {
-        //mapGenerator.seed = Random.Range(-9999,9999);
-        //mapGenerator.GenerateMap();
+        rogueliteSave = FileManager.loadRoguelite();
         data = FileManager.loadData(playerSpawner.playerList.planes.Length); //ojo que esto es el numero de aviones en el juego.
         gameOptions = FileManager.loadOptions();
         cameraPointCalculator.calculateBoundaries();
@@ -65,6 +65,9 @@ public class GameController : MonoBehaviour
             gameModeManager = GetComponent<ArcadeModeManager>();
         } else  if (gameOptions.mode == gameMode.versus){//placeholder
             gameModeManager = GetComponent<VersusModeManager>();
+        } else  if (gameOptions.mode == gameMode.roguelite){//placeholder
+            gameModeManager = GetComponent<RogueliteModeManager>();
+            generateMap();
         }
 
         gameModeManager.controller = this;
@@ -82,6 +85,16 @@ public class GameController : MonoBehaviour
         if (currentPowerUps < 0){
             currentPowerUps = 0;
         }
+    }
+
+    public void generateMap(){
+        Debug.Log(rogueliteSave.seed);
+        mapGenerator.seed= rogueliteSave.seed;
+        mapGenerator.GenerateMap();
+    }
+
+    public void setVolume(){
+        audioManager.updateVolume();
     }
 
     

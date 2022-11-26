@@ -31,6 +31,7 @@ public class PlaneStatsObject : ScriptableObject
     public float specialDroneShootSpeed = 10f;
     public float auxDroneSpeed = 10f;
 
+    public BulletType bulletType;
     public MissileType missileType;
     public GadgetType gadgetType;
     public DefenseType defenseType;
@@ -58,6 +59,7 @@ public class PlaneStatsObject : ScriptableObject
     
     public int maxDrones = 1;
     public int drones = 0;
+    public PowerUps[] dronesList;
 
     public float[] statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
     public float invIncrease = 0.1f;

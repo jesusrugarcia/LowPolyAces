@@ -51,7 +51,7 @@
                     "id": "ecbb4107-b894-4eaa-b2f5-247ac57eab36",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(pressPoint=1)"
                 },
                 {
                     "name": "Gadget",

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ShopMenu : MonoBehaviour
+public class ShopMenu : Menu
 {
     [SerializeField]
     public PlanesListScriptableObject planes;
@@ -11,8 +11,7 @@ public class ShopMenu : MonoBehaviour
     public int currentPlane = 0;
     public PlaneStatsObject stats;
 
-    public SaveData data;
-    public GameOptions gameOptions;
+    
 
     public GameObject[] equipButtons;
     public GameObject buyButton;
@@ -29,12 +28,11 @@ public class ShopMenu : MonoBehaviour
     public Text price;
     public Text points;
 
-    public AudioManager audioManager;
+    
 
-    private void Start() {
-        data = FileManager.loadData(planes.planes.Length);
-        gameOptions = FileManager.loadOptions();
-        audioManager.updateVolume();
+    void Start() {
+        planesSize = planes.planes.Length;
+        StartMenu();
         currentPlane = data.selectedPlayer[0];
         loadPlane();
         points.text = "Points: " + data.points.ToString();
@@ -46,7 +44,15 @@ public class ShopMenu : MonoBehaviour
     }
 
     public void play(){
-        SceneManager.LoadScene(1);
+        if(gameOptions.mode == gameMode.roguelite ){
+            if(rogueliteSave.loadMap != true){
+                rogueliteSave = new RogueliteSave();
+            }
+            SceneManager.LoadScene(3);
+        } else {
+            SceneManager.LoadScene(1);
+        }
+        
     }
 
     public void loadPlane(){
@@ -112,7 +118,7 @@ public class ShopMenu : MonoBehaviour
             for(int i= 0; i < equipButtons.Length; i++){
                 equipButtons[i].SetActive(true);
             }
-            FileManager.saveData(data);
+            saveOptionsAndData();
         } else {
             notEnoughPoints.SetActive(true);
         }
@@ -139,7 +145,7 @@ public class ShopMenu : MonoBehaviour
         
     }
     public void saveSelection(){
-        FileManager.saveData(data);
+        saveOptionsAndData();
         equiped.SetActive(true);
         selectButton();
     }

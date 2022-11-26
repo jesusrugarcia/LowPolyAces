@@ -11,7 +11,11 @@ public class MapChangerRandom : MonoBehaviour
     
 
     private void Start() {
-        changeMap();
+        controller.gameOptions = FileManager.loadOptions();
+        if(controller.gameOptions.mode != gameMode.roguelite){
+            changeMap();
+        }
+        
     }
 
     private void FixedUpdate() {

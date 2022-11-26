@@ -145,6 +145,7 @@ public class PlaneShooter : MonoBehaviour
             
             manager.plane = plane;
             manager.teamManager = GetComponent<TeamManager>();
+            manager.teamManager.team = plane.teamManager.team;
             bull.GetComponent<DamageManager>().damage = plane.stats.bulletDamage;
             bull.transform.Rotate(new Vector3(0,0,angle));
     }

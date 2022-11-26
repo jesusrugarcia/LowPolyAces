@@ -1,6 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
-using UnityEngine.UI;
+
+using TMPro;
 
 public class ArcadeModeManager : GameModeManager
 {
@@ -8,15 +9,17 @@ public class ArcadeModeManager : GameModeManager
     public float timeToIncreaseEnemies = 20;
     public float timer = 0f;
     public int powerUpsSize = 0;
+    public float timerBoss = 0;
+    public float timerForBoss = 300;
 
     public GameObject onFinish;
-    public Button ButtonToActivate;
-    public Text scoreText;
-    public Text timeText;
-    public Text enemiesText;
-    public Text totalText;
-    public Text previousBestText;
-    public Text gainedPoints;
+    public GameObject ButtonToActivate;
+    public TMP_Text scoreText;
+    public TMP_Text timeText;
+    public TMP_Text enemiesText;
+    public TMP_Text totalText;
+    public TMP_Text previousBestText;
+    public TMP_Text gainedPoints;
 
     public void powerUpCheck() {
         timer += Time.deltaTime;
@@ -53,7 +56,7 @@ public class ArcadeModeManager : GameModeManager
         else {
             endGame();
         }
-        controller.maxEnemies = (int)((controller.gameTimer/timeToIncreaseEnemies) + 1);
+        controller.maxEnemies = (int)((controller.gameTimer/timeToIncreaseEnemies) + controller.gameOptions.playerNum);
 
         spawnEnemies();
     }
@@ -62,18 +65,24 @@ public class ArcadeModeManager : GameModeManager
         if (controller.currentEnemies < controller.maxEnemies){
             controller.enemySpawner.spawnEnemy();
         }
+        timerBoss += Time.deltaTime;
+        if (timerBoss >= timerForBoss){
+            timerBoss = 0;
+            var enemy = controller.enemySpawner.spawner.spawnPlane(controller.enemySpawner.enemyList.prefabsBoss.planes[0],movement.Tracking,0);
+            enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
+        }
     }
 
     public override void endGame(){
-        Time.timeScale = 0.0f;
+        
         controller.playersAlive = 0;
         onFinish.SetActive(true);
         
         EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(controller.ButtonToActivate);
-        EventSystem.current.SetSelectedGameObject(controller.ButtonToActivate, new BaseEventData(EventSystem.current));
+        EventSystem.current.SetSelectedGameObject(ButtonToActivate);
+        EventSystem.current.SetSelectedGameObject(ButtonToActivate, new BaseEventData(EventSystem.current));
         
-
+        Time.timeScale = 0.0f;
         previousBestText.text = "Previous best score: " + controller.data.bestTotal.ToString("0");
         if(controller.data.bestTime < (int)controller.gameTimer){
             timeText.text = "Time survived: " + controller.gameTimer.ToString("0") + " New Record!";
@@ -103,4 +112,5 @@ public class ArcadeModeManager : GameModeManager
         scoreText.gameObject.SetActive(false);
 
     }
+
 }

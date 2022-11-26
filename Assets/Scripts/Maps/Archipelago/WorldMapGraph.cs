@@ -4,17 +4,26 @@ using UnityEngine;
 [Serializable]
 public class WorldMapGraph 
 {
+    public int stage;
     public int size;
     public WorldMapNode[] nodes;
     public int currentMapNode;
+    public DecoIslandNode[] decoIslands;
+    public int layers;
 
-    public WorldMapGraph(int layers){
+    public WorldMapGraph(int layers, int decoIslandsNum, int stageNum = 0 ){
         size = 2;
         nodes = new WorldMapNode[size];
         nodes[0] = new WorldMapNode(0,layers,size);  //lastNode 
         nodes[1] = new WorldMapNode(1,0,size);   
         currentMapNode = 1;
-    
+        nodes[1].visited = true;
+        nodes[0].type = NodeType.Boss;
+        nodes[1].type = NodeType.Initial;
+        stage = stageNum;
+        this.layers = layers;
+
+        decoIslands = new DecoIslandNode[decoIslandsNum];
     }
 
     public int generateChildrenNode(int parentPos, int layer){

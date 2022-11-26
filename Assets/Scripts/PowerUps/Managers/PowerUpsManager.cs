@@ -23,7 +23,7 @@ public class PowerUpsManager : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        manager.managePowerUp(other, type, gameObject);
+        manager.managePowerUp(other.gameObject, type, gameObject);
     }
 
 

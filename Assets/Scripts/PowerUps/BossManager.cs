@@ -48,12 +48,13 @@ public class BossManager : MonoBehaviour
         plane.statusManager.removeStatus(StatusEffects.Invulnerability);
     }
 
-    public void summonMinions(){
-        for (int i = 0; i < plane.controller.players.Length; i++){
+    public void summonMinions(int waves = 1){
+        for (int i = 0; i < plane.controller.players.Length * waves; i++){
             var player = plane.controller.players[i];
             if(player.activeSelf){
                 var minion = summonMinion(player);
                 minion.GetComponent<EnemyControllerTracking>().objective = player.transform;
+                minion.GetComponent<PlaneStats>().speed =  minion.GetComponent<PlaneStats>().maxSpeed;
             }
         }
     }

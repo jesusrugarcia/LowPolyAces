@@ -7,18 +7,21 @@ public class AudioManager : MonoBehaviour
     public GameController controller;
     public MainMenu menu;
     public ShopMenu shopMenu;
+    public WorldMapManager mapManager;
     public AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null){
+            audioSource = GetComponent<AudioSource>();
+        }
         updateVolume();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        updateVolume();
     }
 
     public void updateVolume(){
@@ -28,6 +31,8 @@ public class AudioManager : MonoBehaviour
             audioSource.volume = menu.gameOptions.musicVolume;
         } else if(shopMenu != null) {
             audioSource.volume = shopMenu.gameOptions.musicVolume;
+        } else if(mapManager != null){
+            audioSource.volume = mapManager.gameOptions.musicVolume;
         }
     }
 }

@@ -113,7 +113,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -5044,6 +5044,7 @@ MonoBehaviour:
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
+  bulletType: 0
   missileType: 0
   gadgetType: 0
   defenseType: 0
@@ -5758,7 +5759,7 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

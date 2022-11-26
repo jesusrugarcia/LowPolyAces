@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: ModelZero
+  m_EditorClassIdentifier: 
+  model: ModelZero
+  plane: {fileID: 6844582440830960392, guid: d9f336d06cddf40429deba21b4f3d90b, type: 3}
+  stats: {fileID: 11400000, guid: 13db0061d228fc343a460c6da47ec70c, type: 2}

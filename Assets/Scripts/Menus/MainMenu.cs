@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : Menu
 {
     public GameObject optionsMenu;
     public GameObject optionsButton;
@@ -12,25 +12,19 @@ public class MainMenu : MonoBehaviour
     public GameObject playMenu;
     public GameObject playButton;
 
-    public GameOptions gameOptions;
+    public GameObject BackgroundImage;
+    public GameObject BackgroundImageBlurred;
 
-    public Text playersText;
-    public Text timeToSpawnPowerUpsText;
-    public Text maxPowerUpsText;
-    public Text arcadeSpawnTimeText;
-    public Text versusTimeText;
-    public Text versusLifesText;
-    public Text volumeText;
 
-    public AudioManager audioManager;
 
-    void Start()
-    {
-         gameOptions = FileManager.loadOptions();
-         audioManager.updateVolume();
+    void Start() {
+        StartMenu();
+        Time.timeScale = 1;
     }
 
     public void playGame(){
+        BackgroundImage.SetActive(false);
+        BackgroundImageBlurred.SetActive(true);
         playMenu.SetActive(true);
         menu.SetActive(false);
 
@@ -41,6 +35,8 @@ public class MainMenu : MonoBehaviour
     }
 
     public void closePlayMenu(){
+        BackgroundImage.SetActive(true);
+        BackgroundImageBlurred.SetActive(false);
         playMenu.SetActive(false);
         menu.SetActive(true);
 
@@ -50,8 +46,13 @@ public class MainMenu : MonoBehaviour
     }
 
     public void play(){
-        FileManager.saveOptions(gameOptions);
-        SceneManager.LoadScene(1);
+        saveOptionsAndData();
+        if(gameOptions.mode == gameMode.roguelite){
+            SceneManager.LoadScene(3);
+        } else {
+            SceneManager.LoadScene(1);
+        }
+        
     }
 
     public void quitGame(){
@@ -69,7 +70,8 @@ public class MainMenu : MonoBehaviour
     public void openOptions(){
         menu.SetActive(false);
         optionsMenu.SetActive(true);
-        setText();
+        BackgroundImage.SetActive(false);
+        BackgroundImageBlurred.SetActive(true);
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(optionsButton);
@@ -77,7 +79,9 @@ public class MainMenu : MonoBehaviour
     }
 
     public void closeOptions(){
-        FileManager.loadOptions();
+        BackgroundImage.SetActive(true);
+        BackgroundImageBlurred.SetActive(false);
+        gameOptions = FileManager.loadOptions();
         optionsMenu.SetActive(false);
         menu.SetActive(true);
 
@@ -86,7 +90,7 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(menuButton, new BaseEventData(EventSystem.current));
     }
     public void saveOptions(){
-        FileManager.saveOptions(gameOptions);
+        saveOptionsAndData();
 
         optionsMenu.SetActive(false);
         menu.SetActive(true);
@@ -106,122 +110,18 @@ public class MainMenu : MonoBehaviour
         play();
     }
 
-    public void setOnePlayer(){
-        gameOptions.playerNum = 1;
-        playersText.text = "1";
-    }
-    public void setTwoPlayers(){
-        gameOptions.playerNum = 2;
-        playersText.text = "2";
-    }
-    public void setThreePlayers(){
-        gameOptions.playerNum = 3;
-        playersText.text = "3";
-    }
-    public void setFourPlayers(){
-        gameOptions.playerNum = 4;
-        playersText.text = "4";
+    public void setRoguelite(){
+        gameOptions.mode = gameMode.roguelite;
+        rogueliteSave = new RogueliteSave();
+        play();
     }
 
-    public void increasePowerUpTime(){
-        gameOptions.timeToSpawnPowerUps += 0.5f;
-        timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
-    }
-    public void decresePowerUpTime(){
-        gameOptions.timeToSpawnPowerUps += -0.5f;
-        timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
-    }
-    public void increasePowerUpTimeUltra(){
-        gameOptions.timeToSpawnPowerUps += 5;
-        timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
-    }
-    public void decresePowerUpTimeUltra(){
-        gameOptions.timeToSpawnPowerUps += -5;
-        timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
-    }
-    public void increaseMaxPowerUp(){
-        gameOptions.maxPowerUps += 1;
-        maxPowerUpsText.text = gameOptions.maxPowerUps.ToString();
-    }
-    public void decreseMaxPowerUp(){
-        gameOptions.maxPowerUps += -1;
-        maxPowerUpsText.text = gameOptions.maxPowerUps.ToString();
+    public void loadRoguelite(){
+        gameOptions.mode = gameMode.roguelite;
+        if(rogueliteSave.loadMap != true){
+            rogueliteSave = new RogueliteSave();
+        }
+        play();
     }
 
-    public void increaseArcadeSpawnTime(){
-        gameOptions.timeToIncreaseEnemies += 0.5f;
-        arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
-    }
-    public void decreseArcadeSpawnTime(){
-        gameOptions.timeToIncreaseEnemies += -0.5f;
-        arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
-    }
-    public void increaseArcadeSpawnTimeUltra(){
-        gameOptions.timeToIncreaseEnemies += 5;
-        arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
-    }
-    public void decreseArcadeSpawnTimeUltra(){
-        gameOptions.timeToIncreaseEnemies += -5;
-        arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
-    }
-
-    public void increaseVersusTime(){
-        gameOptions.playTime += 0.5f;
-        versusTimeText.text = gameOptions.playTime.ToString();
-    }
-    public void increaseVersusTimeUltra(){
-        gameOptions.playTime += 5;
-        versusTimeText.text = gameOptions.playTime.ToString();
-    }
-    public void decreaseVersusTime(){
-        gameOptions.playTime += -0.5f;
-        versusTimeText.text = gameOptions.playTime.ToString();
-    }
-    public void decreaseVersusTimeUltra(){
-        gameOptions.playTime += -5;
-        versusTimeText.text = gameOptions.playTime.ToString();
-    }
-
-    public void increaseVersusLifes(){
-        gameOptions.maxLives += 1;
-        versusLifesText.text = gameOptions.maxLives.ToString();
-    }
-    public void decreaseVersusLifes(){
-        gameOptions.maxLives += -1;
-        versusLifesText.text = gameOptions.maxLives.ToString();
-    }
-
-    public void increaseVolume(){
-        gameOptions.musicVolume += 0.01f;
-        volumeText.text = (gameOptions.musicVolume*100).ToString();
-        audioManager.updateVolume();
-    }
-
-    public void increaseVolumeUltra(){
-        gameOptions.musicVolume += 0.1f;
-        volumeText.text = (gameOptions.musicVolume*100).ToString();
-        audioManager.updateVolume();
-    }
-
-    public void decreaseVolume(){
-        gameOptions.musicVolume += -0.01f;
-        volumeText.text = (gameOptions.musicVolume*100).ToString();
-        audioManager.updateVolume();
-    }
-
-    public void decreaseVolumeUltra(){
-        gameOptions.musicVolume += -0.1f;
-        volumeText.text = (gameOptions.musicVolume*100).ToString();
-        audioManager.updateVolume();
-    }
-
-    public void setText(){
-        playersText.text = gameOptions.playerNum.ToString();
-        timeToSpawnPowerUpsText.text = gameOptions.timeToSpawnPowerUps.ToString();
-        maxPowerUpsText.text = gameOptions.maxPowerUps.ToString();
-        arcadeSpawnTimeText.text = gameOptions.timeToIncreaseEnemies.ToString();
-        versusTimeText.text = gameOptions.playTime.ToString();
-        versusLifesText.text = gameOptions.maxLives.ToString();
-        volumeText.text = (gameOptions.musicVolume*100).ToString();
-    }
 }

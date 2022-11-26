@@ -19,13 +19,29 @@ public class PlayerSpawner : MonoBehaviour
         }
         
         if(player == 0){
-            return spawner.spawnPlane(playerList.planes[prefab],movement.Player,team);
+            StatsSave save = null;
+            if(controller.gameOptions.mode == gameMode.roguelite && controller.rogueliteSave.loadStats){
+                save = controller.rogueliteSave.stats[player];
+            }
+            return spawner.spawnPlane(playerList.planes[prefab],movement.Player,team,stats:save);
         } else if(player ==1){
-            return spawner.spawnPlane(playerList2.planes[prefab],movement.Player,team);
+            StatsSave save = null;
+            if(controller.gameOptions.mode == gameMode.roguelite &&controller.rogueliteSave.loadStats){
+                save = controller.rogueliteSave.stats[player];
+            }
+            return spawner.spawnPlane(playerList2.planes[prefab],movement.Player,team,stats:save);
         } else if(player ==2){
-            return spawner.spawnPlane(playerList3.planes[prefab],movement.Player,team);
+            StatsSave save = null;
+            if(controller.gameOptions.mode == gameMode.roguelite &&controller.rogueliteSave.loadStats){
+                save = controller.rogueliteSave.stats[player];
+            }
+            return spawner.spawnPlane(playerList3.planes[prefab],movement.Player,team,stats:save);
         } else {
-            return spawner.spawnPlane(playerList4.planes[prefab],movement.Player,team);
+            StatsSave save = null;
+            if(controller.gameOptions.mode == gameMode.roguelite &&controller.rogueliteSave.loadStats){
+                save = controller.rogueliteSave.stats[player];
+            }
+            return spawner.spawnPlane(playerList4.planes[prefab],movement.Player,team,stats:save);
         }
          
     }

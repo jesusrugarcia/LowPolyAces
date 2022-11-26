@@ -1,19 +1,40 @@
 using System;
 using UnityEngine;
 
+public enum NodeType{
+    Combat,
+    Shop,
+    Initial,
+    Boss
+}
+
+[Serializable]
+public class DecoIslandNode{
+    public int seed = 0;
+    public Vector3 screenPos = new Vector3(0,0,0);
+}
+
 [Serializable]
 public class WorldMapNode{
+    public NodeType type;
     public int pos;
     public int layer;
     public bool[] connectedNodes;
     public Vector3 screenPos;
     public int seed;
+    public bool visited;
+    public bool combatEnded;
+    public int[] enemyCount;
 
-    public WorldMapNode(int posi, int lay, int size){
+    public WorldMapNode(int posi, int lay, int size, NodeType nodeType = NodeType.Combat){
+        type = nodeType;
         pos = posi;
         layer = lay;
         connectedNodes = new bool[size];
         seed = UnityEngine.Random.Range(-9999,9999);
+        visited = false;
+        combatEnded = false;
+        enemyCount = new int[4] {0,0,0,0};
     }
 
     public void updateConnections(int size){

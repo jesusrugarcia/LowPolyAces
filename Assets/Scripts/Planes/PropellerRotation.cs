@@ -15,7 +15,7 @@ public class PropellerRotation : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(parent == null){
             transform.Rotate(rotationSpeedX,rotationSpeedY,rotationSpeedZ);

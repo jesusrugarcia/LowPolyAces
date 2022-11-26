@@ -7,6 +7,7 @@ public static class FileManager
     public static string saveName = "saveData";
     public static string optionName = "gameOptions";
     public static string mapName = "mapGraph";
+    public static string rogueliteName = "rogueliteSave";
 
     public static void saveData(SaveData data){
         var jsonData = JsonUtility.ToJson(data);
@@ -58,6 +59,23 @@ public static class FileManager
         try{
             var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + mapName + ".json");
             var data = JsonUtility.FromJson<WorldMapGraph>(jsonData);
+            return data;
+        }
+        catch (System.Exception){
+            return null;
+        }
+        
+    }
+
+    public static void saveRoguelite(RogueliteSave data){
+        var jsonData = JsonUtility.ToJson(data);
+        System.IO.File.WriteAllText(Application.dataPath + "/" + rogueliteName + ".json", jsonData);
+    }
+
+    public static RogueliteSave loadRoguelite(){
+        try{
+            var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + rogueliteName + ".json");
+            var data = JsonUtility.FromJson<RogueliteSave>(jsonData);
             return data;
         }
         catch (System.Exception){
