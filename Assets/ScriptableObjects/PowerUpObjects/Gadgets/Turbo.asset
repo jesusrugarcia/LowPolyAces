@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   title: Turbo
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: bf5b090415cc9724ca9d0d34f754c439, type: 3}
   desc: Inmediately accelerates to x4 times max speed.
+  rarity: 100

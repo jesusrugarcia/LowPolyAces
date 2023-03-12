@@ -1532,6 +1532,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2523632281831335560, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6986452018257806476, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1774,10 +1778,17 @@ MonoBehaviour:
     bestEnemies: 0
     bestTotal: 0
     selectedPlayer: 
+    selectedChar: 
     points: 0
     unlockedPlanes: 
-  planesSize: 9
+    purchasedPlanes: 
+    unlockedCharacters: 
+    unlockedPowerUps: 
+  planeList: {fileID: 11400000, guid: 298febbb9846eea40af253f395a67742, type: 2}
+  sizeCharacters: 4
+  sizePowerUps: 9
   gameOptions:
+    language: 0
     musicVolume: 50
     mode: 0
     playerNum: 1
@@ -1797,6 +1808,7 @@ MonoBehaviour:
     loadStats: 0
     fuel: 5
     turnsWithoutFuel: 0
+    money: 00000000000000000000000000000000
     stats:
     - maxHealth: 0
       health: 1
@@ -1843,6 +1855,7 @@ MonoBehaviour:
       rechargeSpecialTime: 10
       maxDrones: 1
       drones: 0
+      dronesList: 
       statusEffects:
       - 0
       - 0
@@ -1902,6 +1915,7 @@ MonoBehaviour:
       rechargeSpecialTime: 10
       maxDrones: 1
       drones: 0
+      dronesList: 
       statusEffects:
       - 0
       - 0
@@ -1961,6 +1975,7 @@ MonoBehaviour:
       rechargeSpecialTime: 10
       maxDrones: 1
       drones: 0
+      dronesList: 
       statusEffects:
       - 0
       - 0
@@ -2020,6 +2035,7 @@ MonoBehaviour:
       rechargeSpecialTime: 10
       maxDrones: 1
       drones: 0
+      dronesList: 
       statusEffects:
       - 0
       - 0
@@ -2034,7 +2050,15 @@ MonoBehaviour:
       laserActivated: 0
       laserTime: 1
       laserDamage: 0.1
+    pendingPowerUps:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   audioManager: {fileID: 1744098951}
+  texts: []
+  textsScriptableObject: {fileID: 0}
+  mainButton: {fileID: 0}
   optionsMenu: {fileID: 1119483690}
   optionsButton: {fileID: 1664424012}
   menu: {fileID: 1528973287}
@@ -2747,6 +2771,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   menu: {fileID: 1018201820}
   shopMenu: {fileID: 0}
+  mapManager: {fileID: 0}
   audioSource: {fileID: 1378723831}
 --- !u!1 &1417990613
 GameObject:
@@ -3559,6 +3584,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   menu: {fileID: 1018201820}
   shopMenu: {fileID: 0}
+  mapManager: {fileID: 0}
   audioSource: {fileID: 1744098949}
 --- !u!1001 &1785814401
 PrefabInstance:
@@ -4373,7 +4399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 46370039060966961, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -230
+      value: -347
       objectReference: {fileID: 0}
     - target: {fileID: 46370039060966961, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4413,7 +4439,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6986452018257806476, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: playGame
+      value: openMainHub
       objectReference: {fileID: 0}
     - target: {fileID: 6986452018257806476, guid: 6c37d8ce248dc904ba27c685d9d989f2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

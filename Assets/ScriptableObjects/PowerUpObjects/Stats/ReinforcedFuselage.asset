@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 29
   title: Reinforced Fuselage
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 5ce7fccf17fd9c04d941a697f255eaa3, type: 3}
   desc: Increases max health.
+  rarity: 100

@@ -14,6 +14,7 @@ public enum gameMode {
 [Serializable]
 public class GameOptions
 {
+    public Languages language = 0;
     [Range(0f,1f)]
     public float musicVolume = 0.5f;
     public gameMode mode = gameMode.arcade;

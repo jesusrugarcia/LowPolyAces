@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 35
   title: Experimental Barrel
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 46ff42d24a2ffdc48a9862741d1b7c51, type: 3}
   desc: Shoots aditional bullets in a 90 degree angle.
+  rarity: 100

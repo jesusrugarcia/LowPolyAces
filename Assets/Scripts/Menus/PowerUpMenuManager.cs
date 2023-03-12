@@ -22,29 +22,14 @@ public class PowerUpMenuManager : MonoBehaviour
     
 
     public void selectPowerUps(){
-        powerUps = new PowerUpScriptableObject[powerUpNumber];
-
-        for(int i=0; i<powerUpNumber; i++){
-            selectPowerUp(i);
-        }
-    }
-
-    public void selectPowerUp(int i){
-        var rarity = UnityEngine.Random.Range(0,raritiesLists.Length);
-        powerUps[i] = raritiesLists[rarity].powerUps[UnityEngine.Random.Range(0,raritiesLists[rarity].powerUps.Length)];
-
-        for(int j=0; j<i; j++){
-            if( powerUps[j] ==  powerUps[i]
-            || ((powerUps[i].type == PowerUps.TurretDrone || powerUps[i].type == PowerUps.RepairDrone || powerUps[i].type == PowerUps.MineDrone || powerUps[i].type == PowerUps.MissileDrone || powerUps[i].type == PowerUps.GunnerDrone || powerUps[i].type == PowerUps.ShieldDrone) && controller.players[currentPlayer].GetComponent<PlaneStats>().drones >= controller.players[currentPlayer].GetComponent<PlaneStats>().maxDrones)
-            ){
-                selectPowerUp(i);
+        var dronesAvailable = controller.players[currentPlayer].GetComponent<PlaneStats>().drones >= controller.players[currentPlayer].GetComponent<PlaneStats>().maxDrones;
+        powerUps = PowerUpListGenerator.selectPowerUps(powerUpNumber, raritiesLists, dronesAvailable);
+        for (int i=0; i< powerUps.Length; i++){
+            powerUpsTitles[i].text = powerUps[i].title;
+            powerUpsDescs[i].text = powerUps[i].desc;
+            if(powerUps[i].image != null){
+                powerUpsImages[i].GetComponent<Image>().sprite = powerUps[i].image;
             }
-        }
-
-        powerUpsTitles[i].text = powerUps[i].title;
-        powerUpsDescs[i].text = powerUps[i].desc;
-        if(powerUps[i].image != null){
-            powerUpsImages[i].GetComponent<Image>().sprite = powerUps[i].image;
         }
     }
 

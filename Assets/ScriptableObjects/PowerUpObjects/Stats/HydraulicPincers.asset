@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 41
   title: Hydraulic Pincers
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 3a5d56e1aff9b1542a7be773ca4fdd55, type: 3}
   desc: Increases status effect time inflicted by claws, missile damage by a small
     ammount.
+  rarity: 100

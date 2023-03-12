@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: BumbleBeeShop
   m_EditorClassIdentifier: 
+  model: Bumble Bee
   plane: {fileID: 2771558520200455377, guid: 3525149b7db341c40b07d68d2de4e4bf, type: 3}
   stats: {fileID: 11400000, guid: 4e8650989e8c8a044a61526b7abba127, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 0
+  desc: 

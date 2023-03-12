@@ -49,6 +49,10 @@ public class PlaneSpawner : MonoBehaviour
             
         } else {
             health = Instantiate(healthBar,plane.transform.position, Quaternion.Euler(270,0,0));
+            //add upgrades
+            if(controller.gameOptions.mode == gameMode.arcade || controller.gameOptions.mode == gameMode.roguelite && !controller.rogueliteSave.loadStats){
+                upgrade(plane);
+            }
         }
         planeManager.planeShooter.bullet.GetComponent<TeamManager>().team = planeManager.teamManager.team;
         var healthComponent = health.GetComponent<HealthBar>();
@@ -202,5 +206,133 @@ public class PlaneSpawner : MonoBehaviour
         
         //Debug.Log(dir);
         Plane.transform.rotation = Quaternion.Euler(dir);
+    }
+
+    public void upgrade(GameObject plane){
+        try{
+            var stats = plane.GetComponent<PlaneStats>();
+
+            // 0 health
+            if (controller.data.upgrades.increase[0] >0){
+                stats.maxHealth += controller.data.upgrades.increase[0];
+                stats.health += controller.data.upgrades.increase[0];
+            }
+            //1 speed
+            if (controller.data.upgrades.increase[1] >0){
+                stats.maxSpeed += controller.data.upgrades.increase[1]*0.5f;
+                if(stats.maxSpeed > 20){
+                    stats.maxSpeed = 20;
+                }
+            }
+            //2 acceleration
+            if (controller.data.upgrades.increase[2] >0){
+                stats.acceleration += controller.data.upgrades.increase[2]*0.1f;
+            }
+            //3 rotation speed
+            if (controller.data.upgrades.increase[3] >0){
+                stats.rotationSpeed += controller.data.upgrades.increase[3]*0.5f;
+                if(stats.rotationSpeed > 10){
+                    stats.rotationSpeed = 10;
+                }
+            }
+            //4 shield time
+            if (controller.data.upgrades.increase[4] >0){
+                stats.SpecialShieldDuration += controller.data.upgrades.increase[4];
+            }
+            //5 evasion
+            if (controller.data.upgrades.increase[5] >0){
+                stats.evasion += controller.data.upgrades.increase[5]*0.1f;
+                if(stats.evasion > 0.8f){
+                    stats.evasion = 0.8f;
+                }
+            }
+            //6 status effect
+            if (controller.data.upgrades.increase[6] >0){
+                stats.statusEffectTime += controller.data.upgrades.increase[6];
+            }
+            //7 bullet damage
+            if (controller.data.upgrades.increase[7] >0){
+                stats.bulletDamage += controller.data.upgrades.increase[7]*0.5f;
+                stats.drillDamage += controller.data.upgrades.increase[7]*0.5f;
+            }
+            //8 special damage
+            if (controller.data.upgrades.increase[8] >0){
+                stats.turretDamage += controller.data.upgrades.increase[8]*0.15f;
+                stats.missileDamage += controller.data.upgrades.increase[8]*1.5f;
+                stats.mineDamage += controller.data.upgrades.increase[8]*1.5f;
+                stats.laserDamage += controller.data.upgrades.increase[8]*0.1f;
+            }
+            //9 shootSpeed
+            if (controller.data.upgrades.increase[9] >0){
+                stats.shootSpeed += - controller.data.upgrades.increase[9]*0.1f;
+                if(stats.shootSpeed < 0.1f){
+                    stats.shootSpeed = 0.1f;
+                }
+            }
+            //10 DroneShootSpeed
+            if (controller.data.upgrades.increase[10] >0){
+                stats.normalDroneShootSpeed += - controller.data.upgrades.increase[10]*0.1f;
+                if(stats.normalDroneShootSpeed < 0.1f){
+                    stats.normalDroneShootSpeed = 0.1f;
+                }
+                stats.specialDroneShootSpeed += - controller.data.upgrades.increase[10];
+                if(stats.specialDroneShootSpeed < 1){
+                    stats.specialDroneShootSpeed = 1;
+                }
+                stats.auxDroneSpeed += - controller.data.upgrades.increase[10];
+                if(stats.auxDroneSpeed < 1){
+                    stats.auxDroneSpeed = 1;
+                }
+            }
+            //11 TurretshootSpeed
+            if (controller.data.upgrades.increase[11] >0){
+                stats.turretShootSpeed += - controller.data.upgrades.increase[11]*0.1f;
+                if(stats.turretShootSpeed < 0.1f){
+                    stats.turretShootSpeed = 0.1f;
+                }
+            }
+            //12 maxdrones
+            if (controller.data.upgrades.increase[12] >0){
+                stats.maxDrones += controller.data.upgrades.increase[12];
+            }
+            //13 specialAMmo
+            if (controller.data.upgrades.increase[13] >0){
+                stats.maxSpecialAmmo += controller.data.upgrades.increase[13];
+                stats.specialAmmo += controller.data.upgrades.increase[13];
+                stats.rechargeSpecialTime += - controller.data.upgrades.increase[13];
+                if(stats.rechargeSpecialTime < 1){
+                    stats.rechargeSpecialTime = 1;
+                }
+            }
+            //14 defense AMmo
+            if (controller.data.upgrades.increase[14] >0){
+                stats.maxDefenseAmmo += controller.data.upgrades.increase[14];
+                stats.defenseAmmo += controller.data.upgrades.increase[14];
+                stats.rechargeDefenseTime += - controller.data.upgrades.increase[14]*0.5f;
+                if(stats.rechargeDefenseTime < 0.5f){
+                    stats.rechargeDefenseTime = 0.5f;
+                }
+            }
+            //15 extra bullets
+            if (controller.data.upgrades.increase[15] >0){
+                stats.extraBullets += controller.data.upgrades.increase[15];
+            }
+            //16 magazine size
+            if (controller.data.upgrades.increase[16] >0){
+                stats.magazineSize += controller.data.upgrades.increase[16];
+            }
+            //17 max mines
+            if (controller.data.upgrades.increase[17] >0){
+                stats.maxMines += controller.data.upgrades.increase[17];
+            }
+            //18 special ammo time
+            if (controller.data.upgrades.increase[18] >0){
+                stats.meleeTime += controller.data.upgrades.increase[18];
+                stats.meleeTime += controller.data.upgrades.increase[18];
+            }
+            //19 revival to be implemented
+        } catch(System.Exception e){
+            Debug.Log(e);
+        }  
     }
 }

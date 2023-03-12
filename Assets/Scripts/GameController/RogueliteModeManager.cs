@@ -33,7 +33,17 @@ public class RogueliteModeManager : GameModeManager
         }
         
         scoreText.gameObject.SetActive(false);
+        checkPendingPowerUps();
         
+    }
+
+    public void checkPendingPowerUps(){
+        for (int i=0; i < controller.gameOptions.playerNum; i++){
+            if (controller.rogueliteSave.pendingPowerUps[i] != null){
+                controller.centralManager.managePowerUp(controller.players[i], controller.rogueliteSave.pendingPowerUps[i].type, null);
+                controller.rogueliteSave.pendingPowerUps[i] = null;
+            }
+        }
     }
 
     public override void UpdateGame(){
@@ -89,6 +99,7 @@ public class RogueliteModeManager : GameModeManager
         for (int i=0; i< controller.gameOptions.playerNum;i++){
             controller.rogueliteSave.stats[i].copyStats(controller.players[i].GetComponent<PlaneStats>());
         }
+        giveInRunPoints();
         controller.rogueliteSave.loadStats = true;
         FileManager.saveRoguelite(controller.rogueliteSave);
         if(controller.currentEnemies <= 0){
@@ -123,11 +134,22 @@ public class RogueliteModeManager : GameModeManager
 
     public void givePoints(float multiplier){
         var map = FileManager.loadMap();
-        controller.data.points += map.nodes[map.currentMapNode].layer * multiplier;
+        controller.data.points += (int)(map.nodes[map.currentMapNode].layer * multiplier);
         controller.rogueliteSave.loadMap = false;
+        controller.rogueliteSave.money = new int[] {0,0,0,0};
         finalText.text = "Gained points: " +  (map.nodes[map.currentMapNode].layer * multiplier).ToString();
         FileManager.saveRoguelite(controller.rogueliteSave);
         FileManager.saveData(controller.data);
+    }
+
+    public void giveInRunPoints(){
+        var map = FileManager.loadMap();
+        var points = map.nodes[map.currentMapNode].layer + map.nodes[map.currentMapNode].totalEnemies() + Random.Range(10,16);
+
+        for(int i=0; i< controller.rogueliteSave.money.Length; i++){
+            controller.rogueliteSave.money[i] += points;
+        }
+        FileManager.saveRoguelite(controller.rogueliteSave);
     }
 
     public void backToMenu(){

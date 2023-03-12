@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: OmegaGunnerShop
   m_EditorClassIdentifier: 
+  model: Omega Gunner
   plane: {fileID: 399103313419090746, guid: 00f6ff73bcb16fc4e84a544cc0e8ef6a, type: 3}
   stats: {fileID: 11400000, guid: ed1f0857b14d86c43804c0c95191d4ad, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 0
+  desc: 

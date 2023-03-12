@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 15
   title: Ghost
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: a6c568c8885b787458e11dff25ec4208, type: 3}
   desc: Makes the plane untargettable and raises evation for a small period of time.
+  rarity: 100

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 17
   title: Inverse Hook
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 5ee67928d3cbe2d429ec3d296c1cbd0a, type: 3}
   desc: Launches a hook that can stick to objects and planes. Press again to quickly
     move the hooked object towards the plane.
+  rarity: 100

@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 33
   title: Automated Recharge Systems
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 82f616dc00dba0f4cbdf6a486c545fa1, type: 3}
   desc: Increases shoot speed.
+  rarity: 100

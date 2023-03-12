@@ -7,5 +7,9 @@ public class PlaneScriptableObject : ScriptableObject
 {
     public string model;
     public GameObject plane;
+    //public Sprite image;
     public PlaneStatsObject stats;
+    public bool unlockedByDefault;
+    public bool purchasedByDefault;
+    public string desc;
 }

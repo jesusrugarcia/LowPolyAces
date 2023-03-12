@@ -12,10 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: f09d0e47e3c79f049a85273eaad104c9
+    path: Assets/Scenes/MainHub.unity
+    guid: e9c892e6042be5f40b85a8b78114a5bb
   - enabled: 1
     path: Assets/Scenes/ArchipelagoMap.unity
     guid: ec91509d2f11d4f40b56060827dcb1e8
+  - enabled: 1
+    path: Assets/Scenes/Shop.unity
+    guid: f09d0e47e3c79f049a85273eaad104c9
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 73044bef4b850794bbc20baa5518872c, type: 2}

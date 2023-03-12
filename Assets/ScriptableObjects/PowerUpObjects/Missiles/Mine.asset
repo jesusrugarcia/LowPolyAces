@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   title: Mine
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 14d04881b7e450e4093758cdd91fef86, type: 3}
   desc: Leaves a mine that deals damage to an enemy. Leaves an exploasion at collision,
     which becomes bigger when hit by an ally missile. (Special Ammo)
+  rarity: 100

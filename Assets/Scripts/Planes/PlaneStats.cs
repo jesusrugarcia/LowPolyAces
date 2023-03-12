@@ -83,7 +83,7 @@ public class PlaneStats : MonoBehaviour
     public float searchDistance = 1; // used to increase search distance of turret and missiles
 
     public float scoreValue = 0;
-    public float price = 0;
+    public int price = 0;
 
     public bool hasShield = false;
     public float damageReductionTankShield = 0.7f; //multiplied to damage when impacts tank shield

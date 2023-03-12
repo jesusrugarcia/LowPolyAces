@@ -22,10 +22,12 @@ public class WorldMapGenerator : MonoBehaviour
         if((nodePos == 1 && nodesToGenerate < 2) || nodesToGenerate == 0){
             nodesToGenerate += 1;
         }
+        var type = getNodeType(graph);
         var nodePositions = new int[nodesToGenerate];
 
         for (int i=0; i < nodesToGenerate; i++){
             nodePositions[i] = graph.generateChildrenNode(nodePos, currentLayer);
+            graph.nodes[nodePositions[i]].type = type;
 
             var newPos = calculateNewPos(parentPos, xIncrease, zIncrease, xMax, zMax, i , nodesToGenerate);
             graph.nodes[nodePositions[i]].screenPos = newPos;
@@ -41,6 +43,18 @@ public class WorldMapGenerator : MonoBehaviour
             
         }
 
+    }
+
+    public NodeType getNodeType(WorldMapGraph graph){
+        if (graph.shops >= 3){
+            return NodeType.Combat;
+        }
+        var ran = UnityEngine.Random.Range(0,21);
+        if(ran == 0){
+            graph.shops ++;
+            return NodeType.Shop;
+        }
+        return NodeType.Combat;
     }
 
     public void calculateEnemyCount(WorldMapGraph graph, int node){
@@ -155,6 +169,13 @@ public class WorldMapGenerator : MonoBehaviour
                 }
                 lastNodes = graph.nodes[0].getConnectedNodes();
             }
+        }
+        if(graph.shops == 0){
+            var shop = UnityEngine.Random.Range(0,lastNodes.Length);
+            if(shop == 0 || shop == 1){
+                shop = graph.nodes.Length - 1;
+            }
+            graph.nodes[shop].type = NodeType.Shop;
         }
     }
 

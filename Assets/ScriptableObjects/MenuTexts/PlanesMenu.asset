@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8209e736768611a4ab35a2cacdf734f0, type: 3}
+  m_Name: PlanesMenu
+  m_EditorClassIdentifier: 
+  texts:
+  - textLanguages:
+    - Planes
+    - Aviones
+  - textLanguages:
+    - 'Price: '
+    - 'Precio: '
+  - textLanguages:
+    - Previous
+    - Anterior
+  - textLanguages:
+    - Buy
+    - Comprar
+  - textLanguages:
+    - Next
+    - Siguiente
+  - textLanguages:
+    - Equiped
+    - Equipado
+  - textLanguages:
+    - Player 1
+    - Jugador 1
+  - textLanguages:
+    - Player 2
+    - Jugador 2
+  - textLanguages:
+    - Player 3
+    - Jugador 3
+  - textLanguages:
+    - Player 4
+    - Jugador 4
+  - textLanguages:
+    - Back
+    - Atras
+  - textLanguages:
+    - Stats
+    - Estadisticas
+  - textLanguages:
+    - Max Health
+    - Vida Maxima
+  - textLanguages:
+    - Speed
+    - Velocidad
+  - textLanguages:
+    - Rotation Speed
+    - Vel. Rotacion
+  - textLanguages:
+    - Acceleration
+    - Aceleracion
+  - textLanguages:
+    - Damage
+    - "Da\xF1o"
+  - textLanguages:
+    - Shoot Speed
+    - Vel. Disparo
+  - textLanguages:
+    - Magazine Size
+    - Tam. Cargador
+  - textLanguages:
+    - Special Ammo
+    - Municion Esp.
+  - textLanguages:
+    - Defense Ammo
+    - Municion Def.
+  - textLanguages:
+    - Extra Bullets
+    - Balas Extra
+  - textLanguages:
+    - Max Mines
+    - Minas Max
+  - textLanguages:
+    - Max Drones
+    - Drones Max
+  - textLanguages:
+    - Evasion
+    - Evasion

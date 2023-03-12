@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: MuscleShop
   m_EditorClassIdentifier: 
+  model: Muscle Plane
   plane: {fileID: 7588788885948368618, guid: 592606b8ca939f04d9673634f6fc9626, type: 3}
   stats: {fileID: 11400000, guid: 0dfc8a2b22b75a7458f6bccba2f3e178, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 1
+  desc: 

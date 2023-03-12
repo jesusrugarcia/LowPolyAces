@@ -25,6 +25,9 @@ public class WorldMapNode{
     public bool visited;
     public bool combatEnded;
     public int[] enemyCount;
+    public PowerUpScriptableObject[] powerUps;
+    public bool[] purchasedItems = {false,false,false,false};
+    public bool shopVisited;
 
     public WorldMapNode(int posi, int lay, int size, NodeType nodeType = NodeType.Combat){
         type = nodeType;
@@ -35,6 +38,7 @@ public class WorldMapNode{
         visited = false;
         combatEnded = false;
         enemyCount = new int[4] {0,0,0,0};
+        shopVisited = false;
     }
 
     public void updateConnections(int size){
@@ -66,5 +70,13 @@ public class WorldMapNode{
         }
 
         return connected;
+    }
+
+    public int totalEnemies(){
+        var enemies = 0;
+        for (int i=0; i<enemyCount.Length;i++){
+            enemies += enemyCount[i];
+        }
+        return enemies;
     }
 }

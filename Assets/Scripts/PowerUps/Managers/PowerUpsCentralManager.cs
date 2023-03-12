@@ -304,10 +304,16 @@ public class PowerUpsCentralManager : MonoBehaviour
             } else if(type == PowerUps.ExperimentalEngine){
                 destroyable = true;
                 planeManager.stats.maxSpeed += 1;
+                if(planeManager.stats.maxSpeed > 20){
+                planeManager.stats.maxSpeed = 20;
+                }
                 planeManager.stats.acceleration += 0.2f;
             } else if(type == PowerUps.FineTunnedFlaps){
                 destroyable = true;
                 planeManager.stats.rotationSpeed += 1;
+                if(planeManager.stats.rotationSpeed > 10){
+                planeManager.stats.rotationSpeed = 10;
+                }
                 planeManager.stats.maxRotation += 1f;
                 if (planeManager.stats.timeToRotate >= 0.3f){
                     planeManager.stats.timeToRotate -= 0.1f;
@@ -323,13 +329,13 @@ public class PowerUpsCentralManager : MonoBehaviour
                 planeManager.stats.laserDamage += 0.1f;
             } else if(type == PowerUps.AutomatizedRechargeSystems){
                 destroyable = true;
-                if (planeManager.stats.shootSpeed > 0.1f){planeManager.stats.shootSpeed -= 0.1f;}
-                if(planeManager.stats.turretShootSpeed > 0.1f){planeManager.stats.turretShootSpeed -= 0.1f;}
-                if(planeManager.stats.normalDroneShootSpeed > 0.1f){planeManager.stats.normalDroneShootSpeed -= 0.1f;}
-                if(planeManager.stats.specialDroneShootSpeed > 1f){planeManager.stats.specialDroneShootSpeed -= 1f;}
-                if(planeManager.stats.auxDroneSpeed > 1){planeManager.stats.auxDroneSpeed-= 1;}
-                if(planeManager.stats.rechargeDefenseTime > 0.5f){planeManager.stats.rechargeDefenseTime -= 0.5f;}
-                if(planeManager.stats.rechargeSpecialTime > 1){planeManager.stats.rechargeSpecialTime -=1;}
+                if (planeManager.stats.shootSpeed > 0.2f){planeManager.stats.shootSpeed -= 0.1f;}
+                if(planeManager.stats.turretShootSpeed > 0.2f){planeManager.stats.turretShootSpeed -= 0.1f;}
+                if(planeManager.stats.normalDroneShootSpeed > 0.2f){planeManager.stats.normalDroneShootSpeed -= 0.1f;}
+                if(planeManager.stats.specialDroneShootSpeed > 2f){planeManager.stats.specialDroneShootSpeed -= 1f;}
+                if(planeManager.stats.auxDroneSpeed > 2){planeManager.stats.auxDroneSpeed-= 1;}
+                if(planeManager.stats.rechargeDefenseTime > 1){planeManager.stats.rechargeDefenseTime -= 0.5f;}
+                if(planeManager.stats.rechargeSpecialTime > 2){planeManager.stats.rechargeSpecialTime -=1;}
             } else if(type == PowerUps.BarrelMagazines){
                 destroyable = true;
                 planeManager.stats.magazineSize += 1;
@@ -361,6 +367,9 @@ public class PowerUpsCentralManager : MonoBehaviour
             } else if(type == PowerUps.ExperimentalCamouflage){
                 destroyable = true;
                 planeManager.stats.evasion += 0.1f;
+                if(planeManager.stats.evasion > 0.8f){
+                    planeManager.stats.evasion = 0.8f;
+                }
                 planeManager.stats.invIncrease += 0.2f;
                 planeManager.stats.ghostIncrease += 1;
             } else if(type == PowerUps.HydraulicPincers){

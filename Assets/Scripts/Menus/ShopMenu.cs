@@ -31,7 +31,7 @@ public class ShopMenu : Menu
     
 
     void Start() {
-        planesSize = planes.planes.Length;
+        //planesSize = planes.planes.Length;
         StartMenu();
         currentPlane = data.selectedPlayer[0];
         loadPlane();
@@ -109,7 +109,7 @@ public class ShopMenu : Menu
 
     public void buy(){
         if (data.points >= stats.price){
-            data.points -= stats.price;
+            data.points -= (int)stats.price;
             data.unlockedPlanes[currentPlane] = true;
             points.text = "Points: " + data.points.ToString("0");
             notEnoughPoints.SetActive(false);

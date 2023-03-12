@@ -43,7 +43,7 @@ public class GameController : MonoBehaviour
 
     private void Start() {
         rogueliteSave = FileManager.loadRoguelite();
-        data = FileManager.loadData(playerSpawner.playerList.planes.Length); //ojo que esto es el numero de aviones en el juego.
+        data = FileManager.loadData(playerSpawner.playerList); //ojo que esto es el numero de aviones en el juego.
         gameOptions = FileManager.loadOptions();
         cameraPointCalculator.calculateBoundaries();
         audioManager.updateVolume();

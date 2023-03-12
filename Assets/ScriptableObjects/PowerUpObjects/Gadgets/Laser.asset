@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 11
   title: Laser
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 0ec2bd9ec0cb4f8478439b97aa6a831e, type: 3}
   desc: Generates a laser beam towards each one of the player allies and mines deployed
     by the plane. When an enemy touches the laser, it recibes damage over time.
+  rarity: 100

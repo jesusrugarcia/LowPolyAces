@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: FalconShop
   m_EditorClassIdentifier: 
+  model: Falcon
   plane: {fileID: 8385988853372261258, guid: dc0d328935faace488a3cfda934b84d7, type: 3}
   stats: {fileID: 11400000, guid: f9217fc49b91d5846b7fd95b8badb80e, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 0
+  desc: 

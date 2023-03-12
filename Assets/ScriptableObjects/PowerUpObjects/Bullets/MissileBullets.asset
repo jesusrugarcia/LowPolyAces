@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 26
   title: Missile Bullet
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 31cdc1960ba136a40ba909d44e119140, type: 3}
   desc: A bullet that leaves an explosion on impact.
+  rarity: 100

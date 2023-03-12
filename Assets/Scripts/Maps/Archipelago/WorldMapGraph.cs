@@ -10,6 +10,7 @@ public class WorldMapGraph
     public int currentMapNode;
     public DecoIslandNode[] decoIslands;
     public int layers;
+    public int shops = 0;
 
     public WorldMapGraph(int layers, int decoIslandsNum, int stageNum = 0 ){
         size = 2;

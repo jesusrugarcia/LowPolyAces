@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 34
   title: Barrel Magazines
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 381a9d75b05e81c48949ab0b84bf7753, type: 3}
   desc: Increases magazine size and max special ammo.
+  rarity: 100

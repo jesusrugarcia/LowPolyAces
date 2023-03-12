@@ -31,11 +31,14 @@ public class WorldMapManager : MonoBehaviour
     public bool isPaused = false;
     public GameObject pauseMenu;
     public GameObject pauseButton;
+
+    public GameObject shopMenu;
+    public GameObject shopButton;
     // Start is called before the first frame update
     void Start()
     {
         rogueliteSave = FileManager.loadRoguelite();
-        saveData = FileManager.loadData(planes.planes.Length);
+        saveData = FileManager.loadData(planes);
         gameOptions = FileManager.loadOptions();
         paintMap();
         
@@ -84,24 +87,46 @@ public class WorldMapManager : MonoBehaviour
     public void checkNodeAction(int node){
         checkFuel();
         if((mapGraph.nodes[node].type == NodeType.Combat || mapGraph.nodes[node].type == NodeType.Boss) && !mapGraph.nodes[node].combatEnded){
-            mapGraph.nodes[mapGraph.currentMapNode].combatEnded = true;
-            FileManager.saveMap(mapGraph);
-            rogueliteSave.loadMap = true;
-            rogueliteSave.seed = mapGraph.nodes[mapGraph.currentMapNode].seed;
-            rogueliteSave.enemyCount = mapGraph.nodes[mapGraph.currentMapNode].enemyCount;
-            rogueliteSave.stage = mapGraph.stage;
-            if(mapGraph.nodes[node].type == NodeType.Boss){
-                rogueliteSave.boss = true;
-            } else {
-                rogueliteSave.boss = false;
-            }
-            var opt = FileManager.loadOptions();
-            opt.mode = gameMode.roguelite;
-            FileManager.saveOptions(opt);
-            SceneManager.LoadScene(1);
-
+            loadCombat(node);
+        } else if(mapGraph.nodes[node].type == NodeType.Shop){
+            loadShop(node);
         }
     FileManager.saveRoguelite(rogueliteSave);
+    }
+
+    public void loadCombat(int node){
+        mapGraph.nodes[mapGraph.currentMapNode].combatEnded = true;
+        FileManager.saveMap(mapGraph);
+        rogueliteSave.loadMap = true;
+        rogueliteSave.seed = mapGraph.nodes[mapGraph.currentMapNode].seed;
+        rogueliteSave.enemyCount = mapGraph.nodes[mapGraph.currentMapNode].enemyCount;
+        rogueliteSave.stage = mapGraph.stage;
+        if(mapGraph.nodes[node].type == NodeType.Boss){
+            rogueliteSave.boss = true;
+        } else {
+            rogueliteSave.boss = false;
+        }
+        var opt = FileManager.loadOptions();
+        opt.mode = gameMode.roguelite;
+        FileManager.saveOptions(opt);
+        SceneManager.LoadScene(1);
+    }
+
+    public void loadShop(int node){
+        isPaused = true;
+        //load shop items
+
+        shopMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(shopButton);
+        EventSystem.current.SetSelectedGameObject(shopButton, new BaseEventData(EventSystem.current));
+    }
+
+    public void closeShop(){
+        shopMenu.SetActive(false);
+        isPaused = false;
+        //FileManager.saveMap(mapGraph);
+        //FileManager.saveRoguelite(rogueliteSave);
     }
 
     public void checkFuel(){

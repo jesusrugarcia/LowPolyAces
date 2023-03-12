@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 21
   title: Mine Drone
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 1fccf84fba6136b4f89aa7c345f7ba02, type: 3}
   desc: A drone that leaves mines on the field.
+  rarity: 100

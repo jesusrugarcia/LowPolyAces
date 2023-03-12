@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   title: Electric Claw
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: f4219125379dca748a0f7b47896dce2a, type: 3}
   desc: A projectile that stuns enemies, making them unable to move. (Special Ammo).
+  rarity: 100

@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Menus\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\UpgradesMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Gadgets\HealAreaManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerTracking.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemySpawner.cs" />
@@ -51,15 +52,20 @@
      <Compile Include="Assets\Scripts\GameController\ArcadeModeManager.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\DroneMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpListScriptableObject.cs" />
+     <Compile Include="Assets\Scripts\Menus\Texts\DialogScriptableObject.cs" />
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\TextureGenerator.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\EnemyControllerRandom.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\CarrierBossManager.cs" />
      <Compile Include="Assets\Scripts\PowerUps\StatusEffect.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\ArchivesMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Defenses\HealShieldManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PropellerRotation.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\HubSubMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Missiles\TargetArea.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneScriptableObject.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\ShieldDrone.cs" />
+     <Compile Include="Assets\Scripts\SnapshotCameraTest.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneShooter\PlayerPlaneShooter.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\WorldMapMovement.cs" />
      <Compile Include="Assets\Scripts\PowerUps\BossManager.cs" />
@@ -75,6 +81,7 @@
      <Compile Include="Assets\Scripts\SaveData\GameOptions.cs" />
      <Compile Include="Assets\Scripts\Planes\PlanesListScriptableObject.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Managers\PowerUpsCentralManager.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\PowerUpListGenerator.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\Bezier.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlayerSpawner.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Gadgets\TankShieldManager.cs" />
@@ -83,6 +90,7 @@
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\EnemyList.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneStats.cs" />
      <Compile Include="Assets\Scripts\SaveData\RogueliteSave.cs" />
+     <Compile Include="Assets\Scripts\Menus\InRunShopMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Missiles\MissileManager.cs" />
      <Compile Include="Assets\Scripts\Menus\ShopMenu.cs" />
      <Compile Include="Assets\Scripts\Planes\CollisionManager.cs" />
@@ -97,6 +105,8 @@
      <Compile Include="Assets\Scripts\PowerUps\Defenses\BossShieldManager.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Managers\PowerUpSpawner.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Missiles\SupportClawManager.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\PlanesMenu.cs" />
+     <Compile Include="Assets\Scripts\Menus\Texts\DialogManager.cs" />
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\MapGenerator.cs" />
      <Compile Include="Assets\Scripts\Menus\PowerUpMenuManager.cs" />
      <Compile Include="Assets\Scripts\GameController\GameController.cs" />
@@ -105,12 +115,16 @@
      <Compile Include="Assets\Scripts\Planes\DamageManager.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneSpawner.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlaneMovement.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\FlyMenu.cs" />
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\MapTextureManager.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\WorldMapManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\FileManager.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\BarracksMenu.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\WorldMapPainter.cs" />
      <Compile Include="Assets\Scripts\CameraPointCalculator.cs" />
      <Compile Include="Assets\Scripts\Planes\HealthBar.cs" />
+     <Compile Include="Assets\Scripts\Menus\Texts\MenuTextScriptableObject.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\HangarMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\PowerUpScriptableObject.cs" />
      <Compile Include="Assets\Scripts\Planes\BulletMovement.cs" />
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\Noise.cs" />
@@ -123,13 +137,15 @@
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\MapChangerRandom.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneMovement\PlayerPlaneMovement.cs" />
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\MeshGenerator.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\HubMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\MissileDrone.cs" />
      <Compile Include="Assets\Scripts\GameController\ObjectPools.cs" />
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Menu.cs" />
+     <Compile Include="Assets\Scripts\SnapshotCamera.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\RepairDrone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\Turret.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\CarrierBossManager.cs" />
+     <Compile Include="Assets\Scripts\CharacterScriptableObject.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />

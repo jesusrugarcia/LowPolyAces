@@ -22,6 +22,21 @@ public class MainMenu : Menu
         Time.timeScale = 1;
     }
 
+    public void openMainHub(){
+        try{
+            if (rogueliteSave.loadMap){
+                SceneManager.LoadScene(3);
+            } else {
+                SceneManager.LoadScene(2);
+            }
+        } catch(System.Exception e){
+            Debug.Log(e);
+            SceneManager.LoadScene(2);
+        }
+        
+        
+    }
+
     public void playGame(){
         BackgroundImage.SetActive(false);
         BackgroundImageBlurred.SetActive(true);

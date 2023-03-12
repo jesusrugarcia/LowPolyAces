@@ -8,6 +8,7 @@ public class WorldMapPainter : MonoBehaviour
 
     public GameObject nodeObject;
     public CameraPointCalculator pointCalculator;
+    public GameObject shopIcon;
 
     public int layers;
     public int nodesPerLayer;
@@ -56,6 +57,10 @@ public class WorldMapPainter : MonoBehaviour
             var generator = nodeObject.GetComponent<MapGenerator>();
             generator.seed = mapManager.mapGraph.nodes[i].seed;
             generator.GenerateMap();
+            if(mapManager.mapGraph.nodes[i].type == NodeType.Shop){
+                var shop = Instantiate(shopIcon, mapManager.mapGraph.nodes[i].screenPos + new Vector3(0,1000,0), Quaternion.identity);
+                shop.transform.localScale *= 2000;
+            }
         }
         DrawLines(mapManager.mapGraph.nodes[mapManager.mapGraph.currentMapNode].getConnectedNodes()[0]);
         drawDecoIslands();

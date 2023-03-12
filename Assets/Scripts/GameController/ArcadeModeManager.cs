@@ -104,7 +104,7 @@ public class ArcadeModeManager : GameModeManager
         } else {
             totalText.text = "Total score: " + (controller.gameTimer + controller.score).ToString("0");
         }
-        controller.data.points += (controller.gameTimer + controller.score)/10;
+        controller.data.points += (int)((controller.gameTimer + controller.score)/10);
         gainedPoints.text = "Gained Points: " + ((controller.gameTimer + controller.score)/10).ToString("0");
         FileManager.saveData(controller.data);
         

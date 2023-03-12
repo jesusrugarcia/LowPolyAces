@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 27
   title: Drill Bullet
-  image: {fileID: 0}
+  image: {fileID: 21300000, guid: 8bd5837c42203544580c73a1d52008c0, type: 3}
   desc: A melee bullet that deals higher damage.
+  rarity: 100

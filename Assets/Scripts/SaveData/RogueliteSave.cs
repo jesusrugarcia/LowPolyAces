@@ -12,8 +12,11 @@ public class RogueliteSave
     public bool loadStats = false;
     public int fuel = 5;
     public int turnsWithoutFuel = 0;
+    public int[] money = {0,0,0,0};
+    //public bool upgraded = false;
 
     public StatsSave[] stats = new StatsSave[4];
+    public PowerUpScriptableObject[] pendingPowerUps = {null, null, null, null};
 }
 
 [Serializable]
@@ -61,7 +64,7 @@ public class StatsSave{
     public float searchDistance = 1; // used to increase search distance of turret and missiles
 
     public float scoreValue = 0;
-    public float price = 0;
+    public int price = 0;
 
     public bool hasShield = false;
     public float damageReductionTankShield = 0.7f; //multiplied to damage when impacts tank shield

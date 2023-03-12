@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: DogFighterShop
   m_EditorClassIdentifier: 
+  model: DogFighter
   plane: {fileID: 7090933008174249914, guid: 77c6c62dcb5341944b06656a196aa553, type: 3}
   stats: {fileID: 11400000, guid: 51467b2a6a4ab2d4ab1ee3b41b94918d, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 1
+  desc: 

@@ -48,7 +48,7 @@ public class PlaneStatsObject : ScriptableObject
     public float searchDistance = 1;
 
     public float scoreValue = 0;
-    public float price = 0;
+    public int price = 0;
 
     public bool hasShield = false;
     public float damageReductionTankShield = 0.7f;

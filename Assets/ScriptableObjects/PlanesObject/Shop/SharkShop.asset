@@ -12,5 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
   m_Name: SharkShop
   m_EditorClassIdentifier: 
+  model: Shark
   plane: {fileID: 6377145173068152385, guid: e412bed850b09c747890b2a65eff416b, type: 3}
   stats: {fileID: 11400000, guid: 882211936a7055c4bb039d61f34e0122, type: 2}
+  unlockedByDefault: 1
+  purchasedByDefault: 0
+  desc: 
