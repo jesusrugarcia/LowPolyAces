@@ -37,7 +37,7 @@ public class RogueliteModeManager : GameModeManager
         
     }
 
-    public void checkPendingPowerUps(){
+    public void checkPendingPowerUps(){ // used to aply power ups bought in shop
         for (int i=0; i < controller.gameOptions.playerNum; i++){
             if (controller.rogueliteSave.pendingPowerUps[i] != null){
                 controller.centralManager.managePowerUp(controller.players[i], controller.rogueliteSave.pendingPowerUps[i].type, null);
@@ -65,30 +65,30 @@ public class RogueliteModeManager : GameModeManager
     public void spawnEnemies(){
         for (int i=0; i < controller.rogueliteSave.enemyCount[0] * controller.gameOptions.playerNum; i++){
             var prefab = UnityEngine.Random.Range(0,enemyLists[controller.rogueliteSave.stage].prefabsEasy.planes.Length);
-            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsEasy.planes[prefab],movement.NoTracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsEasy.planes[prefab],null,movement.NoTracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
         //medium
         for (int i=0; i < controller.rogueliteSave.enemyCount[1]* controller.gameOptions.playerNum; i++){
             var prefab = UnityEngine.Random.Range(0,enemyLists[controller.rogueliteSave.stage].prefabsMedium.planes.Length);
-            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsMedium.planes[prefab],movement.Tracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsMedium.planes[prefab],null,movement.Tracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
         //hard
         for (int i=0; i < controller.rogueliteSave.enemyCount[2]* controller.gameOptions.playerNum; i++){
             var prefab = UnityEngine.Random.Range(0,enemyLists[controller.rogueliteSave.stage].prefabsHard.planes.Length);
-            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsHard.planes[prefab],movement.Tracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsHard.planes[prefab],null,movement.Tracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
         //imposible
         for (int i=0; i < controller.rogueliteSave.enemyCount[3]* controller.gameOptions.playerNum; i++){
             var prefab = UnityEngine.Random.Range(0,enemyLists[controller.rogueliteSave.stage].prefabsImposible.planes.Length);
-            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsImposible.planes[prefab],movement.Tracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsImposible.planes[prefab],null,movement.Tracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
 
         if(controller.rogueliteSave.boss){
-            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsBoss.planes[0],movement.Tracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(enemyLists[controller.rogueliteSave.stage].prefabsBoss.planes[0],null,movement.Tracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
     }

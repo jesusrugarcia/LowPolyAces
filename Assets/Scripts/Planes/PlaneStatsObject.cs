@@ -72,4 +72,5 @@ public class PlaneStatsObject : ScriptableObject
     public bool laserActivated = false;
     public float laserTime = 1;
     public float laserDamage = 0.1f;
+    public int revival = 0;
 }

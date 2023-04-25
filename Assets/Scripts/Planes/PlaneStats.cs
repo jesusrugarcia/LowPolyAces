@@ -107,6 +107,7 @@ public class PlaneStats : MonoBehaviour
     public bool laserActivated = false;
     public float laserTime = 1; //how much time the lasers are activated
     public float laserDamage = 0.1f; //laser damages
+    public int revival = 0;
 
     public PlaneManager plane;
 
@@ -189,6 +190,8 @@ public class PlaneStats : MonoBehaviour
         laserActivated = stats.laserActivated;
         laserTime = stats.laserTime;
         laserDamage = stats.laserDamage;
+
+        revival = stats.revival;
 
         statusEffects = new float[Enum.GetNames(typeof(StatusEffects)).Length];
     }

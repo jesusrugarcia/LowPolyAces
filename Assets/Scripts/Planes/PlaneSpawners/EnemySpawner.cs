@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
     }
 
     public void spawnEasy(int prefab){
-        spawner.spawnPlane(enemyList.prefabsEasy.planes[prefab],movement.NoTracking,0);
+        spawner.spawnPlane(enemyList.prefabsEasy.planes[prefab],null,movement.NoTracking,0);
     }
 
     public void spawnMedium(int prefab){
@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
                 spawnEasy(prefab);
                 return;
             }
-        spawner.spawnPlane(enemyList.prefabsMedium.planes[prefab],movement.Tracking,0);
+        spawner.spawnPlane(enemyList.prefabsMedium.planes[prefab],null,movement.Tracking,0);
     }
 
     public void spawnHard(int prefab){
@@ -61,7 +61,7 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
                 spawnMedium(prefab);
                 return;
             }
-        spawner.spawnPlane(enemyList.prefabsHard.planes[prefab],movement.Tracking,0);
+        spawner.spawnPlane(enemyList.prefabsHard.planes[prefab],null,movement.Tracking,0);
     }
 
     public void spawnImposible(int prefab){
@@ -69,6 +69,6 @@ public class EnemySpawner : MonoBehaviour //This class SUCKS, needs refactor mat
                 spawnHard(prefab);
                 return;
             }
-        spawner.spawnPlane(enemyList.prefabsImposible.planes[prefab],movement.Tracking,0);
+        spawner.spawnPlane(enemyList.prefabsImposible.planes[prefab],null,movement.Tracking,0);
     }
 }

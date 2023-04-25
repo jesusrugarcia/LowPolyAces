@@ -394,6 +394,12 @@ public class PowerUpsCentralManager : MonoBehaviour
         }
     }
 
+    public void addCharacterPowerUps(GameObject plane, CharacterScriptableObject character){
+        for (int i=0; i< character.powerUps.Length; i++){
+            managePowerUp(plane, character.powerUps[i],null);
+        }
+    }
+
     public void initialSetUp(PlaneManager plane){
         missileSetUp(plane);
         gadgetSetUp(plane);

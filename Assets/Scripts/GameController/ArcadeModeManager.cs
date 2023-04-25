@@ -68,7 +68,7 @@ public class ArcadeModeManager : GameModeManager
         timerBoss += Time.deltaTime;
         if (timerBoss >= timerForBoss){
             timerBoss = 0;
-            var enemy = controller.enemySpawner.spawner.spawnPlane(controller.enemySpawner.enemyList.prefabsBoss.planes[0],movement.Tracking,0);
+            var enemy = controller.enemySpawner.spawner.spawnPlane(controller.enemySpawner.enemyList.prefabsBoss.planes[0],null,movement.Tracking,0);
             enemy.GetComponent<PlaneStats>().speed = enemy.GetComponent<PlaneStats>().maxSpeed;
         }
     }

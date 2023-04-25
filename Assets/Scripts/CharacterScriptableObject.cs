@@ -7,6 +7,7 @@ public class CharacterScriptableObject : ScriptableObject
 {
     public string charName;
     public Sprite image;
-    
-
+    public int[] increase;
+    public string[] desc;
+    public PowerUps[] powerUps;
 }

@@ -13,8 +13,11 @@ public class PlaneSpawner : MonoBehaviour
     public GameObject healthBar;
     public GameObject healthBarEnemy;
 
-    public GameObject spawnPlane(PlaneScriptableObject planeModel, movement movement, int team, GameObject origin = null, StatsSave stats = null){
+    public GameObject spawnPlane(PlaneScriptableObject planeModel, CharacterScriptableObject character, movement movement, int team, GameObject origin = null, StatsSave stats = null){
         Time.timeScale = 0f;
+        if (character == null){
+            character = new CharacterScriptableObject();
+        }
         GameObject plane;
         if (origin != null){
             var x = origin.transform.position.x + UnityEngine.Random.Range(-1f,1f);
@@ -33,6 +36,10 @@ public class PlaneSpawner : MonoBehaviour
         if(stats == null){
             copyStats(plane, planeModel, movement);
             planeManager.stats.hasShield = planeModel.stats.hasShield;
+            if(movement == movement.Player){
+                controller.centralManager.addCharacterPowerUps(plane, character);
+            }
+            
         } else {
             planeManager.stats.copyStats(stats);
             initialInv(plane, movement);
@@ -51,7 +58,7 @@ public class PlaneSpawner : MonoBehaviour
             health = Instantiate(healthBar,plane.transform.position, Quaternion.Euler(270,0,0));
             //add upgrades
             if(controller.gameOptions.mode == gameMode.arcade || controller.gameOptions.mode == gameMode.roguelite && !controller.rogueliteSave.loadStats){
-                upgrade(plane);
+                upgrade(plane, character);
             }
         }
         planeManager.planeShooter.bullet.GetComponent<TeamManager>().team = planeManager.teamManager.team;
@@ -63,6 +70,8 @@ public class PlaneSpawner : MonoBehaviour
         Time.timeScale = 1f;
         return plane;
     }
+
+    
 
 
     public void copyStats(GameObject plane, PlaneScriptableObject planeModel, movement movement){
@@ -147,6 +156,8 @@ public class PlaneSpawner : MonoBehaviour
         stats.laserTime = planeModel.stats.laserTime;
         stats.laserDamage = planeModel.stats.laserDamage;
 
+        stats.revival = planeModel.stats.revival;
+
         initialInv(plane, movement);
     }
 
@@ -208,129 +219,166 @@ public class PlaneSpawner : MonoBehaviour
         Plane.transform.rotation = Quaternion.Euler(dir);
     }
 
-    public void upgrade(GameObject plane){
+    public void upgrade(GameObject plane, CharacterScriptableObject character){
         try{
             var stats = plane.GetComponent<PlaneStats>();
 
             // 0 health
-            if (controller.data.upgrades.increase[0] >0){
+            if (controller.data.upgrades.increase[0] >0 || character.increase[0] >0){
                 stats.maxHealth += controller.data.upgrades.increase[0];
                 stats.health += controller.data.upgrades.increase[0];
+                stats.maxHealth += character.increase[0];
+                stats.health += character.increase[0];
             }
             //1 speed
-            if (controller.data.upgrades.increase[1] >0){
+            if (controller.data.upgrades.increase[1] >0 || character.increase[1] >0){
                 stats.maxSpeed += controller.data.upgrades.increase[1]*0.5f;
+                stats.maxSpeed += character.increase[1]*0.5f;
                 if(stats.maxSpeed > 20){
                     stats.maxSpeed = 20;
                 }
             }
             //2 acceleration
-            if (controller.data.upgrades.increase[2] >0){
+            if (controller.data.upgrades.increase[2] >0 || character.increase[2] >0 ){
                 stats.acceleration += controller.data.upgrades.increase[2]*0.1f;
+                stats.acceleration += character.increase[2]*0.1f;
             }
             //3 rotation speed
-            if (controller.data.upgrades.increase[3] >0){
+            if (controller.data.upgrades.increase[3] >0 || character.increase[3] >0){
                 stats.rotationSpeed += controller.data.upgrades.increase[3]*0.5f;
+                stats.rotationSpeed += character.increase[3]*0.5f;
                 if(stats.rotationSpeed > 10){
                     stats.rotationSpeed = 10;
                 }
             }
             //4 shield time
-            if (controller.data.upgrades.increase[4] >0){
+            if (controller.data.upgrades.increase[4] >0 || character.increase[4] >0 ){
                 stats.SpecialShieldDuration += controller.data.upgrades.increase[4];
+                stats.SpecialShieldDuration += character.increase[4];
             }
             //5 evasion
-            if (controller.data.upgrades.increase[5] >0){
+            if (controller.data.upgrades.increase[5] >0 || character.increase[5] >0){
                 stats.evasion += controller.data.upgrades.increase[5]*0.1f;
+                stats.evasion += character.increase[5]*0.1f;
                 if(stats.evasion > 0.8f){
                     stats.evasion = 0.8f;
                 }
             }
             //6 status effect
-            if (controller.data.upgrades.increase[6] >0){
+            if (controller.data.upgrades.increase[6] >0 || character.increase[6] >0){
                 stats.statusEffectTime += controller.data.upgrades.increase[6];
+                stats.statusEffectTime += character.increase[6];
             }
             //7 bullet damage
-            if (controller.data.upgrades.increase[7] >0){
+            if (controller.data.upgrades.increase[7] >0 || character.increase[7] >0){
                 stats.bulletDamage += controller.data.upgrades.increase[7]*0.5f;
                 stats.drillDamage += controller.data.upgrades.increase[7]*0.5f;
+                stats.bulletDamage += character.increase[7]*0.5f;
+                stats.drillDamage += character.increase[7]*0.5f;
             }
             //8 special damage
-            if (controller.data.upgrades.increase[8] >0){
+            if (controller.data.upgrades.increase[8] >0 || character.increase[8] >0){
                 stats.turretDamage += controller.data.upgrades.increase[8]*0.15f;
                 stats.missileDamage += controller.data.upgrades.increase[8]*1.5f;
                 stats.mineDamage += controller.data.upgrades.increase[8]*1.5f;
                 stats.laserDamage += controller.data.upgrades.increase[8]*0.1f;
+
+                stats.turretDamage += character.increase[8]*0.15f;
+                stats.missileDamage += character.increase[8]*1.5f;
+                stats.mineDamage += character.increase[8]*1.5f;
+                stats.laserDamage += character.increase[8]*0.1f;
             }
             //9 shootSpeed
-            if (controller.data.upgrades.increase[9] >0){
+            if (controller.data.upgrades.increase[9] >0 || character.increase[9] >0){
                 stats.shootSpeed += - controller.data.upgrades.increase[9]*0.1f;
+                stats.shootSpeed += - character.increase[9]*0.1f;
                 if(stats.shootSpeed < 0.1f){
                     stats.shootSpeed = 0.1f;
                 }
             }
             //10 DroneShootSpeed
-            if (controller.data.upgrades.increase[10] >0){
+            if (controller.data.upgrades.increase[10] >0 || character.increase[10] >0){
                 stats.normalDroneShootSpeed += - controller.data.upgrades.increase[10]*0.1f;
+                stats.normalDroneShootSpeed += - character.increase[10]*0.1f;
                 if(stats.normalDroneShootSpeed < 0.1f){
                     stats.normalDroneShootSpeed = 0.1f;
                 }
                 stats.specialDroneShootSpeed += - controller.data.upgrades.increase[10];
+                stats.specialDroneShootSpeed += - character.increase[10];
                 if(stats.specialDroneShootSpeed < 1){
                     stats.specialDroneShootSpeed = 1;
                 }
                 stats.auxDroneSpeed += - controller.data.upgrades.increase[10];
+                stats.auxDroneSpeed += - character.increase[10];
                 if(stats.auxDroneSpeed < 1){
                     stats.auxDroneSpeed = 1;
                 }
             }
             //11 TurretshootSpeed
-            if (controller.data.upgrades.increase[11] >0){
+            if (controller.data.upgrades.increase[11] >0 || character.increase[11] >0){
                 stats.turretShootSpeed += - controller.data.upgrades.increase[11]*0.1f;
+                stats.turretShootSpeed += - character.increase[11]*0.1f;
                 if(stats.turretShootSpeed < 0.1f){
                     stats.turretShootSpeed = 0.1f;
                 }
             }
             //12 maxdrones
-            if (controller.data.upgrades.increase[12] >0){
+            if (controller.data.upgrades.increase[12] >0 || character.increase[12] >0){
                 stats.maxDrones += controller.data.upgrades.increase[12];
+                stats.maxDrones += character.increase[12];
             }
             //13 specialAMmo
-            if (controller.data.upgrades.increase[13] >0){
+            if (controller.data.upgrades.increase[13] >0 || character.increase[13] >0){
                 stats.maxSpecialAmmo += controller.data.upgrades.increase[13];
                 stats.specialAmmo += controller.data.upgrades.increase[13];
                 stats.rechargeSpecialTime += - controller.data.upgrades.increase[13];
+                stats.maxSpecialAmmo += character.increase[13];
+                stats.specialAmmo += character.increase[13];
+                stats.rechargeSpecialTime += - character.increase[13];
                 if(stats.rechargeSpecialTime < 1){
                     stats.rechargeSpecialTime = 1;
                 }
             }
             //14 defense AMmo
-            if (controller.data.upgrades.increase[14] >0){
+            if (controller.data.upgrades.increase[14] >0 || character.increase[14] >0){
                 stats.maxDefenseAmmo += controller.data.upgrades.increase[14];
                 stats.defenseAmmo += controller.data.upgrades.increase[14];
                 stats.rechargeDefenseTime += - controller.data.upgrades.increase[14]*0.5f;
+                stats.maxDefenseAmmo += character.increase[14];
+                stats.defenseAmmo += character.increase[14];
+                stats.rechargeDefenseTime += - character.increase[14]*0.5f;
                 if(stats.rechargeDefenseTime < 0.5f){
                     stats.rechargeDefenseTime = 0.5f;
                 }
             }
             //15 extra bullets
-            if (controller.data.upgrades.increase[15] >0){
+            if (controller.data.upgrades.increase[15] >0 || character.increase[15] >0){
                 stats.extraBullets += controller.data.upgrades.increase[15];
+                stats.extraBullets += character.increase[15];
             }
             //16 magazine size
-            if (controller.data.upgrades.increase[16] >0){
+            if (controller.data.upgrades.increase[16] >0 || character.increase[16] >0){
                 stats.magazineSize += controller.data.upgrades.increase[16];
+                stats.magazineSize += character.increase[16];
             }
             //17 max mines
-            if (controller.data.upgrades.increase[17] >0){
+            if (controller.data.upgrades.increase[17] >0 || character.increase[17] >0){
                 stats.maxMines += controller.data.upgrades.increase[17];
+                stats.maxMines += character.increase[17];
             }
             //18 special ammo time
-            if (controller.data.upgrades.increase[18] >0){
+            if (controller.data.upgrades.increase[18] >0 || character.increase[18] >0){
                 stats.meleeTime += controller.data.upgrades.increase[18];
                 stats.meleeTime += controller.data.upgrades.increase[18];
+                stats.meleeTime += character.increase[18];
+                stats.meleeTime += character.increase[18];
             }
             //19 revival to be implemented
+             if (controller.data.upgrades.increase[19] >0 || character.increase[19] >0){
+                stats.revival += controller.data.upgrades.increase[19];
+                stats.revival += character.increase[19];
+                
+             }
         } catch(System.Exception e){
             Debug.Log(e);
         }  

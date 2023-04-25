@@ -1,42 +1,62 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
 public class BarracksMenu : HubSubMenu
 {
-    public GameObject[] selectedObject;
+    public CharacterScriptableObjectList characters;
+    public GameObject image;
     public TMP_Text equiped;
     public int selectedPlayer = 0;
     public int current = 0;
+    public TMP_Text charName;
+    public TMP_Text desc;
+    public GameObject[] selectedObject;
+
 
     public void next(){
         if (current + 1 > menu.data.unlockedCharacters.Length - 1){
             current = 0;
         } else {
             current ++;
+            if (!menu.data.unlockedCharacters[current]){
+                next();
+            }
         }
-        loadCharacter();
         equiped.gameObject.SetActive(false);
-        selectPlayer(selectedPlayer);
+        loadCharacter();
     }
 
     public void previous(){
         if (current - 1 < 0){
             current = menu.data.unlockedCharacters.Length - 1;
+            if (!menu.data.unlockedCharacters[current]){
+                previous();
+            }
         } else {
             current += -1;
+            if (!menu.data.unlockedCharacters[current]){
+                previous();
+            }
         }
-        loadCharacter();
         equiped.gameObject.SetActive(false);
-        selectPlayer(selectedPlayer);
+        loadCharacter();
     }
 
     public void loadCharacter(){
-
+        image.GetComponent<Image>().sprite = characters.characters[current].image;
+        charName.text = characters.characters[current].name;
+        desc.text = characters.characters[current].desc[(int)menu.gameOptions.language];
     }
 
     public void equip(){
+        menu.data.selectedChar[selectedPlayer] = current;
+        equiped.gameObject.SetActive(true);
+        equiped.text = textsScriptableObject.texts[8].textLanguages[(int)menu.gameOptions.language] + " " + textsScriptableObject.texts[0+selectedPlayer].textLanguages[(int)menu.gameOptions.language];
+        menu.saveOptionsAndData();
+    }
+
+    public void equipDifferent(){
         if(menu.data.selectedChar[0] != current && menu.data.selectedChar[1] != current && menu.data.selectedChar[2] != current && menu.data.selectedChar[3] != current){
             menu.data.selectedChar[selectedPlayer] = current;
             equiped.gameObject.SetActive(true);
@@ -46,7 +66,7 @@ public class BarracksMenu : HubSubMenu
             equiped.gameObject.SetActive(true);
             equiped.text= textsScriptableObject.texts[textsScriptableObject.texts.Length - 1].textLanguages[(int)menu.gameOptions.language];
         }
-        selectPlayer(selectedPlayer);
+        
     }
 
     public void selectPlayer(int i){
@@ -54,6 +74,8 @@ public class BarracksMenu : HubSubMenu
         selectedObject[selectedPlayer].SetActive(false);
         selectedPlayer = i;
         selectedObject[selectedPlayer].SetActive(true);
+        current = menu.data.selectedChar[selectedPlayer];
+        loadCharacter();
     }
 
     public void back(){
@@ -65,10 +87,10 @@ public class BarracksMenu : HubSubMenu
     public override void extraStart()
     {
         base.extraStart();
-        selectedObject[current].SetActive(true);
         equiped.gameObject.SetActive(false);
         selectedPlayer = 0;
         current = menu.data.selectedChar[selectedPlayer];
+        selectedObject[selectedPlayer].SetActive(true);
         loadCharacter();
     }
 }

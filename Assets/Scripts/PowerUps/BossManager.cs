@@ -61,7 +61,7 @@ public class BossManager : MonoBehaviour
 
     public GameObject summonMinion(GameObject player){
         var dronePrefab = getRandomMinion();
-        var drone = plane.controller.enemySpawner.spawner.spawnPlane(dronePrefab,movement.Tracking,plane.teamManager.team, gameObject);
+        var drone = plane.controller.enemySpawner.spawner.spawnPlane(dronePrefab,null,movement.Tracking,plane.teamManager.team, gameObject);
         var minion = drone.GetComponent<BossMinionManager>();
         minion.bossManager = this;
         summonedMinions ++;

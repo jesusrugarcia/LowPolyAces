@@ -1784,8 +1784,12 @@ MonoBehaviour:
     purchasedPlanes: 
     unlockedCharacters: 
     unlockedPowerUps: 
+    upgrades:
+      increase: 00000000
+      costPerIncrease: 00000000
+      max: 00000000
   planeList: {fileID: 11400000, guid: 298febbb9846eea40af253f395a67742, type: 2}
-  sizeCharacters: 4
+  characters: {fileID: 11400000, guid: 9c326dd745545b744b53d3464cfe7004, type: 2}
   sizePowerUps: 9
   gameOptions:
     language: 0

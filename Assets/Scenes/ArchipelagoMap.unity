@@ -6016,6 +6016,7 @@ MonoBehaviour:
   decoIslandSize: 15
   planePosCorrection: {x: 0, y: 1000, z: 500}
   planes: {fileID: 11400000, guid: 298febbb9846eea40af253f395a67742, type: 2}
+  characters: {fileID: 11400000, guid: 9c326dd745545b744b53d3464cfe7004, type: 2}
   plane: {fileID: 0}
   mapMovement: {fileID: 0}
   saveData:
@@ -6023,8 +6024,16 @@ MonoBehaviour:
     bestEnemies: 0
     bestTotal: 0
     selectedPlayer: 
+    selectedChar: 
     points: 0
     unlockedPlanes: 
+    purchasedPlanes: 
+    unlockedCharacters: 
+    unlockedPowerUps: 
+    upgrades:
+      increase: 00000000
+      costPerIncrease: 00000000
+      max: 00000000
   rogueliteSave:
     loadMap: 0
     seed: 0
