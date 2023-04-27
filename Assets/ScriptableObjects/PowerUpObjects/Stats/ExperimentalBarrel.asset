@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 35
   title: Experimental Barrel
   image: {fileID: 21300000, guid: 46ff42d24a2ffdc48a9862741d1b7c51, type: 3}
-  desc: Shoots aditional bullets in a 90 degree angle.
+  desc:
+  - Shoot aditional bullets
+  - Dispara balas adicionales
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

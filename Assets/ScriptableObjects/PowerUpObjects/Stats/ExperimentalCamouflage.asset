@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 40
   title: Experimental Camouflage
   image: {fileID: 21300000, guid: 2602bb39139db7f48b8f3bfb5acadc40, type: 3}
-  desc: Increases evasion, dash invulnerability time and ghost time.
+  desc:
+  - Increases evation and invulnerability
+  - Aumenta evasion e invulnerabilidad
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

@@ -17,4 +17,9 @@ MonoBehaviour:
   stats: {fileID: 11400000, guid: aa09433b934083546a8efa190f911ec3, type: 2}
   unlockedByDefault: 1
   purchasedByDefault: 0
-  desc: 
+  desc:
+  - 
+  - 
+  unlock:
+  - 
+  - 

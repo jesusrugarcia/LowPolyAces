@@ -16,6 +16,7 @@ public class WorldMapManager : MonoBehaviour
 
     public PlanesListScriptableObject planes;
     public CharacterScriptableObjectList characters;
+    public PowerUpListScriptableObject[] powerUps;
     public GameObject plane;
     public WorldMapMovement mapMovement;
 
@@ -39,7 +40,7 @@ public class WorldMapManager : MonoBehaviour
     void Start()
     {
         rogueliteSave = FileManager.loadRoguelite();
-        saveData = FileManager.loadData(planes,characters);
+        saveData = FileManager.loadData(planes,characters, powerUps);
         gameOptions = FileManager.loadOptions();
         paintMap();
         

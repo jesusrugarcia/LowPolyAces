@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\GameController\RogueliteModeManager.cs" />
      <Compile Include="Assets\Scripts\Menus\SliderMenuManager.cs" />
      <Compile Include="Assets\Scripts\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\CharacterScriptableObjectList.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\WorldMapGraph.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\WorldMapGenerator.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ChonkopterBossManager.cs" />
@@ -146,7 +147,7 @@
      <Compile Include="Assets\Scripts\SnapshotCamera.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\RepairDrone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\Turret.cs" />
-     <Compile Include="Assets\Scripts\CharacterScriptableObjectList.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\ArchivesMenu1.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />

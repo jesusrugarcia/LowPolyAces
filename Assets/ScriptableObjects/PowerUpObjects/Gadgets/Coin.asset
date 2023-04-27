@@ -15,6 +15,11 @@ MonoBehaviour:
   type: 12
   title: Coin
   image: {fileID: 21300000, guid: 7038cfbe6f0bf1044b3c2053517f42e5, type: 3}
-  desc: Leaves a coin that multiplies proyectile speed and damage when hit by an
-    allied proyectile. Multiple coins can be placed to increase the effect.
+  desc:
+  - A coin that aims at enemies and multiplies damage when shot
+  - "Una moneda que persigue enemigos y multiplica el da\xF1o cuando recibe un disparo"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

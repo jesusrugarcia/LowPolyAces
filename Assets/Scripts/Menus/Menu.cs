@@ -8,7 +8,7 @@ public class Menu : MonoBehaviour
     public SaveData data;
     public PlanesListScriptableObject planeList;
     public CharacterScriptableObjectList characters;
-    public int sizePowerUps = 9;
+    public PowerUpListScriptableObject[] powerUps;
     public GameOptions gameOptions;
     public RogueliteSave rogueliteSave;
 
@@ -25,7 +25,7 @@ public class Menu : MonoBehaviour
 
     public void loadOptionsAndData(){
         gameOptions = FileManager.loadOptions();
-        data = FileManager.loadData(planeList,characters,sizePowerUps);
+        data = FileManager.loadData(planeList,characters,powerUps);
         rogueliteSave = FileManager.loadRoguelite();
         audioManager.updateVolume();
         loaded = true;

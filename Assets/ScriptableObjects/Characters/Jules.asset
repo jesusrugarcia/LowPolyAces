@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Jules
   m_EditorClassIdentifier: 
   charName: Jules
-  image: {fileID: 21300000, guid: 82f616dc00dba0f4cbdf6a486c545fa1, type: 3}
+  image: {fileID: 21300000, guid: e861e20b3384c6a469702c3d0b32f43a, type: 3}
   increase: 0000000001000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   desc:
   - Jules flies faster than anyone!
   - "Jules vuela m\xE1s r\xE1pido que nadie"
+  unlock:
+  - 
+  - 
   powerUps: 
+  initialUnlock: 1

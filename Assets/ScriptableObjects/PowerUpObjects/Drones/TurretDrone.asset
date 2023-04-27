@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 20
   title: Turret Drone
   image: {fileID: 21300000, guid: 7200e73f6b61c524fbe8243fbb5e1f18, type: 3}
-  desc: A drone that follows the plane and targets enemies.
+  desc:
+  - A drone with a turret on top
+  - Un dron que tiene una torreta encima
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

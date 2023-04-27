@@ -26,7 +26,7 @@ public class PowerUpMenuManager : MonoBehaviour
         powerUps = PowerUpListGenerator.selectPowerUps(powerUpNumber, raritiesLists, dronesAvailable);
         for (int i=0; i< powerUps.Length; i++){
             powerUpsTitles[i].text = powerUps[i].title;
-            powerUpsDescs[i].text = powerUps[i].desc;
+            powerUpsDescs[i].text = powerUps[i].desc[(int)controller.gameOptions.language];
             if(powerUps[i].image != null){
                 powerUpsImages[i].GetComponent<Image>().sprite = powerUps[i].image;
             }

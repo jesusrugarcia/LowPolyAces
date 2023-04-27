@@ -15,6 +15,12 @@ MonoBehaviour:
   type: 13
   title: Dash
   image: {fileID: 21300000, guid: 55e8e2612240e3b4ca85c48c5f89882e, type: 3}
-  desc: Immediately advences a small distance and gives a very small invulnerability
-    window.
+  desc:
+  - Quickly dash forward and gain invulnerability for a very short time
+  - "Avanza hacia delante r\xE1pidamente y evita da\xF1o por un muy corto periodo
+    de tiempo"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

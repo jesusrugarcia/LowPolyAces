@@ -18,4 +18,8 @@ MonoBehaviour:
   desc:
   - William has significant more health
   - William tiene una cantidad de vida significativamente mayor
+  unlock:
+  - Buy any plane
+  - "Compra cualquier avi\xF3n"
   powerUps: 
+  initialUnlock: 0

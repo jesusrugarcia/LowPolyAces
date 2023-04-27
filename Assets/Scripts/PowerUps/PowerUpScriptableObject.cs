@@ -13,7 +13,9 @@ public class PowerUpScriptableObject : ScriptableObject
     public PowerUps type;
     public string title;
     public Sprite image; //380 x 300;
-    public string desc;
+    public string[] desc;
+    public string[] unlock;
     public Rarities rarity;
+    public bool initialUnlock = true;
 
 }

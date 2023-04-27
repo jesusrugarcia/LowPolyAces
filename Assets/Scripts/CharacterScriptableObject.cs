@@ -9,5 +9,7 @@ public class CharacterScriptableObject : ScriptableObject
     public Sprite image;
     public int[] increase;
     public string[] desc;
+    public string[] unlock;
     public PowerUps[] powerUps;
+    public bool initialUnlock = false;
 }

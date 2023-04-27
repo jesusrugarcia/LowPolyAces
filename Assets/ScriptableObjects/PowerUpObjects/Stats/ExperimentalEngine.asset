@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 30
   title: Experimental Engine
   image: {fileID: 21300000, guid: 3f7bbd496fe396b4091c26513d84b15d, type: 3}
-  desc: Increases max speed and acceleration
+  desc:
+  - Increases speed and acceleration
+  - "Mejora la velocidad y la aceleraci\xF3n"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

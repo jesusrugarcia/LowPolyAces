@@ -15,6 +15,11 @@ MonoBehaviour:
   type: 38
   title: Experimental Defense Systems
   image: {fileID: 21300000, guid: 27b753d077192864db273dff9b7633ee, type: 3}
-  desc: Increases tank shield damage reduction, special shields' duration, heal area
-    heal ammount and defense ammo.
+  desc:
+  - Improves special shields
+  - Mejora los escudos especiales
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

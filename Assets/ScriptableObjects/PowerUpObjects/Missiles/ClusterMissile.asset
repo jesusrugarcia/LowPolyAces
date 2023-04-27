@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 7
   title: Cluster Missile
   image: {fileID: 21300000, guid: eff3c5c08c02c59499dbb1a6462d613d, type: 3}
-  desc: Shoots a missile that launches aditional, smaller missiles at impact
+  desc:
+  - Launches aditional missiles after detonating
+  - Lanza misiles adicionales despues de detonar
+  unlock:
+  - 
+  - 
   rarity: 250
+  initialUnlock: 1

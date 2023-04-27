@@ -11,6 +11,11 @@ public class Upgrades{
 }
 
 [Serializable]
+public class unlockedPowerUps{
+    public bool[] powerUps;
+}
+
+[Serializable]
 public class SaveData 
 {
     public int bestTime = 0;
@@ -22,27 +27,33 @@ public class SaveData
     public bool[] unlockedPlanes;
     public bool[] purchasedPlanes;
     public bool[] unlockedCharacters;
-    public bool[] unlockedPowerUps;
+    public unlockedPowerUps[] unlockedPowerUps;
     public Upgrades upgrades;
     
     
 
-    public SaveData(PlanesListScriptableObject planeList, CharacterScriptableObjectList characters, int sizeCharacters = 0, int sizePowerUps = 0){
-        this.unlockedPlanes = new bool[planeList.planes.Length];
-        this.purchasedPlanes = new bool[planeList.planes.Length];
+    public SaveData(PlanesListScriptableObject planeList, CharacterScriptableObjectList characters, PowerUpListScriptableObject[] powerUps){
+        unlockedPlanes = new bool[planeList.planes.Length];
+        purchasedPlanes = new bool[planeList.planes.Length];
         for (int i=0; i< planeList.planes.Length; i++){
             unlockedPlanes[i] = planeList.planes[i].unlockedByDefault;
             purchasedPlanes[i] = planeList.planes[i].purchasedByDefault;
         }
-        this.unlockedCharacters = new bool[sizeCharacters];
-        this.unlockedPowerUps = new bool[sizePowerUps];
+        
         upgrades = new Upgrades();
-        this.unlockedCharacters = new bool[characters.characters.Length];
+        unlockedCharacters = new bool[characters.characters.Length];
         for (int i=0 ; i< unlockedCharacters.Length;i++){
-            if (i<6){
-                unlockedCharacters[i] = true;
-            } else {
-                unlockedCharacters[i] = false;
+                unlockedCharacters[i] = characters.characters[i].initialUnlock;
+            
+        }
+
+        unlockedPowerUps = new unlockedPowerUps[powerUps.Length];
+        for (int i=0 ; i< unlockedPowerUps.Length; i++){
+            unlockedPowerUps[i] = new unlockedPowerUps();
+            Debug.Log(unlockedPowerUps[i]);
+            unlockedPowerUps[i].powerUps = new bool[powerUps[i].powerUps.Length];
+            for (int y=0; y< unlockedPowerUps[i].powerUps.Length; y++){
+                unlockedPowerUps[i].powerUps[y] = powerUps[i].powerUps[y];
             }
         }
     }

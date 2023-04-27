@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 26
   title: Missile Bullet
   image: {fileID: 21300000, guid: 31cdc1960ba136a40ba909d44e119140, type: 3}
-  desc: A bullet that leaves an explosion on impact.
+  desc:
+  - An explosive bullet type
+  - Un tipo de bala explosivo
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

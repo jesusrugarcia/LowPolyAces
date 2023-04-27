@@ -15,6 +15,11 @@ MonoBehaviour:
   type: 1
   title: Mine
   image: {fileID: 21300000, guid: 14d04881b7e450e4093758cdd91fef86, type: 3}
-  desc: Leaves a mine that deals damage to an enemy. Leaves an exploasion at collision,
-    which becomes bigger when hit by an ally missile. (Special Ammo)
+  desc:
+  - Desploys a mine that deals damage on contact with enemies
+  - "Despliegue una mina que da\xF1a enemigos al hacer contacto"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

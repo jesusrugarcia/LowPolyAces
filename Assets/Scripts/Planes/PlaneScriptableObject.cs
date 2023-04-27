@@ -11,5 +11,6 @@ public class PlaneScriptableObject : ScriptableObject
     public PlaneStatsObject stats;
     public bool unlockedByDefault;
     public bool purchasedByDefault;
-    public string desc;
+    public string[] desc;
+    public string[] unlock;
 }

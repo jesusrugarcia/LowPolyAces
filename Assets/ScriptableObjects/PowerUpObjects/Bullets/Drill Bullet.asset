@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 27
   title: Drill Bullet
   image: {fileID: 21300000, guid: 8bd5837c42203544580c73a1d52008c0, type: 3}
-  desc: A melee bullet that deals higher damage.
+  desc:
+  - A melee type of bullet that stays in the air for a few seconds
+  - Un proyectil cuerpo a cuerpo que permanece en el aire unos segundos
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

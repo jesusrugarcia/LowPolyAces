@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 28
   title: Normal Bullet
   image: {fileID: 21300000, guid: 15f65e9e586659f4683999f5920da752, type: 3}
-  desc: Restores the bullet type to the standard.
+  desc:
+  - Restores normal bullets
+  - Restaura el tipo de bala normal
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

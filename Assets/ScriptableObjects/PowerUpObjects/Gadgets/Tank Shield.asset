@@ -15,6 +15,11 @@ MonoBehaviour:
   type: 9
   title: Tank Shield
   image: {fileID: 21300000, guid: 18b5efa52432b9f4fbe73a1eb6e78910, type: 3}
-  desc: Generates a big shield that absorbs a significant ammount of damage. Useful
-    for protecting allies.
+  desc:
+  - A big shield that reduces received damage
+  - "Un gran escudo que reduce el da\xF1o recibido"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

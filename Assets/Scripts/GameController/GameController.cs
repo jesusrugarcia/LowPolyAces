@@ -27,6 +27,8 @@ public class GameController : MonoBehaviour
     public RogueliteSave rogueliteSave;
     [SerializeField]
     public CharacterScriptableObjectList characters;
+
+    public PowerUpListScriptableObject[] powerUps;
     
 
     [SerializeField]
@@ -45,7 +47,7 @@ public class GameController : MonoBehaviour
 
     private void Start() {
         rogueliteSave = FileManager.loadRoguelite();
-        data = FileManager.loadData(playerSpawner.playerList, characters); //ojo que esto es el numero de aviones en el juego.
+        data = FileManager.loadData(playerSpawner.playerList, characters, powerUps); //ojo que esto es el numero de aviones en el juego.
         gameOptions = FileManager.loadOptions();
         cameraPointCalculator.calculateBoundaries();
         audioManager.updateVolume();

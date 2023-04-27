@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 32
   title: Experimental Ammunition
   image: {fileID: 21300000, guid: 94706b509c8772a4cb2359af82e9bfcf, type: 3}
-  desc: Increases damage.
+  desc:
+  - Increases dealt damage
+  - "Aumenta el da\xF1o"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

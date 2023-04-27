@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 31
   title: Fine Tunned Flaps
   image: {fileID: 21300000, guid: 118d8aa72670b024da09e2ddfe8182e5, type: 3}
-  desc: Increases manerauvability.
+  desc:
+  - Increases maneurability
+  - Mejora la maniobrabilidad
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

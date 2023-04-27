@@ -13,6 +13,8 @@ public class HubMenu : Menu
     public GameObject HangarButton;
     public HubSubMenu BarracksMenu;
     public GameObject BarracksButton;
+    public HubSubMenu ArchivesMenu;
+    public GameObject ArchivesButton;
 
     void Start() {
         StartMenu();
@@ -40,6 +42,13 @@ public class HubMenu : Menu
         BarracksMenu.gameObject.SetActive(true);
         BarracksMenu.extraStart();
         selectButton(BarracksMenu.mainButton);
+    }
+
+    public void Archives(){
+        thisMenu.transform.position += new Vector3(-2500,0,0);
+        ArchivesMenu.gameObject.SetActive(true);
+        ArchivesMenu.extraStart();
+        selectButton(ArchivesMenu.mainButton);
     }
 
     public void quit(){

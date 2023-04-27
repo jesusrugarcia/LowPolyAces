@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 25
   title: Missile Drone
   image: {fileID: 21300000, guid: ecf88266a2edb3648beb3450813c7055, type: 3}
-  desc: A drone that periodically shoots missiles in the direction the plane is facing.
+  desc:
+  - A drone that periodically shoots a missile
+  - Un dron que dispara un misil periodamente
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

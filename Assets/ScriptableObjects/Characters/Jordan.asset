@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: Jordan
   m_EditorClassIdentifier: 
   charName: Jordan
-  image: {fileID: 21300000, guid: 767514a6809ab7c44826254101b9b8d0, type: 3}
+  image: {fileID: 21300000, guid: 8cf4ff3d2068e4d49b016cdd2a8f91d5, type: 3}
   increase: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000
   desc:
   - Jordan carries missiles and can shoot them faster
   - "Jordan lleva misiles y los dispara m\xE1s r\xE1pido"
+  unlock:
+  - 
+  - 
   powerUps: 00000000
+  initialUnlock: 1

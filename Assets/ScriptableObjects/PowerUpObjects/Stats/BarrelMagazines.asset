@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 34
   title: Barrel Magazines
   image: {fileID: 21300000, guid: 381a9d75b05e81c48949ab0b84bf7753, type: 3}
-  desc: Increases magazine size and max special ammo.
+  desc:
+  - Increases magazine size, max mines and max special ammo
+  - "Aumenta el cargador, las minas max y la munici\xF3n especial max"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

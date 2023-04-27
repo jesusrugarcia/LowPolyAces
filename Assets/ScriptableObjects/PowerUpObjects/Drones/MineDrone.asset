@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 21
   title: Mine Drone
   image: {fileID: 21300000, guid: 1fccf84fba6136b4f89aa7c345f7ba02, type: 3}
-  desc: A drone that leaves mines on the field.
+  desc:
+  - A drone that periodically ddeploys a mine
+  - Un dron que despliega una mina periodicamente
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

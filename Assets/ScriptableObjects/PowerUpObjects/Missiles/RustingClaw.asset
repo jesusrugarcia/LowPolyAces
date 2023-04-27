@@ -15,6 +15,12 @@ MonoBehaviour:
   type: 6
   title: Rusting Claw
   image: {fileID: 21300000, guid: f4219125379dca748a0f7b47896dce2a, type: 3}
-  desc: A projectile that gives a chance to lose the magazine without shooting every
-    time an enemies shoots. (SpecialAmmo)
+  desc:
+  - Adds rust to enemies, making them unable to shoot for a short time
+  - "A\xF1ade oxido a los enemigos, haciendo que no puedan disparar en un corto periodo
+    de tiempo"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

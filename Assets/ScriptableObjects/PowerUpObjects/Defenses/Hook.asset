@@ -15,6 +15,13 @@ MonoBehaviour:
   type: 16
   title: Hook
   image: {fileID: 21300000, guid: 5ee67928d3cbe2d429ec3d296c1cbd0a, type: 3}
-  desc: Launches a hook that can stick to planes, objects and screen limits. Press
-    again to quickly move towards the hooked point.
+  desc:
+  - Throw a hook that attaches to objects and enemies. Throw again to quickly move
+    towards the the hook
+  - Lanza un gancho que se enganca a objetos y enemigos. Lanza de nuevo para moverte
+    rapidamente hacia el gancho
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

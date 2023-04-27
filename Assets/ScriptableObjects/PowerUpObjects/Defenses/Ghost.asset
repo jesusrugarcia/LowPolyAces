@@ -15,5 +15,13 @@ MonoBehaviour:
   type: 15
   title: Ghost
   image: {fileID: 21300000, guid: a6c568c8885b787458e11dff25ec4208, type: 3}
-  desc: Makes the plane untargettable and raises evation for a small period of time.
+  desc:
+  - Makes the plane untargetable by tracking projectiles and raises evasion for a
+    short time
+  - "Evita que los projectiles rastreadores sigan al avi\xF3n y aumenta la evasi\xF3n
+    por un corto periodo de tiempo"
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

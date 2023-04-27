@@ -15,7 +15,7 @@ public static class FileManager
         System.IO.File.WriteAllText(Application.dataPath + "/" + saveName + ".json", jsonData);
     }
 
-    public static SaveData loadData(PlanesListScriptableObject planeList, CharacterScriptableObjectList characters, int sizePowerUps = 0){
+    public static SaveData loadData(PlanesListScriptableObject planeList, CharacterScriptableObjectList characters, PowerUpListScriptableObject[] powerUps){
         try
         {
             var jsonData = System.IO.File.ReadAllText(Application.dataPath + "/" + saveName + ".json");
@@ -24,8 +24,9 @@ public static class FileManager
         }
         catch (System.Exception)
         {
-            var data = new SaveData(planeList, characters, sizePowerUps);
+            var data = new SaveData(planeList, characters, powerUps);
             data.unlockedPlanes[0] = true;
+            saveData(data);
             return data;
         }
         

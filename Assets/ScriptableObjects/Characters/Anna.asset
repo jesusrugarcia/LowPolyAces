@@ -18,4 +18,8 @@ MonoBehaviour:
   desc:
   - Anna makes drones and turrets shoot faster
   - "Anna hace que los drones y las torretas disparen m\xE1s r\xE1pido"
+  unlock:
+  - Hire her in the shop!
+  - Contratala en la tienda!
   powerUps: 
+  initialUnlock: 0

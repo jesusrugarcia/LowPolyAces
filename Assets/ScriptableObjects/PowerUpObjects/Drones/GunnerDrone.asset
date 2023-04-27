@@ -15,5 +15,11 @@ MonoBehaviour:
   type: 22
   title: Gunner Drone
   image: {fileID: 21300000, guid: e55609d2bcca0004a8b2f471aa651705, type: 3}
-  desc: A drone that periodically shoots in the direction the plane is facing.
+  desc:
+  - A drone that periodically shoots a bullet
+  - Un dron que dispara un proyectil periodicamente
+  unlock:
+  - 
+  - 
   rarity: 100
+  initialUnlock: 1

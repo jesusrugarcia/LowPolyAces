@@ -6017,6 +6017,11 @@ MonoBehaviour:
   planePosCorrection: {x: 0, y: 1000, z: 500}
   planes: {fileID: 11400000, guid: 298febbb9846eea40af253f395a67742, type: 2}
   characters: {fileID: 11400000, guid: 9c326dd745545b744b53d3464cfe7004, type: 2}
+  powerUps:
+  - {fileID: 11400000, guid: a2b18bbed77224643b8382d32e312bfa, type: 2}
+  - {fileID: 11400000, guid: 3581b5215e0c2314cb68d35e176722e5, type: 2}
+  - {fileID: 11400000, guid: d488712f2dee0594a9494a23c23cc604, type: 2}
+  - {fileID: 11400000, guid: 8adee168698c1ec4fa451ad2cad3d346, type: 2}
   plane: {fileID: 0}
   mapMovement: {fileID: 0}
   saveData:
@@ -6029,7 +6034,6 @@ MonoBehaviour:
     unlockedPlanes: 
     purchasedPlanes: 
     unlockedCharacters: 
-    unlockedPowerUps: 
     upgrades:
       increase: 00000000
       costPerIncrease: 00000000
@@ -6105,6 +6109,7 @@ MonoBehaviour:
       laserActivated: 0
       laserTime: 1
       laserDamage: 0.1
+      revival: 0
     - maxHealth: 0
       health: 1
       maxSpeed: 0
@@ -6165,6 +6170,7 @@ MonoBehaviour:
       laserActivated: 0
       laserTime: 1
       laserDamage: 0.1
+      revival: 0
     - maxHealth: 0
       health: 1
       maxSpeed: 0
@@ -6225,6 +6231,7 @@ MonoBehaviour:
       laserActivated: 0
       laserTime: 1
       laserDamage: 0.1
+      revival: 0
     - maxHealth: 0
       health: 1
       maxSpeed: 0
@@ -6285,6 +6292,7 @@ MonoBehaviour:
       laserActivated: 0
       laserTime: 1
       laserDamage: 0.1
+      revival: 0
     pendingPowerUps:
     - {fileID: 0}
     - {fileID: 0}

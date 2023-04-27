@@ -18,4 +18,8 @@ MonoBehaviour:
   desc:
   - Alex shoots faster and deals more damage
   - "Alex dispara mas r\xE1pido y hace m\xE1s da\xF1o"
+  unlock:
+  - 
+  - 
   powerUps: 
+  initialUnlock: 1
