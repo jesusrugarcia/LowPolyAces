@@ -12,4 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8209e736768611a4ab35a2cacdf734f0, type: 3}
   m_Name: ArchivesMenu
   m_EditorClassIdentifier: 
-  texts: []
+  texts:
+  - textLanguages:
+    - Planes
+    - Aviones
+  - textLanguages:
+    - Characters
+    - Personajes
+  - textLanguages:
+    - Power Ups
+    - Mejoras
+  - textLanguages:
+    - Back
+    - Atras
+  - textLanguages:
+    - Previous
+    - Anterior
+  - textLanguages:
+    - Next
+    - Siguiente
+  - textLanguages:
+    - New
+    - Nuevo

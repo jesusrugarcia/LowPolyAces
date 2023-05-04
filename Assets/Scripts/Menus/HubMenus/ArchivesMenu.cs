@@ -1,6 +1,7 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine;
+using System;
 
 public class ArchivesMenu : HubSubMenu
 {
@@ -16,8 +17,10 @@ public class ArchivesMenu : HubSubMenu
     public GameObject loadedPlane;
 
     public TMP_Text currentName;
+    public TMP_Text newName;
     public TMP_Text desc;
     public GameObject[] selectedObject;
+    public GameObject[] newObject;
 
     public int currentList = 0; //0 planes, 1 chars, 2 powerups
     public int powerUpList = 0;
@@ -31,16 +34,20 @@ public class ArchivesMenu : HubSubMenu
         menu.thisMenu.transform.position += new Vector3(2500,0,0);
         menu.selectButton(menu.mainButton);
         gameObject.SetActive(false);
+        menu.saveOptionsAndData();
     }
 
     public override void extraStart()
     {
         base.extraStart();
         clear();
+        selectedObject[currentList].SetActive(false);
         current = 0;
         currentList = 0;
         selectedObject[currentList].SetActive(true);
         loadPlane();
+        checkUnlocks();
+        newName.gameObject.SetActive(false);
     }
 
     public void clear(){
@@ -97,6 +104,11 @@ public class ArchivesMenu : HubSubMenu
         } catch (System.Exception e){
             Debug.Log(e);
         }
+        if(menu.data.notifyPlanes[current]){
+            newName.gameObject.SetActive(true);
+        } else {
+            newName.gameObject.SetActive(false);
+        }
         
         loadedPlane = Instantiate(planes.planes[current].plane, new Vector3(0,0,0), Quaternion.Euler(-90,0,75),thisMenu.transform);
         loadedPlane.transform.localScale= loadedPlane.transform.localScale * scaleMultiplier;
@@ -111,18 +123,33 @@ public class ArchivesMenu : HubSubMenu
     }
 
     public void nextPlane(){
+        try{
+            menu.data.notifyPlanes[current] = false;
+            checkUnlockedPlanes();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
+        
         current ++;
         if (current >= planes.planes.Length){
             current = 0;
         }
+        
         loadPlane();
     }
 
     public void previousPlane(){
+         try{
+            menu.data.notifyPlanes[current] = false;
+            checkUnlockedPlanes();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
         current += -1;
         if (current < 0 ){
-            current = planes.planes.Length;
+            current = planes.planes.Length-1;
         }
+        
         loadPlane();
     }
 
@@ -137,21 +164,41 @@ public class ArchivesMenu : HubSubMenu
         } else {
             desc.text = characters.characters[current].unlock[(int)menu.gameOptions.language];
         }
+
+        if(menu.data.notifyCharacters[current]){
+            newName.gameObject.SetActive(true);
+        } else {
+            newName.gameObject.SetActive(false);
+        }
     }
 
     public void nextChar(){
+        try{
+            menu.data.notifyCharacters[current] = false;
+            checkUnlockedCharacters();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
         current ++;
         if (current >= characters.characters.Length){
             current = 0;
         }
+        
         loadCharacter();
     }
 
     public void previousChar(){
+        try{
+            menu.data.notifyCharacters[current] = false;
+            checkUnlockedCharacters();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
         current += -1;
         if (current < 0 ){
-            current = characters.characters.Length;
+            current = characters.characters.Length-1;
         }
+        
         loadCharacter();
     }
 
@@ -165,9 +212,22 @@ public class ArchivesMenu : HubSubMenu
         } else {
             desc.text = powerUps[powerUpList].powerUps[current].unlock[(int)menu.gameOptions.language];
         }
+
+        if(menu.data.notifyPowerUps[powerUpList].powerUps[current] == true){
+            newName.gameObject.SetActive(true);
+        } else {
+            newName.gameObject.SetActive(false);
+        }
     }
 
     public void nextPowerUps(){
+        try{
+            menu.data.notifyPowerUps[powerUpList].powerUps[current] = false;
+            checkUnlockedPowerUps();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
+        
         current ++;
         if (current >= powerUps[powerUpList].powerUps.Length){
             powerUpList ++;
@@ -176,10 +236,17 @@ public class ArchivesMenu : HubSubMenu
             }
             current = 0;
         }
+        
         loadPowerUp();
     }
 
     public void previousPowerUps(){
+        try{
+            menu.data.notifyPowerUps[powerUpList].powerUps[current] = false;
+            checkUnlockedPowerUps();
+        } catch(Exception e){
+            Debug.Log(e);
+        }
         current += -1 ;
         if (current < 0 ){
             powerUpList +=  - 1;
@@ -188,6 +255,46 @@ public class ArchivesMenu : HubSubMenu
             }
             current = powerUps[powerUpList].powerUps.Length -1;
         }
+        
         loadPowerUp();
+    }
+
+    public void checkUnlockedPlanes(){
+        for (int i = 0; i< menu.data.notifyPlanes.Length; i++){
+            if (menu.data.notifyPlanes[i]){
+                newObject[0].SetActive(true);
+                return;
+            }
+        }
+        newObject[0].SetActive(false);
+    }
+
+    public void checkUnlockedCharacters(){
+        for (int i = 0; i< menu.data.notifyCharacters.Length; i++){
+            if (menu.data.notifyCharacters[i]){
+                newObject[1].SetActive(true);
+                return;
+            }
+        }
+        newObject[1].SetActive(false);
+    }
+
+    public void checkUnlockedPowerUps(){
+        for (int i = 0; i< menu.data.notifyPowerUps.Length; i++){
+            for(int j=0; j< menu.data.notifyPowerUps[i].powerUps.Length; j++){
+                if (menu.data.notifyPowerUps[i].powerUps[j]){
+                newObject[2].SetActive(true);
+                return;
+            }
+            }
+            
+        }
+        newObject[2].SetActive(false);
+    }
+
+    public void checkUnlocks(){
+        checkUnlockedCharacters();
+        checkUnlockedPlanes();
+        checkUnlockedPowerUps();
     }
 }

@@ -6034,6 +6034,7 @@ MonoBehaviour:
     unlockedPlanes: 
     purchasedPlanes: 
     unlockedCharacters: 
+    unlockedPowerUps: []
     upgrades:
       increase: 00000000
       costPerIncrease: 00000000

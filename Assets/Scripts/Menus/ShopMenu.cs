@@ -118,6 +118,7 @@ public class ShopMenu : Menu
             for(int i= 0; i < equipButtons.Length; i++){
                 equipButtons[i].SetActive(true);
             }
+            UnlockManager.unlockCharacter(data, 4);
             saveOptionsAndData();
         } else {
             notEnoughPoints.SetActive(true);

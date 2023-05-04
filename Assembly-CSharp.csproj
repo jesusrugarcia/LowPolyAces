@@ -100,6 +100,7 @@
      <Compile Include="Assets\Scripts\Maps\ProceduralTerrain\FallOfGenerator.cs" />
      <Compile Include="Assets\Scripts\PowerUps\ParticleEffectManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\SaveData.cs" />
+     <Compile Include="Assets\Scripts\Menus\HubMenus\ArchivesMenu1.cs" />
      <Compile Include="Assets\Scripts\Menus\ButtonManagerMenu.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\MineDrone.cs" />
      <Compile Include="Assets\Scripts\Maps\Archipelago\NodeCombatScriptableObject.cs" />
@@ -147,7 +148,7 @@
      <Compile Include="Assets\Scripts\SnapshotCamera.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\RepairDrone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\Turret.cs" />
-     <Compile Include="Assets\Scripts\Menus\HubMenus\ArchivesMenu1.cs" />
+     <Compile Include="Assets\Scripts\SaveData\UnlockManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />

@@ -89,11 +89,12 @@ public class PlanesMenu : HubSubMenu
             menu.data.purchasedPlanes[currentPlane] = true;
             priceText.text = "";
             equippedText.SetActive(false);
-            menu.saveOptionsAndData();
+            UnlockManager.unlockCharacter(menu.data, 5);
             moneyText.text = menu.data.points.ToString();
             setButtonsActive(true);
             selectButton(equipButtons[0]);
             buyButton.SetActive(false);
+            
         }
     }
 
