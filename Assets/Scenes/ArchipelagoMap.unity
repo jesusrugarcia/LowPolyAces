@@ -4745,6 +4745,9 @@ MonoBehaviour:
   powerUps: []
   raritiesLists:
   - {fileID: 11400000, guid: a2b18bbed77224643b8382d32e312bfa, type: 2}
+  - {fileID: 11400000, guid: 3581b5215e0c2314cb68d35e176722e5, type: 2}
+  - {fileID: 11400000, guid: d488712f2dee0594a9494a23c23cc604, type: 2}
+  - {fileID: 11400000, guid: 8adee168698c1ec4fa451ad2cad3d346, type: 2}
   fuelPrice: {fileID: 1333427260}
   fuelCost: 3
   timeSinceLastBuy: 0
@@ -6032,13 +6035,17 @@ MonoBehaviour:
     selectedChar: 
     points: 0
     unlockedPlanes: 
+    notifyPlanes: 
     purchasedPlanes: 
     unlockedCharacters: 
+    notifyCharacters: 
     unlockedPowerUps: []
+    notifyPowerUps: []
     upgrades:
       increase: 00000000
       costPerIncrease: 00000000
       max: 00000000
+    notify: 0
   rogueliteSave:
     loadMap: 0
     seed: 0

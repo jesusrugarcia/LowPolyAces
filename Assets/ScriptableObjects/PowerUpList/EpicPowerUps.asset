@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bfd05e18730cf74a95140dc05c7a808, type: 3}
   m_Name: EpicPowerUps
   m_EditorClassIdentifier: 
-  powerUps: []
+  powerUps:
+  - {fileID: 11400000, guid: 715a4570dbcdc5546a79257d760eccab, type: 2}

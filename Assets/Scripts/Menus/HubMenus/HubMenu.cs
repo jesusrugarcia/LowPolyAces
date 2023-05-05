@@ -16,13 +16,23 @@ public class HubMenu : Menu
     public HubSubMenu ArchivesMenu;
     public GameObject ArchivesButton;
 
+    public GameObject newObject;
+
     void Start() {
         StartMenu();
         setTextLanguages();
         Time.timeScale = 1;
         selectButton(mainButton);
+        checkUnlocks();
     }
 
+    public void checkUnlocks(){
+        if (data.notify){
+            newObject.SetActive(true);
+        } else {
+            newObject.SetActive(false);
+        }
+    }
     
 
     public void fly(){

@@ -35,6 +35,7 @@ public class ArchivesMenu : HubSubMenu
         menu.selectButton(menu.mainButton);
         gameObject.SetActive(false);
         menu.saveOptionsAndData();
+        menu.checkUnlocks();
     }
 
     public override void extraStart()
@@ -106,6 +107,7 @@ public class ArchivesMenu : HubSubMenu
         }
         if(menu.data.notifyPlanes[current]){
             newName.gameObject.SetActive(true);
+            menu.data.notify = false;
         } else {
             newName.gameObject.SetActive(false);
         }
@@ -167,6 +169,7 @@ public class ArchivesMenu : HubSubMenu
 
         if(menu.data.notifyCharacters[current]){
             newName.gameObject.SetActive(true);
+            menu.data.notify = false;
         } else {
             newName.gameObject.SetActive(false);
         }
@@ -215,6 +218,7 @@ public class ArchivesMenu : HubSubMenu
 
         if(menu.data.notifyPowerUps[powerUpList].powerUps[current] == true){
             newName.gameObject.SetActive(true);
+            menu.data.notify = false;
         } else {
             newName.gameObject.SetActive(false);
         }

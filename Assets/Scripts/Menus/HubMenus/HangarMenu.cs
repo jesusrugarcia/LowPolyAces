@@ -12,6 +12,7 @@ public class HangarMenu : HubSubMenu
         menu.thisMenu.transform.position += new Vector3(2500,0,0);
         menu.selectButton(menu.mainButton);
         gameObject.SetActive(false);
+        menu.checkUnlocks();
     }
 
     public void planes(){

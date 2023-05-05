@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum Rarities{
-    common = 100,
-    rare = 250
+    common,
+    rare,
+    epic,
+    legendary
 }
 
 [CreateAssetMenu(menuName = "Proyecto Aviones/PowerUp")]

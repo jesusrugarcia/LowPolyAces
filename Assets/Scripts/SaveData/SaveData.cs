@@ -32,6 +32,7 @@ public class SaveData
     public unlockedPowerUps[] unlockedPowerUps;
     public unlockedPowerUps[] notifyPowerUps;
     public Upgrades upgrades;
+    public bool notify = false;
     
     
 
@@ -57,7 +58,6 @@ public class SaveData
         for (int i=0 ; i< unlockedPowerUps.Length; i++){
             unlockedPowerUps[i] = new unlockedPowerUps();
             notifyPowerUps[i] = new unlockedPowerUps();
-            Debug.Log(unlockedPowerUps[i]);
             unlockedPowerUps[i].powerUps = new bool[powerUps[i].powerUps.Length];
             notifyPowerUps[i].powerUps = new bool[powerUps[i].powerUps.Length];
             for (int y=0; y< unlockedPowerUps[i].powerUps.Length; y++){

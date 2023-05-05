@@ -9,6 +9,7 @@ public static class UnlockManager
         if (data.unlockedCharacters[pos] == false){
             data.unlockedCharacters[pos] = true;
             data.notifyCharacters[pos] = true;
+            data.notify = true;
             FileManager.saveData(data);
         }
         
@@ -18,6 +19,7 @@ public static class UnlockManager
         if(!data.unlockedPlanes[pos]){
             data.unlockedPlanes[pos] = true;
             data.notifyPlanes[pos] = true;
+            data.notify = true;
             FileManager.saveData(data);
         }
         
@@ -27,6 +29,7 @@ public static class UnlockManager
         if (!data.unlockedPowerUps[list].powerUps[pos]){
             data.unlockedPowerUps[list].powerUps[pos] = true;
             data.notifyPowerUps[list].powerUps[pos] = true;
+            data.notify = true;
             FileManager.saveData(data);
         }
         
