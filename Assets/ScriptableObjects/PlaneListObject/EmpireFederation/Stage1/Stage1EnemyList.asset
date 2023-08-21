@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23549faa54e406b40a55cac894ad0b31, type: 3}
+  m_Name: Stage1EnemyList
+  m_EditorClassIdentifier: 
+  prefabsEasy: {fileID: 11400000, guid: 981c35e3b32107144b8a22b2729a92d6, type: 2}
+  prefabsMedium: {fileID: 11400000, guid: a07bbd7fa33dbff42993dfa107b8086f, type: 2}
+  prefabsHard: {fileID: 11400000, guid: d38ebb9409f9257478202d588df842ec, type: 2}
+  prefabsImposible: {fileID: 11400000, guid: 817fc7124e930ad47838b3dca767f81c, type: 2}
+  prefabsBoss: {fileID: 11400000, guid: 10c2583c43c109e45847b963db8f0168, type: 2}

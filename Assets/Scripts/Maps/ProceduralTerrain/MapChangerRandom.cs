@@ -32,7 +32,7 @@ public class MapChangerRandom : MonoBehaviour
     public void changeMap(){
         controller.mapGenerator.seed = Random.Range(-9999,9999);
         controller.mapGenerator.GenerateMap();
-        textureManager.changeColor(Random.Range(0,textureManager.waterMaterials.Length));
+        textureManager.changeColor(Random.Range(0,textureManager.colors.waterMaterials.Length));
     }
 
 }

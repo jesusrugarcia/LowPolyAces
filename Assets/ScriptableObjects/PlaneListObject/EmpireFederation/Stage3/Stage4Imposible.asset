@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff026ccf4a0224f4ca0458f39191b926, type: 3}
-  m_Name: EmpireFederationHard
+  m_Name: Stage4Imposible
   m_EditorClassIdentifier: 
   planes:
-  - {fileID: 11400000, guid: 61096ebb2443b714ca686660a4edaf1a, type: 2}
+  - {fileID: 11400000, guid: 4f063f51291d4b040a2d2acfb2e5df14, type: 2}

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyList : MonoBehaviour
+
+[CreateAssetMenu(menuName = "Proyecto Aviones/EnemyList")]
+public class EnemyList : ScriptableObject
 {
     [SerializeField]
     public PlanesListScriptableObject prefabsEasy;
@@ -15,3 +17,4 @@ public class EnemyList : MonoBehaviour
     [SerializeField]
     public PlanesListScriptableObject prefabsBoss;
 }
+

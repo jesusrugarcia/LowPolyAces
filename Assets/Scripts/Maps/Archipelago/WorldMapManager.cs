@@ -61,21 +61,28 @@ public class WorldMapManager : MonoBehaviour
 
     public void paintMap(){
         if(!rogueliteSave.loadMap){
-            mapPainter.generateAndDrawMap();
-            rogueliteSave.fuel = mapGraph.layers + 3;
-            rogueliteSave.turnsWithoutFuel = 0;
+            initMap();
+            
             
         } else {
             mapGraph = FileManager.loadMap();
             if ( mapGraph != null){
                  mapPainter.drawMap();
             } else {
-                 mapPainter.generateAndDrawMap();
-                 rogueliteSave.fuel = mapGraph.layers + 3;
-                 rogueliteSave.turnsWithoutFuel = 0;
+                 initMap();
             }
         }
         
+    }
+
+    public void initMap(){
+        mapPainter.generateAndDrawMap();
+        if(rogueliteSave.stage != 0){
+            rogueliteSave.fuel += + 3;
+            rogueliteSave.turnsWithoutFuel = 0;
+        } else {
+            rogueliteSave.fuel += mapGraph.layers + 3;
+        }
     }
 
     public void spawnPlane(){
@@ -102,7 +109,7 @@ public class WorldMapManager : MonoBehaviour
         rogueliteSave.loadMap = true;
         rogueliteSave.seed = mapGraph.nodes[mapGraph.currentMapNode].seed;
         rogueliteSave.enemyCount = mapGraph.nodes[mapGraph.currentMapNode].enemyCount;
-        rogueliteSave.stage = mapGraph.stage;
+        //rogueliteSave.stage = mapGraph.stage;
         if(mapGraph.nodes[node].type == NodeType.Boss){
             rogueliteSave.boss = true;
         } else {

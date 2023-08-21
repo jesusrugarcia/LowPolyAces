@@ -6,13 +6,14 @@ public class RogueliteSave
 {
     public bool loadMap = false;
     public int seed = 0;
-    public int stage;
+    public int stage = 0;
     public int[] enemyCount;
     public bool boss = false;
     public bool loadStats = false;
     public int fuel = 5;
     public int turnsWithoutFuel = 0;
     public int[] money = {0,0,0,0};
+    public bool finished = false;
     //public bool upgraded = false;
 
     public StatsSave[] stats = new StatsSave[4];

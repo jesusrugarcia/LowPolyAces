@@ -5,10 +5,13 @@ public class WorldMapPainter : MonoBehaviour
 {
     public WorldMapManager mapManager;
     public WorldMapGenerator mapGenerator;
+    public StageColorsScriptableObject colors;
 
     public GameObject nodeObject;
     public CameraPointCalculator pointCalculator;
     public GameObject shopIcon;
+    public GameObject water;
+    public Renderer waterRenderer;
 
     public int layers;
     public int nodesPerLayer;
@@ -61,7 +64,14 @@ public class WorldMapPainter : MonoBehaviour
                 var shop = Instantiate(shopIcon, mapManager.mapGraph.nodes[i].screenPos + new Vector3(0,1000,0), Quaternion.identity);
                 shop.transform.localScale *= 2000;
             }
+            var nodeRenderer = mapManager.nodes[i].GetComponent<MapTextureManager>().terrainRenderer;
+            nodeRenderer.material = colors.mapMaterials[mapManager.rogueliteSave.stage];
         }
+
+        //paint water
+        waterRenderer = water.GetComponent<Renderer>();
+        waterRenderer.material = colors.mapWaterMaterials[mapManager.rogueliteSave.stage];
+
         DrawLines(mapManager.mapGraph.nodes[mapManager.mapGraph.currentMapNode].getConnectedNodes()[0]);
         drawDecoIslands();
     }

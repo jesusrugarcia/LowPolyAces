@@ -57,6 +57,7 @@ MonoBehaviour:
   rechargeSpecialTime: 10
   maxDrones: 1
   drones: 0
+  dronesList: 
   statusEffects:
   - 0
   - 0
@@ -71,3 +72,4 @@ MonoBehaviour:
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1
+  revival: 0

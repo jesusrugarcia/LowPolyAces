@@ -5,10 +5,21 @@ using UnityEngine;
 public class FlyMenu : HubSubMenu{
 
     public void mission(){
-        menu.rogueliteSave = new RogueliteSave();
-        menu.gameOptions.mode = gameMode.roguelite;
-        menu.saveOptionsAndData();
-        SceneManager.LoadScene(3);
+        try{
+            if(menu.rogueliteSave.finished){
+                menu.rogueliteSave = new RogueliteSave();
+            }
+            menu.gameOptions.mode = gameMode.roguelite;
+            menu.saveOptionsAndData();
+            SceneManager.LoadScene(3);
+        } catch (System.Exception e){
+            Debug.Log(e);
+            menu.rogueliteSave = new RogueliteSave();
+            menu.gameOptions.mode = gameMode.roguelite;
+            menu.saveOptionsAndData();
+            SceneManager.LoadScene(3);
+        }
+        
     }
 
     public void arcade(){

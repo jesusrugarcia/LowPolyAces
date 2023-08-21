@@ -5,18 +5,19 @@ using UnityEngine;
 public static class PowerUpListGenerator 
 //this class manages the generation of selectable power up list after beating a level
 {
-    public static PowerUpScriptableObject[] selectPowerUps(int powerUpNumber, PowerUpListScriptableObject[] powerLists, bool dronesAvailable, RogueliteSave save){
+    public static PowerUpScriptableObject[] selectPowerUps(int powerUpNumber, PowerUpListScriptableObject[] powerLists, bool dronesAvailable, RogueliteSave save, int minRarity = 0){
         var powerUps = new PowerUpScriptableObject[powerUpNumber];
         var rarities = new int[4] {70, 85, 95, 100};
         for(int i=0; i<powerUpNumber; i++){
-            selectPowerUp(i, powerUps, powerLists, rarities, dronesAvailable, save);
+            selectPowerUp(i, powerUps, powerLists, rarities, dronesAvailable, save, minRarity);
         }
 
         return powerUps;
     }
 
-    public static void selectPowerUp(int i, PowerUpScriptableObject[] powerUps, PowerUpListScriptableObject[] powerLists, int[]rarities, bool dronesAvailable, RogueliteSave save){
-        var rarity = UnityEngine.Random.Range(0,rarities[rarities.Length -1]) + (save.stage * 2);
+    public static void selectPowerUp(int i, PowerUpScriptableObject[] powerUps, PowerUpListScriptableObject[] powerLists, int[]rarities, bool dronesAvailable, RogueliteSave save, int minRarity = 0){
+        var rarity = UnityEngine.Random.Range(minRarity,rarities[rarities.Length -1]);
+
         Debug.Log("Rarity for powerUp" + i + " is: " + rarity);
         if (rarity <= rarities[0]){
              powerUps[i] = powerLists[0].powerUps[UnityEngine.Random.Range(0,powerLists[0].powerUps.Length)];

@@ -21,9 +21,10 @@ public class PowerUpMenuManager : MonoBehaviour
     public int currentPlayer = 0;
     
 
-    public void selectPowerUps(){
+    public void selectPowerUps(int minRarity = 0){
         var dronesAvailable = controller.players[currentPlayer].GetComponent<PlaneStats>().drones >= controller.players[currentPlayer].GetComponent<PlaneStats>().maxDrones;
-        powerUps = PowerUpListGenerator.selectPowerUps(powerUpNumber, raritiesLists, dronesAvailable, controller.rogueliteSave);
+        Debug.Log("DRONES: " + dronesAvailable);
+        powerUps = PowerUpListGenerator.selectPowerUps(powerUpNumber, raritiesLists, dronesAvailable, controller.rogueliteSave, minRarity);
         for (int i=0; i< powerUps.Length; i++){
             powerUpsTitles[i].text = powerUps[i].title;
             powerUpsDescs[i].text = powerUps[i].desc[(int)controller.gameOptions.language];

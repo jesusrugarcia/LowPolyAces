@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afdbf7847bdc4504e84ef399fe9f891e, type: 3}
+  m_Name: StageColorsScriptableObject
+  m_EditorClassIdentifier: 
+  waterMaterials:
+  - {fileID: 2100000, guid: 0f0403349d71a264b9b76e148e1de933, type: 2}
+  - {fileID: 2100000, guid: 6f5a07f9f75248e4eb0f7ab5c498dd22, type: 2}
+  - {fileID: 2100000, guid: f6ddc14942a7e95479c0ddfd2330cd30, type: 2}
+  - {fileID: 2100000, guid: 73a28e350e74efc44851b1cfa0de062d, type: 2}
+  terrainMaterials:
+  - {fileID: 2100000, guid: ee19194b7e40adf4582be07d88439d0f, type: 2}
+  - {fileID: 2100000, guid: c7c41e5721326ef468e7ef090c81c443, type: 2}
+  - {fileID: 2100000, guid: 1f0a4c29864f750428c990b129a47a06, type: 2}
+  - {fileID: 2100000, guid: 1f0a4c29864f750428c990b129a47a06, type: 2}
+  mapMaterials:
+  - {fileID: 2100000, guid: 6ce92e967679f1f47a5af05851c431fe, type: 2}
+  - {fileID: 2100000, guid: bdad74c47cce79540b1bd737f2615fa6, type: 2}
+  - {fileID: 2100000, guid: 168399057b7bd924a814195ddce82e01, type: 2}
+  - {fileID: 2100000, guid: 168399057b7bd924a814195ddce82e01, type: 2}
+  mapWaterMaterials:
+  - {fileID: 2100000, guid: 08ac99d0d5692744e8397918100bd8ee, type: 2}
+  - {fileID: 2100000, guid: 61824f43da601f64f8a6050c975e6174, type: 2}
+  - {fileID: 2100000, guid: 69691021b1ec07e43bff582e996c96cd, type: 2}
+  - {fileID: 2100000, guid: 53d72ba28964578428501e2da4c05fe7, type: 2}

@@ -6005,7 +6005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGraph:
-    stage: 0
     size: 0
     nodes: []
     currentMapNode: 0
@@ -8464,9 +8463,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapManager: {fileID: 1320180518}
   mapGenerator: {fileID: 1607436214}
+  colors: {fileID: 11400000, guid: e76cceecd9550734395f420322c24d4c, type: 2}
   nodeObject: {fileID: 841112657909414506, guid: f4396fe3632623942a8e8ad21b59dfaf, type: 3}
   pointCalculator: {fileID: 383438972}
   shopIcon: {fileID: 1192215531764871590, guid: aa256a80caa4eed498f810fd0880e3c3, type: 3}
+  water: {fileID: 235476849}
+  waterRenderer: {fileID: 0}
   layers: 5
   nodesPerLayer: 2
   maxNodes: 20

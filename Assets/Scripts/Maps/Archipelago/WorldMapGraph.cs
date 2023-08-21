@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class WorldMapGraph 
 {
-    public int stage;
+    //public int stage;
     public int size;
     public WorldMapNode[] nodes;
     public int currentMapNode;
@@ -12,7 +12,7 @@ public class WorldMapGraph
     public int layers;
     public int shops = 0;
 
-    public WorldMapGraph(int layers, int decoIslandsNum, int stageNum = 0 ){
+    public WorldMapGraph(int layers, int decoIslandsNum ){ //,int stageNum = 0
         size = 2;
         nodes = new WorldMapNode[size];
         nodes[0] = new WorldMapNode(0,layers,size);  //lastNode 
@@ -21,7 +21,7 @@ public class WorldMapGraph
         nodes[1].visited = true;
         nodes[0].type = NodeType.Boss;
         nodes[1].type = NodeType.Initial;
-        stage = stageNum;
+        //stage = stageNum;
         this.layers = layers;
 
         decoIslands = new DecoIslandNode[decoIslandsNum];

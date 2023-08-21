@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
     //public ObjectPools pools;
 
     public MapGenerator mapGenerator;
+    public MapTextureManager textureManager;
 
     private void Start() {
         rogueliteSave = FileManager.loadRoguelite();
@@ -72,6 +73,7 @@ public class GameController : MonoBehaviour
         } else  if (gameOptions.mode == gameMode.roguelite){//placeholder
             gameModeManager = GetComponent<RogueliteModeManager>();
             generateMap();
+            textureManager.changeColor();
         }
 
         gameModeManager.controller = this;
