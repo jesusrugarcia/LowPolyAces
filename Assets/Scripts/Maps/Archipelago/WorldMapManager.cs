@@ -51,6 +51,7 @@ public class WorldMapManager : MonoBehaviour
         }
         spawnPlane();
         Time.timeScale = 1f;
+        checkNodeAction(mapGraph.currentMapNode);
         
     }
 
@@ -86,7 +87,7 @@ public class WorldMapManager : MonoBehaviour
     }
 
     public void spawnPlane(){
-        plane = Instantiate(planes.planes[saveData.selectedPlayer[0]].plane, mapGraph.nodes[mapGraph.currentMapNode].screenPos + planePosCorrection, Quaternion.Euler(-90,0,0));
+        plane = Instantiate(planes.planes[rogueliteSave.selectedPlanes[0]].plane, mapGraph.nodes[mapGraph.currentMapNode].screenPos + planePosCorrection, Quaternion.Euler(-90,0,0));
         mapMovement = plane.AddComponent<WorldMapMovement>();
         plane.transform.localScale *= 1500; //new Vector3(100,100,100);
         mapMovement.mapManager = this;
@@ -96,7 +97,15 @@ public class WorldMapManager : MonoBehaviour
     public void checkNodeAction(int node){
         checkFuel();
         if((mapGraph.nodes[node].type == NodeType.Combat || mapGraph.nodes[node].type == NodeType.Boss) && !mapGraph.nodes[node].combatEnded){
-            loadCombat(node);
+            if(rogueliteSave.combatEnded){
+                rogueliteSave.combatEnded = false;
+                mapGraph.nodes[mapGraph.currentMapNode].combatEnded = true;
+                rogueliteSave.fuel += 1;
+                FileManager.saveRoguelite(rogueliteSave);
+                FileManager.saveMap(mapGraph);
+            } else {
+                loadCombat(node);
+            }
         } else if(mapGraph.nodes[node].type == NodeType.Shop){
             loadShop(node);
         }
@@ -104,7 +113,6 @@ public class WorldMapManager : MonoBehaviour
     }
 
     public void loadCombat(int node){
-        mapGraph.nodes[mapGraph.currentMapNode].combatEnded = true;
         FileManager.saveMap(mapGraph);
         rogueliteSave.loadMap = true;
         rogueliteSave.seed = mapGraph.nodes[mapGraph.currentMapNode].seed;

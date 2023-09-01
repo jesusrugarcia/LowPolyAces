@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: ModelCombat
+  m_EditorClassIdentifier: 
+  model: 
+  plane: {fileID: 474782897093220820, guid: 5641bb5cf5ec09742876054978bcbdd4, type: 3}
+  stats: {fileID: 11400000, guid: 634c22abaeb65ce47857e04a7dbfb3cf, type: 2}
+  unlockedByDefault: 0
+  purchasedByDefault: 0
+  desc: []
+  unlock: []

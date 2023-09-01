@@ -6055,6 +6055,10 @@ MonoBehaviour:
     fuel: 5
     turnsWithoutFuel: 0
     money: 00000000000000000000000000000000
+    finished: 0
+    selectedPlanes: 00000000000000000000000000000000
+    selectedCharacters: 00000000010000000200000003000000
+    combatEnded: 0
     stats:
     - maxHealth: 0
       health: 1
@@ -8467,6 +8471,7 @@ MonoBehaviour:
   nodeObject: {fileID: 841112657909414506, guid: f4396fe3632623942a8e8ad21b59dfaf, type: 3}
   pointCalculator: {fileID: 383438972}
   shopIcon: {fileID: 1192215531764871590, guid: aa256a80caa4eed498f810fd0880e3c3, type: 3}
+  BossIcon: {fileID: 4274241521077268607, guid: 5899b8ab45069624aa409d4df99dc64d, type: 3}
   water: {fileID: 235476849}
   waterRenderer: {fileID: 0}
   layers: 5

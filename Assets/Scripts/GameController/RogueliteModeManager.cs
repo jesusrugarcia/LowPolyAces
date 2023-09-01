@@ -101,6 +101,7 @@ public class RogueliteModeManager : GameModeManager
         }
         giveInRunPoints();
         controller.rogueliteSave.loadStats = true;
+        controller.rogueliteSave.combatEnded = true;
         FileManager.saveRoguelite(controller.rogueliteSave);
         if(controller.currentEnemies <= 0){
             if(controller.rogueliteSave.boss){ // todo when boss beaten

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stage2Boss
   m_EditorClassIdentifier: 
   planes:
-  - {fileID: 11400000, guid: 10ca0f71b128cc449b6ef55988054a57, type: 2}
+  - {fileID: 11400000, guid: f06605ae024991242b8809a5235f961f, type: 2}

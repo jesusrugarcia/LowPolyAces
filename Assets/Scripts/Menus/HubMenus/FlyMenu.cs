@@ -8,6 +8,8 @@ public class FlyMenu : HubSubMenu{
         try{
             if(menu.rogueliteSave.finished){
                 menu.rogueliteSave = new RogueliteSave();
+                menu.rogueliteSave.selectedPlanes = menu.data.selectedPlayer;
+                menu.rogueliteSave.selectedCharacters = menu.data.selectedChar;
             }
             menu.gameOptions.mode = gameMode.roguelite;
             menu.saveOptionsAndData();
@@ -15,6 +17,8 @@ public class FlyMenu : HubSubMenu{
         } catch (System.Exception e){
             Debug.Log(e);
             menu.rogueliteSave = new RogueliteSave();
+            menu.rogueliteSave.selectedPlanes = menu.data.selectedPlayer;
+            menu.rogueliteSave.selectedCharacters = menu.data.selectedChar;
             menu.gameOptions.mode = gameMode.roguelite;
             menu.saveOptionsAndData();
             SceneManager.LoadScene(3);

@@ -10,6 +10,7 @@ public class WorldMapPainter : MonoBehaviour
     public GameObject nodeObject;
     public CameraPointCalculator pointCalculator;
     public GameObject shopIcon;
+    public GameObject BossIcon;
     public GameObject water;
     public Renderer waterRenderer;
 
@@ -71,6 +72,9 @@ public class WorldMapPainter : MonoBehaviour
         //paint water
         waterRenderer = water.GetComponent<Renderer>();
         waterRenderer.material = colors.mapWaterMaterials[mapManager.rogueliteSave.stage];
+
+        //boss icon
+        var boss = Instantiate(BossIcon, mapManager.mapGraph.nodes[0].screenPos + new Vector3(0,1000,0), Quaternion.Euler(90,0,0));
 
         DrawLines(mapManager.mapGraph.nodes[mapManager.mapGraph.currentMapNode].getConnectedNodes()[0]);
         drawDecoIslands();

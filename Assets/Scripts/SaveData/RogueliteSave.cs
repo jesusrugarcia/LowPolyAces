@@ -14,6 +14,9 @@ public class RogueliteSave
     public int turnsWithoutFuel = 0;
     public int[] money = {0,0,0,0};
     public bool finished = false;
+    public int[] selectedPlanes = {0,0,0,0};
+    public int[] selectedCharacters = {0,1,2,3};
+    public bool combatEnded = false;
     //public bool upgraded = false;
 
     public StatsSave[] stats = new StatsSave[4];

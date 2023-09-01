@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stage1Imposible
   m_EditorClassIdentifier: 
   planes:
-  - {fileID: 11400000, guid: 4f063f51291d4b040a2d2acfb2e5df14, type: 2}
+  - {fileID: 11400000, guid: cd9df1587d9f90b4496396f7f8e69198, type: 2}

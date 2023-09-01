@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Stage3Hard
   m_EditorClassIdentifier: 
   planes:
-  - {fileID: 11400000, guid: 4f063f51291d4b040a2d2acfb2e5df14, type: 2}
+  - {fileID: 11400000, guid: b2b1c65e4c50406418ff63a3d403a109, type: 2}

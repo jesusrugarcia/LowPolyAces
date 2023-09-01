@@ -14751,8 +14751,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 11.62, y: 10.7, z: 6.27}
+  m_Center: {x: -0.36, y: 0, z: 0}
 --- !u!54 &4057181162403811533
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14859,6 +14859,7 @@ MonoBehaviour:
   rechargeSpecialTime: 10
   maxDrones: 1
   drones: 0
+  dronesList: 
   statusEffects:
   - 0
   - 0
@@ -14873,6 +14874,7 @@ MonoBehaviour:
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1
+  revival: 0
   plane: {fileID: 2853790324353675241}
 --- !u!114 &8596743380792378266
 MonoBehaviour:
