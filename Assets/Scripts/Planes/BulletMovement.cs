@@ -11,6 +11,8 @@ public class BulletMovement : MonoBehaviour
     public float meleeOffset;
     public bool meleeFall = false;
     public GameObject hitEffect;
+    public StatusEffects effect;
+    public bool applyEffect = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -75,10 +77,33 @@ public class BulletMovement : MonoBehaviour
             var plan = other.gameObject.GetComponent<PlaneManager>();
             if(plan.teamManager.team != GetComponent<TeamManager>().team && plan.stats.health > GetComponent<DamageManager>().damage && plan.stats.statusEffects[(int)StatusEffects.Invulnerability] <= 0){
                 Instantiate(hitEffect,transform.position,transform.rotation);
+                try {
+                    if (applyEffect){
+                        plan.statusManager.addStatus(effect, plane.stats.statusEffectTime);
+                        addParticleEffect(plan);
+                    }
+                } catch (Exception e){
+                    Debug.Log(e);
+                }
+                
+
             }
         } catch (Exception e){
             Debug.Log(e);
         }
         
+    }
+
+    public void addParticleEffect(PlaneManager enemy){
+        if(effect == StatusEffects.Stunned){
+            var particles = Instantiate(plane.controller.centralManager.StunnedParticleEffect, transform.position, transform.rotation);
+            particles.GetComponent<ParticleEffectManager>().plane = enemy;
+        } else if(effect == StatusEffects.Burning){
+            var particles = Instantiate(plane.controller.centralManager.BurningParticleEffect, transform.position, transform.rotation);
+            particles.GetComponent<ParticleEffectManager>().plane = enemy;
+        } else if(effect == StatusEffects.Rusting){
+            var particles = Instantiate(plane.controller.centralManager.RustingParticleEffect, transform.position, transform.rotation);
+            particles.GetComponent<ParticleEffectManager>().plane = enemy;
+        }
     }
 }

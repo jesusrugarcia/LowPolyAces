@@ -17,23 +17,23 @@ MonoBehaviour:
   maxSpeed: 2
   speed: 0
   acceleration: 0.3
-  rotationSpeed: 3
+  rotationSpeed: 2
   rotation: 0
-  maxRotation: 3
-  timeToRotate: 0.3
-  timeRotating: 0.1
+  maxRotation: 1
+  timeToRotate: 0.05
+  timeRotating: 0.3
   bulletDamage: 1
   turretDamage: 0.1
   missileDamage: 10
   mineDamage: 5
   drillDamage: 5
-  shootSpeed: 1
+  shootSpeed: 0.9
   magazineSize: 1
   turretShootSpeed: 0.5
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
-  bulletType: 0
+  bulletType: 3
   missileType: 0
   gadgetType: 0
   defenseType: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   ghostIncrease: 1
   evasion: -3
   timeTargetting: 2
-  statusEffectTime: 1
+  statusEffectTime: 0.5
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1

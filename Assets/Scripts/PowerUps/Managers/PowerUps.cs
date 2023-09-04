@@ -51,5 +51,7 @@ public enum PowerUps{
     ExperimentalCamouflage, // evasion, inv increase, ghost increase
     HydraulicPincers, // missile damage a little tiny bit, statusEffectTime 
     
-   
+   //Posterior
+   DragonFireBullet,
+   FireBullet,
 }

@@ -261,6 +261,7 @@ MonoBehaviour:
   timer: 0
   meleeOffset: 0
   meleeFall: 0
+  hitEffect: {fileID: 2940007151653062436, guid: 75d6b49f5e0bac2468bc271f7c784f1c, type: 3}
 --- !u!114 &2561845590187594279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +277,4 @@ MonoBehaviour:
   rotationSpeedX: 50
   rotationSpeedY: 0
   rotationSpeedZ: 0
+  parent: {fileID: 0}

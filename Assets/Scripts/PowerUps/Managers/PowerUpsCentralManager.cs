@@ -13,6 +13,8 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject NormalBulletPlayer4;
     public GameObject MissileBullet;
     public GameObject DrillBullet;
+    public GameObject DragonFireBullet;
+    public GameObject FireBullet;
     //Missiles
     public GameObject Missile;
     public GameObject Mine;
@@ -60,7 +62,7 @@ public class PowerUpsCentralManager : MonoBehaviour
         } else if(type == PowerUps.TurretDrone || type== PowerUps.MineDrone || type== PowerUps.GunnerDrone || type== PowerUps.RepairDrone || 
         type== PowerUps.ShieldDrone || type== PowerUps.MissileDrone){
             addDrone(other.gameObject, type, origin);
-        } else if (type == PowerUps.NormalBullet || type == PowerUps.MissileBullet || type == PowerUps.DrillBullet){
+        } else if (type == PowerUps.NormalBullet || type == PowerUps.MissileBullet || type == PowerUps.DrillBullet || type == PowerUps.DragonFireBullet || type == PowerUps.FireBullet){
             addBulletType(other.gameObject, type, origin);
         }else {
             addStat(other.gameObject, type, origin);
@@ -281,6 +283,16 @@ public class PowerUpsCentralManager : MonoBehaviour
                 planeManager.stats.bulletType = BulletType.normal;
                 destroyable = true;
             }
+            else if (type == PowerUps.DragonFireBullet && planeManager.stats.bulletType != BulletType.DragonFire){
+                planeManager.planeShooter.bullet = DragonFireBullet;
+                planeManager.stats.bulletType = BulletType.DragonFire;
+                destroyable = true;
+            }
+            else if (type == PowerUps.FireBullet && planeManager.stats.bulletType != BulletType.Fire){
+                planeManager.planeShooter.bullet = FireBullet;
+                planeManager.stats.bulletType = BulletType.DragonFire;
+                destroyable = true;
+            }
 
             if (destroyable){
                 planeManager.controller.reduceCurrentPowerUps();
@@ -457,6 +469,10 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.bullet =  DrillBullet;
         } else if(plane.stats.bulletType == BulletType.missile){
             plane.planeShooter.bullet =  MissileBullet;
+        } else if(plane.stats.bulletType == BulletType.DragonFire){
+            plane.planeShooter.bullet =  DragonFireBullet;
+        } else if(plane.stats.bulletType == BulletType.Fire){
+            plane.planeShooter.bullet =  FireBullet;
         }
     }
 

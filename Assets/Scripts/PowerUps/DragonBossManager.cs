@@ -27,4 +27,8 @@ public class DragonBossManager : BossManager
         manager.target = lastPart;
         lastPart = newPart;
     }
+
+    private void OnDestroy() {
+        UnlockManager.unlockPowerUp(plane.controller.data, 2, 0);
+    }
 }

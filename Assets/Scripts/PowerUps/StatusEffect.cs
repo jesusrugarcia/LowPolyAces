@@ -9,6 +9,7 @@ public enum StatusEffects{
     Rusting,
 }
 
+
 public class StatusEffect : MonoBehaviour
 {
     public PlaneManager planeManager;
