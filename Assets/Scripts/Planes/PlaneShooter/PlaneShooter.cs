@@ -185,7 +185,7 @@ public class PlaneShooter : MonoBehaviour
     }
 
     public void launchMissile(){
-        if(plane.stats.missileType == MissileType.Missile || plane.stats.missileType == MissileType.ClusterMissile){
+        if(plane.stats.missileType == MissileType.Missile || plane.stats.missileType == MissileType.ClusterMissile || plane.stats.missileType == MissileType.FireMissile){
             var mis = Instantiate(missile, transform.position + transform.right * 1, transform.rotation);
             mis.GetComponent<MissileManager>().plane = plane;
             mis.GetComponent<DamageManager>().damage = plane.stats.missileDamage;

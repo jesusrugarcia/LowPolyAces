@@ -7,7 +7,6 @@ public class DragonBossManager : BossManager
     const int FIRE = 0;
     const int DRONES = 1;
 
-    public float dashSpeed = 15;
     public int behindAngle = 100;
 
     public int dashCount = 0;
@@ -50,6 +49,8 @@ public class DragonBossManager : BossManager
             //activateShield();
             plane.planeShooter.launchGadget();
             dashCount += 1;
+            summonMinions();
+            summonMinions();
             summonMinions();
         } else if (phase == FIRE){
             

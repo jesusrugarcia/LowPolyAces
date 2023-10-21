@@ -47,6 +47,7 @@
      <Compile Include="Assets\Scripts\Planes\PlaneSpawners\PlaneModel.cs" />
      <Compile Include="Assets\Scripts\Menus\GameMenu.cs" />
      <Compile Include="Assets\Scripts\Evaded.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\DragonBodyManager.cs" />
      <Compile Include="Assets\Scripts\SaveData\UnlockManager.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Missiles\Mine.cs" />
      <Compile Include="Assets\Scripts\Planes\PlaneStatsObject.cs" />
@@ -147,10 +148,10 @@
      <Compile Include="Assets\Scripts\GameController\GameModeManager.cs" />
      <Compile Include="Assets\Scripts\Menus\Menu.cs" />
      <Compile Include="Assets\Scripts\SnapshotCamera.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\DragonBossManager.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\RepairDrone.cs" />
      <Compile Include="Assets\Scripts\PowerUps\Drones\Turret.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\DragonBossManager.cs" />
-     <Compile Include="Assets\Scripts\PowerUps\DragonBodyManager.cs" />
+     <Compile Include="Assets\Scripts\PowerUps\ThunderBossManager.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Fonts\aerologica-font\info.txt" />

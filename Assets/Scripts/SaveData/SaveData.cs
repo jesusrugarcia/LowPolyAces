@@ -61,7 +61,7 @@ public class SaveData
             unlockedPowerUps[i].powerUps = new bool[powerUps[i].powerUps.Length];
             notifyPowerUps[i].powerUps = new bool[powerUps[i].powerUps.Length];
             for (int y=0; y< unlockedPowerUps[i].powerUps.Length; y++){
-                unlockedPowerUps[i].powerUps[y] = powerUps[i].powerUps[y];
+                unlockedPowerUps[i].powerUps[y] = powerUps[i].powerUps[y].initialUnlock;
             }
         }
     }

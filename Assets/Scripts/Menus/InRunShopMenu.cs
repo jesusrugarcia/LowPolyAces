@@ -94,7 +94,7 @@ public class InRunShopMenu : MonoBehaviour
     }
 
     public void createPowerUps(int currentNode){
-        var powerUps = PowerUpListGenerator.selectPowerUps(4, raritiesLists, true, manager.rogueliteSave);
+        var powerUps = PowerUpListGenerator.selectPowerUps(4, raritiesLists, true, manager.rogueliteSave, manager.saveData);
         manager.mapGraph.nodes[currentNode].shopVisited = true;
         manager.mapGraph.nodes[currentNode].powerUps = powerUps;
         loadPoweUps(currentNode);

@@ -6877,6 +6877,10 @@ MonoBehaviour:
     fuel: 5
     turnsWithoutFuel: 0
     money: 00000000000000000000000000000000
+    finished: 0
+    selectedPlanes: 00000000000000000000000000000000
+    selectedCharacters: 00000000010000000200000003000000
+    combatEnded: 0
     stats:
     - maxHealth: 0
       health: 1

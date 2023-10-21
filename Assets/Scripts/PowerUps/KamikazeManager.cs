@@ -9,11 +9,16 @@ public class KamikazeManager : MonoBehaviour
     public GameObject explosion;
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.GetComponent<TeamManager>().team != plane.teamManager.team){
+        try {
+            if(other.gameObject.GetComponent<TeamManager>().team != plane.teamManager.team){
             other.GetComponent<CollisionManager>().damagePlane(damage: damage);
             spawnExplosion();
             plane.collissionManager.damagePlane(damage: 100);
+            }
+        } catch (System.Exception e){
+            Debug.Log(e);
         }
+        
     }
 
     public void spawnExplosion(){
