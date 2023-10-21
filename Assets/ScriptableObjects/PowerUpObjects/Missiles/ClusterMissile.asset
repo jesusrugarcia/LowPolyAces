@@ -19,7 +19,7 @@ MonoBehaviour:
   - Launches aditional missiles after detonating
   - Lanza misiles adicionales despues de detonar
   unlock:
-  - 
-  - 
+  - Defeat the carrier!
+  - Vence al portaaviones!
   rarity: 250
-  initialUnlock: 1
+  initialUnlock: 0

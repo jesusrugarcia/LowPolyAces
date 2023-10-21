@@ -15,6 +15,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject DrillBullet;
     public GameObject DragonFireBullet;
     public GameObject FireBullet;
+    public GameObject FireDrill;
     //Missiles
     public GameObject Missile;
     public GameObject Mine;
@@ -24,6 +25,7 @@ public class PowerUpsCentralManager : MonoBehaviour
     public GameObject BurningClaw;
     public GameObject RustingClaw;
     public GameObject ClusterMissile;
+    public GameObject FireMissile;
     //Gadgets
     public GameObject HealArea;
     public GameObject TankShield;
@@ -52,8 +54,8 @@ public class PowerUpsCentralManager : MonoBehaviour
 //this method calls for the apropiate method when obtaining a power up.
     public void managePowerUp(GameObject other, PowerUps type, GameObject origin){
         if(type == PowerUps.Missile || type == PowerUps.Mine || type == PowerUps.Flare || type == PowerUps.SupportClaw || 
-        type == PowerUps.ElectricClaw || type == PowerUps.BurningClaw || type == PowerUps.RustingClaw || type == PowerUps.ClusterMissile || type == PowerUps.Turbo || 
-        type == PowerUps.AreaOfHeal || type == PowerUps.TankShield || type == PowerUps.Laser || type == PowerUps.Coin){
+        type == PowerUps.ElectricClaw || type == PowerUps.BurningClaw || type == PowerUps.RustingClaw || type == PowerUps.ClusterMissile || type == PowerUps.Turbo || type == PowerUps.FireTurbo|| 
+        type == PowerUps.AreaOfHeal || type == PowerUps.TankShield || type == PowerUps.Laser || type == PowerUps.Coin || type == PowerUps.FireMissile){
             addWeaponPowerUp(other.gameObject, type, origin);
         } else if(type == PowerUps.Dash || type == PowerUps.Ghost || type == PowerUps.HealShield || type == PowerUps.Hook || type == PowerUps.InverseHook){
             addDefensePowerUp(other.gameObject, type, origin);
@@ -116,6 +118,10 @@ public class PowerUpsCentralManager : MonoBehaviour
                 planeManager.stats.missileType = MissileType.ClusterMissile;
                 planeManager.planeShooter.missile = ClusterMissile;
                 destroyable = true;
+            } else if(type == PowerUps.FireMissile && !(planeManager.stats.missileType == MissileType.FireMissile)){
+                planeManager.stats.missileType = MissileType.FireMissile;
+                planeManager.planeShooter.missile = FireMissile;
+                destroyable = true;
             }
             //Gadgets
             else if (type == PowerUps.Turbo && !(planeManager.stats.gadgetType == GadgetType.Turbo)){
@@ -136,6 +142,10 @@ public class PowerUpsCentralManager : MonoBehaviour
             } else if (type == PowerUps.Coin && !(planeManager.stats.gadgetType == GadgetType.Coin)){
                 planeManager.stats.gadgetType = GadgetType.Coin;
                 planeManager.planeShooter.gadget = Coin;
+                destroyable = true;
+            } else if (type == PowerUps.FireTurbo && !(planeManager.stats.gadgetType == GadgetType.FireTurbo)){
+                planeManager.stats.gadgetType = GadgetType.FireTurbo;
+                planeManager.planeShooter.gadget = TurboParticleEffect;
                 destroyable = true;
             }
 
@@ -435,6 +445,8 @@ public class PowerUpsCentralManager : MonoBehaviour
             plane.planeShooter.missile =  RustingClaw;
         } else if(plane.stats.missileType == MissileType.ClusterMissile){
             plane.planeShooter.missile =  ClusterMissile;
+        } else if(plane.stats.missileType == MissileType.FireMissile){
+            plane.planeShooter.missile =  FireMissile;
         }
     }
 
@@ -446,6 +458,8 @@ public class PowerUpsCentralManager : MonoBehaviour
         } else if(plane.stats.gadgetType == GadgetType.TankShield){
             plane.planeShooter.gadget = TankShield ;
         } else if(plane.stats.gadgetType == GadgetType.Turbo){
+            plane.planeShooter.gadget = TurboParticleEffect ;
+        } else if(plane.stats.gadgetType == GadgetType.FireTurbo){
             plane.planeShooter.gadget = TurboParticleEffect ;
         }
     }

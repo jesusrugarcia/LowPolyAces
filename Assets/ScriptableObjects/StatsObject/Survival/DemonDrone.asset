@@ -33,6 +33,7 @@ MonoBehaviour:
   normalDroneShootSpeed: 1
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
+  bulletType: 0
   missileType: 0
   gadgetType: 0
   defenseType: 0
@@ -56,14 +57,17 @@ MonoBehaviour:
   rechargeSpecialTime: 10
   maxDrones: 1
   drones: 0
+  dronesList: 
   statusEffects:
   - 0.05
   - 0
   - 0
   invIncrease: 0.1
   ghostIncrease: 1
+  evasion: 0
   timeTargetting: 2
-  stunnedTime: 1
+  statusEffectTime: 1
   laserActivated: 0
   laserTime: 1
   laserDamage: 0.1
+  revival: 0

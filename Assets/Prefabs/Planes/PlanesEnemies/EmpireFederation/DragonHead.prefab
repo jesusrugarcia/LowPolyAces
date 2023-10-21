@@ -254,8 +254,10 @@ MonoBehaviour:
   phase: 0
   phaseActivated: 0
   summonedMinions: 0
-  minionsList: {fileID: 0}
+  minionsList: {fileID: 11400000, guid: 9fe42649f81b70246882d5ebf5f630e7, type: 2}
   bossShield: {fileID: 0}
+  behindTimer: 0
+  maxBehindTime: 5
   bodyObject: {fileID: 885846397857734055, guid: 28667428ea21cb046b2a692fc079cb2f, type: 3}
   tailObject: {fileID: 5315465513654813037, guid: 5f108f9cdfa3ab145a2a85db6a4a3e90, type: 3}
   bodyCount: 12

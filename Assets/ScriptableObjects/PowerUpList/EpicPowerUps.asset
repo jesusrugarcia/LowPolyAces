@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: EpicPowerUps
   m_EditorClassIdentifier: 
   powerUps:
-  - {fileID: 11400000, guid: 715a4570dbcdc5546a79257d760eccab, type: 2}
+  - {fileID: 11400000, guid: 0ba2b47e6dd5a814aba122f261c3d6fd, type: 2}
+  - {fileID: 11400000, guid: 219c6874bb45d404ca4c9f50f5b127a8, type: 2}

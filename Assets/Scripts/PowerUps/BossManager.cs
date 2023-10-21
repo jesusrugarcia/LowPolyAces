@@ -13,6 +13,9 @@ public class BossManager : MonoBehaviour
 
     public GameObject bossShield;
 
+    public float behindTimer = 0f;
+    public float maxBehindTime = 5f;
+
     // Start is called before the first frame update
     public virtual void Start()
     {
@@ -72,5 +75,29 @@ public class BossManager : MonoBehaviour
         var droneToGet = UnityEngine.Random.Range(0, minionsList.planes.Length);
         return minionsList.planes[droneToGet];
     }
+
+    public void checkBehind(int angle){
+        for (int i = 0; i < plane.controller.gameOptions.playerNum ; i++){
+            try {
+                Vector3 objective = plane.controller.players[i].transform.position - transform.position;
+                var rotation = Vector3.Angle(objective, transform.right);
+                var debAngle = Quaternion.Euler(0, angle, 0) * transform.right * 10;
+                var negDebAngle = Quaternion.Euler(0, -angle, 0) * transform.right * 10;
+                Debug.DrawRay(transform.position, debAngle, Color.green);
+                Debug.DrawRay(transform.position, negDebAngle, Color.magenta);
+                Debug.DrawRay(transform.position, objective, Color.yellow);
+                if (rotation >= angle){
+                    Debug.Log(rotation);
+                    behindTimer += Time.deltaTime;
+                    break;
+                }
+                behindTimer = 0;
+            } catch (System.Exception e){
+                Debug.Log(e);
+            }
+        }
+    }
+
+
 
 }

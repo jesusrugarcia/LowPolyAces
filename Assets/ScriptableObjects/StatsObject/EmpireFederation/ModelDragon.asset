@@ -19,10 +19,10 @@ MonoBehaviour:
   acceleration: 0.3
   rotationSpeed: 2
   rotation: 0
-  maxRotation: 1
+  maxRotation: 2
   timeToRotate: 0.05
   timeRotating: 0.3
-  bulletDamage: 1
+  bulletDamage: 5
   turretDamage: 0.1
   missileDamage: 10
   mineDamage: 5
@@ -34,11 +34,11 @@ MonoBehaviour:
   specialDroneShootSpeed: 10
   auxDroneSpeed: 10
   bulletType: 3
-  missileType: 0
-  gadgetType: 0
-  defenseType: 0
-  specialAmmo: 3
-  maxSpecialAmmo: 3
+  missileType: 9
+  gadgetType: 6
+  defenseType: 1
+  specialAmmo: 5
+  maxSpecialAmmo: 5
   defenseAmmo: 0
   maxDefenseAmmo: 1
   extraBullets: 0

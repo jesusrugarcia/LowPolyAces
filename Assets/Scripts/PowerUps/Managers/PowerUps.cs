@@ -54,4 +54,6 @@ public enum PowerUps{
    //Posterior
    DragonFireBullet,
    FireBullet,
+   FireMissile,
+   FireTurbo,
 }

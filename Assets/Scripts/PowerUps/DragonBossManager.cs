@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class DragonBossManager : BossManager
 {
+    const int FIRE = 0;
+    const int DRONES = 1;
+
+    public float dashSpeed = 15;
+    public int behindAngle = 100;
+
+    public int dashCount = 0;
+    public int maxDashes = 3;
+    public float dashTimer = 0;
+    public float maxDashTime = 1;
+
     public GameObject bodyObject;
     public GameObject tailObject;
     public int bodyCount;
@@ -28,7 +39,44 @@ public class DragonBossManager : BossManager
         lastPart = newPart;
     }
 
+    public override void FixedUpdate() {
+        base.FixedUpdate();
+        checkBehind(behindAngle);
+    }
+
+    public override void activatePhase(){
+        phaseActivated = true;
+        if (phase == DRONES){
+            //activateShield();
+            plane.planeShooter.launchGadget();
+            dashCount += 1;
+            summonMinions();
+        } else if (phase == FIRE){
+            
+        }
+    }
+
+    public override void deactivatePhase(){
+        if (phase == DRONES){
+            if (dashCount >= maxDashes){
+                phase = FIRE;
+                phaseActivated = false;
+            } else if (dashTimer >= maxDashTime){
+                dashTimer = 0;
+                plane.planeShooter.launchGadget();
+                dashCount += 1;
+            } else {
+                dashTimer += Time.deltaTime;
+            }
+            
+        } else if (phase == FIRE && behindTimer >= maxBehindTime){
+            phase = DRONES;
+            behindTimer = 0;
+            phaseActivated = false;
+        }
+    }
+
     private void OnDestroy() {
-        UnlockManager.unlockPowerUp(plane.controller.data, 2, 0);
+        
     }
 }

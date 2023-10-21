@@ -240,6 +240,15 @@ public class PlaneShooter : MonoBehaviour
             plane.stats.specialAmmo --;
         } else if(plane.stats.gadgetType == GadgetType.Coin){
             manageCoin();
+        } if (plane.stats.gadgetType == GadgetType.FireTurbo){
+            plane.stats.speed = plane.stats.maxSpeed * 6;
+            var turbo = Instantiate(gadget, transform.position, transform.rotation);
+            plane.stats.specialAmmo --;
+
+            var auxBullet = bullet;
+            bullet = plane.controller.centralManager.FireDrill;
+            shoot();
+            bullet = auxBullet;
         }
 
     }

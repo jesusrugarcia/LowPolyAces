@@ -72,7 +72,7 @@ public class PlaneMovement : MonoBehaviour
         if (plane.stats.speed < plane.stats.maxSpeed){
             plane.stats.speed += plane.stats.maxSpeed * plane.stats.acceleration * 0.005f;
         } else if(plane.stats.speed > plane.stats.maxSpeed){
-            plane.stats.speed = plane.stats.maxSpeed;
+           plane.stats.speed += -plane.stats.maxSpeed * plane.stats.acceleration ;
         }
     }
 }

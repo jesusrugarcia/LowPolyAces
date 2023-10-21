@@ -105,6 +105,16 @@ public class RogueliteModeManager : GameModeManager
         FileManager.saveRoguelite(controller.rogueliteSave);
         if(controller.currentEnemies <= 0){
             if(controller.rogueliteSave.boss){ // todo when boss beaten
+                if(controller.rogueliteSave.stage == 0){
+                    Debug.Log("Carrier Defeated!");
+                    UnlockManager.unlockPowerUp(controller.data, 1, 0);
+                }
+                if(controller.rogueliteSave.stage == 1){
+                    Debug.Log("Dragon Defeated!");
+                    UnlockManager.unlockPowerUp(controller.data, 2, 0);
+                    UnlockManager.unlockPowerUp(controller.data, 2, 1);
+                    UnlockManager.unlockPowerUp(controller.data, 3, 0);
+                }
                 controller.rogueliteSave.stage ++;
                 controller.rogueliteSave.loadMap = false;
                 FileManager.saveRoguelite(controller.rogueliteSave);

@@ -11,6 +11,7 @@ public enum MissileType {
     BurningClaw,
     RustingClaw,
     ClusterMissile,
+    FireMissile,
 }
 
 public enum GadgetType{
@@ -19,7 +20,8 @@ public enum GadgetType{
     TankShield,
     AreaOfHeal,
     Laser,
-    Coin
+    Coin,
+    FireTurbo
 }
 
 public enum DefenseType{

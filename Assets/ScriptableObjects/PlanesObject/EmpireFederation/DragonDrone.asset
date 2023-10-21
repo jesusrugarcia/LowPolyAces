@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 556f2da738120da4d93ea7875a5a3fa9, type: 3}
+  m_Name: DragonDrone
+  m_EditorClassIdentifier: 
+  model: 
+  plane: {fileID: 6301003565145177360, guid: 1312bb37fd294ea4dbc994dbd76a5579, type: 3}
+  stats: {fileID: 11400000, guid: 8b2879e962b5a1d4490d49349535ecaf, type: 2}
+  unlockedByDefault: 0
+  purchasedByDefault: 0
+  desc: []
+  unlock: []

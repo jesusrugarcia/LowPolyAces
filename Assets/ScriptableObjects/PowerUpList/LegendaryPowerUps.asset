@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: LegendaryPowerUps
   m_EditorClassIdentifier: 
   powerUps:
-  - {fileID: 11400000, guid: 715a4570dbcdc5546a79257d760eccab, type: 2}
+  - {fileID: 11400000, guid: cca8a77d8a66ed14f9e5d6a07a0f7b57, type: 2}
