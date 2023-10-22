@@ -76,7 +76,7 @@ public class BossManager : MonoBehaviour
         return minionsList.planes[droneToGet];
     }
 
-    public void checkBehind(int angle){
+    public void checkBehind(int angle, bool front = false){
         for (int i = 0; i < plane.controller.gameOptions.playerNum ; i++){
             try {
                 Vector3 objective = plane.controller.players[i].transform.position - transform.position;
@@ -86,7 +86,11 @@ public class BossManager : MonoBehaviour
                 Debug.DrawRay(transform.position, debAngle, Color.green);
                 Debug.DrawRay(transform.position, negDebAngle, Color.magenta);
                 Debug.DrawRay(transform.position, objective, Color.yellow);
-                if (rotation >= angle){
+                if (rotation >= angle && !front){
+                    Debug.Log(rotation);
+                    behindTimer += Time.deltaTime;
+                    break;
+                } else if (rotation <= angle && front){
                     Debug.Log(rotation);
                     behindTimer += Time.deltaTime;
                     break;

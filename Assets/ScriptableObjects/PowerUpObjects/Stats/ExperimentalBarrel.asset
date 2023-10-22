@@ -19,7 +19,7 @@ MonoBehaviour:
   - Shoot aditional bullets
   - Dispara balas adicionales
   unlock:
-  - 
-  - 
-  rarity: 100
-  initialUnlock: 1
+  - Defeat the Thunder
+  - Vence al trueno
+  rarity: 1
+  initialUnlock: 0

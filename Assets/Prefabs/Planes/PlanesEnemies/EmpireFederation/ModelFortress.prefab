@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6481065420801946938}
   - component: {fileID: 2236372645811858603}
   - component: {fileID: 893722967989374635}
+  - component: {fileID: 9005616475425046168}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893722967989374634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.95, y: 0, z: 1.85}
+  m_LocalPosition: {x: -1.95, y: 0, z: 0.15000021}
   m_LocalScale: {x: 47.789986, y: 47.789986, z: 47.789986}
   m_Children: []
   m_Father: {fileID: 8303492805246282065}
@@ -101,6 +102,19 @@ MonoBehaviour:
   shootTimer: 0
   targetDistance: 10
   rotationSpeed: 10
+--- !u!114 &9005616475425046168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893722967989374634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0
 --- !u!1 &7070080847929182516
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +141,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7070080847929182516}
   m_LocalRotation: {x: 0.70710677, y: -0, z: -0, w: 0.7071069}
-  m_LocalPosition: {x: -5.07, y: -0.18, z: 0.68}
+  m_LocalPosition: {x: -5.07, y: -0.18, z: -1.0199997}
   m_LocalScale: {x: 12, y: 12, z: 12}
   m_Children: []
   m_Father: {fileID: 8303492805246282065}
@@ -4922,6 +4936,7 @@ GameObject:
   - component: {fileID: 8678504767376798694}
   - component: {fileID: 8678504767376798693}
   - component: {fileID: 8678504767376798692}
+  - component: {fileID: 1283494609360252853}
   m_Layer: 0
   m_Name: ModelFortress
   m_TagString: Untagged
@@ -4973,7 +4988,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 1, z: 10}
+  m_Size: {x: 4.62, y: 5.13, z: 10}
   m_Center: {x: -1.4, y: 0, z: 0}
 --- !u!114 &8678504767376798689
 MonoBehaviour:
@@ -5144,6 +5159,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeManager: {fileID: 0}
+--- !u!114 &1283494609360252853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8678504767376798699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0656b4544d009e409cab6db84f36970, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  plane: {fileID: 8678504767376798689}
+  phase: 0
+  phaseActivated: 0
+  summonedMinions: 0
+  minionsList: {fileID: 11400000, guid: 661fd92e4afa9ac4a87f00d271c88b46, type: 2}
+  bossShield: {fileID: 0}
+  behindTimer: 0
+  maxBehindTime: 0.2
+  behindAngle: 20
+  hasShielded: 0
+  clawTimer: 0
+  maxClawTime: 3
+  defenseShield: {fileID: 3351085289248930019, guid: 055cadfd7affa1a41a55f9f9b92dd156, type: 3}
 --- !u!1 &9168541896220884190
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,7 +5210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9168541896220884190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: -1.7}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 8303492805246282065}

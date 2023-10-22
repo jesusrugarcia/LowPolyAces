@@ -19,7 +19,7 @@ MonoBehaviour:
   - Makes bullets track enemies and increases target distance
   - Hace que las balas rastreen enemigos y aumenta el rango de rastreo
   unlock:
-  - 
-  - 
-  rarity: 100
-  initialUnlock: 1
+  - Defeat the fortress
+  - Vence a la fortaleza
+  rarity: 1
+  initialUnlock: 0

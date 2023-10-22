@@ -10145,6 +10145,7 @@ GameObject:
   - component: {fileID: 1741272765415640120}
   - component: {fileID: 1821780306119459437}
   - component: {fileID: 7483946290482199374}
+  - component: {fileID: 6049704995007511709}
   m_Layer: 0
   m_Name: Cube.003
   m_TagString: Untagged
@@ -10234,3 +10235,16 @@ MonoBehaviour:
   shootTimer: 0
   targetDistance: 10
   rotationSpeed: 10
+--- !u!114 &6049704995007511709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8164801781747189602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0

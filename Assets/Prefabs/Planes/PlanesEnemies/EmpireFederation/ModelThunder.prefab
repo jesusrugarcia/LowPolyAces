@@ -5151,6 +5151,7 @@ MonoBehaviour:
   behindTimer: 0
   maxBehindTime: 0.2
   behindAngle: 140
+  hasCloned: 0
 --- !u!1 &8381800103437657476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5262,6 +5263,7 @@ GameObject:
   - component: {fileID: 3305274235216502753}
   - component: {fileID: 7721103648933480048}
   - component: {fileID: 8667401247403172976}
+  - component: {fileID: 443375821963691030}
   m_Layer: 0
   m_Name: Cube.001
   m_TagString: Untagged
@@ -5351,3 +5353,16 @@ MonoBehaviour:
   shootTimer: 0
   targetDistance: 10
   rotationSpeed: 10
+--- !u!114 &443375821963691030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8667401247403172977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061f7bb80bd59ce448d7c574b6d48717, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  team: 0

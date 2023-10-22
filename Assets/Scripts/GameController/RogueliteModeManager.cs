@@ -108,6 +108,14 @@ public class RogueliteModeManager : GameModeManager
                 if(controller.rogueliteSave.stage == 0){
                     Debug.Log("Carrier Defeated!");
                     UnlockManager.unlockPowerUp(controller.data, 1, 0);
+                } 
+                if(controller.rogueliteSave.stage == 1){
+                    Debug.Log("Thunder Defeated!");
+                    UnlockManager.unlockPowerUp(controller.data, 1, 1);
+                }
+                if(controller.rogueliteSave.stage == 2){
+                    Debug.Log("Fortress Defeated!");
+                    UnlockManager.unlockPowerUp(controller.data, 1, 2);
                 }
                 if(controller.rogueliteSave.stage == 3){
                     Debug.Log("Dragon Defeated!");
